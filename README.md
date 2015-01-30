@@ -16,7 +16,7 @@
 #
   Finally, the Statistics function will act as a progress tracker for the user, offering pass statistics in percentages regarding the following categories: Question bank type, Session type (practice and exam), Topic, and Sub-topic. The function shall also allow the user to create and e-mail PDF reports.
 #Mobile Application Schema
-![Application Diagram](https://lh6.googleusercontent.com/hNj1bwtbycZuq9_AjxoiW_K2fFTD5VvtQd9KT-KI7JDNxstDA7BDRt0NP6rPL45zrUThT4UOJ1Y=w2124-h1075)
+![Application Diagram](https://wrsavg.by3302.livefilestore.com/y2p8XprEk1qqSeKa2OEXi99Dpr_x-pdukFiGN_z0vMvjoWzWv6UD_Lcvanb5YliUB-XGWK-4Z0AcnG3GHv8Jgo5RTMeXBs3OL4M2SjSSroa5HqGUmCYN2Ip4P15_xM_xnR0wt6gFND2Wo2YnuhpNThJIg/AeroMenuStructure.jpg)
 #List of Contributors 
 Andrew Hollingsworth,
 Peggy Chen,
