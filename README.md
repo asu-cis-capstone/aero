@@ -4,10 +4,10 @@
 #General Requirements
 #Mobile Application Schema
 #List of Contributors 
-Andrew Hollingsworth
-Peggy Chen
-Jose Arballo
-Ethan Selin
+Andrew Hollingsworth,
+Peggy Chen,
+Jose Arballo,
+Ethan Selin,
 Nitin Jain
 #Release Notes 
   v.1
