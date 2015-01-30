@@ -3,6 +3,7 @@
   Aeroapps Technology was found by Bryan Tregila and Ed Gonzalez. It is a company that primarily foceses on developing customized iOS and web aplication for the aviation industry. It also provides Reva SMS Forms Manager that help flight crews to complete and submit their flight risk assessments and safety reports. It also created interactive aircraft instrument panel for student pilots who are preparing for FAA exams to learn aircraft systems.
 #General Requirements
 #Mobile Application Schema
+![Application Diagram](https://lh6.googleusercontent.com/hNj1bwtbycZuq9_AjxoiW_K2fFTD5VvtQd9KT-KI7JDNxstDA7BDRt0NP6rPL45zrUThT4UOJ1Y=w2124-h1075)
 #List of Contributors 
 Andrew Hollingsworth,
 Peggy Chen,
