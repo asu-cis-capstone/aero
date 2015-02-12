@@ -1,0 +1,117 @@
+/*
+a3ss.css
+Pohsiu Chen
+Fall 2014/78019
+*/
+
+body {
+	color:				#CAC8C3;
+	font-family:		Calibri, Helvetica, Arial, sans-serif;
+	background-color:	#1A0AAC;
+	width:				95%;
+	margin:				auto;
+	text-align:			center;
+}
+
+#header {
+	clear:				both;
+	text-align:			center;
+	margin-bottom:		5px;
+}
+
+.sh1 {
+	font-size:			125%;
+	font-weight:		bold;
+}
+
+
+#joinform {
+	color:				#72716F;
+	text-align:			center;
+	width:				35%;
+	margin:				auto;
+	border:				5px double #4169e1;
+	background-color:	#F8F5EC;
+	margin-top:			5px;
+	padding-left:		8px;
+	border-radius:		15px;
+	box-shadow:			5px 5px 3px 3px rgba(25,25,75,.4);
+	/*					H	V	Blr	Spr rgb + new channel of opacity */
+}
+
+.submit {	text-align:	center;	}
+
+.submit input {
+	color:				#ffffff;
+	font-size:			95%;
+	font-style:			italic;
+	font-weight:		bold;	
+	background-color:	#72716F;
+	border-radius:		10px;
+}
+
+.reset input  {	
+	background-color:	#72716F;
+	border-radius:		10px;
+}
+
+.fh1 {	
+	text-decoration:	underline;
+	font-weight:		bold;
+}
+
+label {
+	width:				11em;
+	float:				left;
+	text-align:			center;	
+	padding-left:		23%;
+}
+
+#messages {
+	color:				#ff0000;
+	text-align:			center;
+	font-size:			85%;
+	font-style:			italic;
+	font-weight:		bold;
+	margin-top:			10px;
+}s
+
+
+a:link		{	color:	#4169e1;	}
+a:hover		{	color:	#32cd32		!important; 	}
+a:visited	{	color:	#bbbbbb;	}
+
+
+select {
+	width:				200px;
+	height:				22px;
+	border-radius:		10px;
+	background:			#fff;
+}
+
+select:required { background: #ff0; }
+
+select:valid { background:	#fff; }
+
+select:focus:invalid { background:	#f00; }
+
+textarea {
+	padding:			3px;
+	width:				375px;
+	border-radius:		10px;
+	background:			white no-repeat top right;	
+}
+
+textarea:required { background-image: url('../images/required.png');}
+
+textarea:valid { background-image: url('../images/valid.png');}
+
+textarea:focus:invalid { background-image: url('../images/invalid.png');}
+
+input[type=text],input[type=password],input[type=email]{
+	width:				200px;
+	height:				22px;
+	padding:			3px;
+	border-radius:		10px;
+}
+
