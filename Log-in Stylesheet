@@ -67,21 +67,6 @@ label {
 	padding-left:		23%;
 }
 
-#messages {
-	color:				#ff0000;
-	text-align:			center;
-	font-size:			85%;
-	font-style:			italic;
-	font-weight:		bold;
-	margin-top:			10px;
-}s
-
-
-a:link		{	color:	#4169e1;	}
-a:hover		{	color:	#32cd32		!important; 	}
-a:visited	{	color:	#bbbbbb;	}
-
-
 select {
 	width:				200px;
 	height:				22px;
