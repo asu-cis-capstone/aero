@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+
+<!--
+CIS440 Release 2
+-->
+
+<html lang ="en">
+  	
+  <head>
+    <!-- Meta tag -->
+    <meta name="robots" content="noindex,nofoolw" />
+    <meta charset = "utf-8"> 
+
+    <!-- Link tag for CSS -->
+	<link type="text/css" rel="stylesheet" href="style.css" />
+
+    <!-- Web Page Title -->
+    <title>CIS440 Aeroapps</title>
+
+  </head>
+
+  <body onload ="nmsg()">
+	<div id="header">
+		<p class="sh1">Hello World</p>
+		<p class="sh1">CIS440 Capstone</p>
+	</div>
+	
+	<form id="joinform" action="process.php" method="post">
+
+		<p class="fh1">
+			Please Login here:
+			<br />
+			<br />
+			<!--	Username	-->
+			<label for="username">Username:</label>
+			<input type="text" id="username" name="username" 
+			required
+			placeholder="Username..."
+			autofocus
+			/>
+			<br />
+			
+			<!--	Password	-->
+			<label for="password">Password:</label>
+			<input type="password" id="password" name="password" 
+			required
+			placeholder="Password..." 
+			/>
+			<br />
+		</p>
+		
+		<p class="submit">
+			<input type="submit" value="Log me in!" onfocus="limsg()"/>
+			
+			<span class="reset">
+				<input type="reset" value="Clear Form!" onclick="history.go(0)" onfocus="cmsg()"/>
+			</span>
+		</p>	
+	</form>
+	
+  </body>
+
+</html>
