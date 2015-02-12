@@ -18,7 +18,7 @@
 #Mobile Application Schema
 ![Application Diagram](https://qktc3w.by3302.livefilestore.com/y2plPbLpvsLmTI8_TiIJTv3pNsQvsvVzZA4z1PITNg6ElCV7oplCn6Lx4T-q9bd8T9Wiv4boSYbdV-iAEdNFfvDxZxYZlQ8a2_fHVuud60Znhd3ApWe6h2cg8rkW9bBDONq_H9p0us81JC50ZJhBfERKA/AeroMenuStructure.jpg?psid=1)
 #How to Use Provided Files
-  [content coming soon]
+  The provided files for your web portal will be provided within our repository. Files with extensions of .html and .css can be downloaded and placed into your web host. It is recommended to create a folder structure in an organized manner that will differentiate different file types or functions of the website. For example, CSS files should be placed in a folder called "stylesheets" and JavaScript should be placed in a "javascript" folder. The code for all files can be easily copied and pasted into your html/css editor. 
 #Suggestions For Help
   Part of this product will require a mobile application for iOS. Our team has some experience with coding languages, such as C#, HTML, CSS, JavaScript, and SQL. Although we will take up the challenge for learning Swift or Objective-C, any assistance or guidance will be greatly appreciated.
 #List of Contributors 
