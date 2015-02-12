@@ -17,6 +17,10 @@
   Finally, the Statistics function will act as a progress tracker for the user, offering pass statistics in percentages regarding the following categories: Question bank type, Session type (practice and exam), Topic, and Sub-topic. The function shall also allow the user to create and e-mail PDF reports.
 #Mobile Application Schema
 ![Application Diagram](https://qktc3w.by3302.livefilestore.com/y2plPbLpvsLmTI8_TiIJTv3pNsQvsvVzZA4z1PITNg6ElCV7oplCn6Lx4T-q9bd8T9Wiv4boSYbdV-iAEdNFfvDxZxYZlQ8a2_fHVuud60Znhd3ApWe6h2cg8rkW9bBDONq_H9p0us81JC50ZJhBfERKA/AeroMenuStructure.jpg?psid=1)
+#How to Use Provided Files
+  [content coming soon]
+#Suggestions For Help
+  Part of this product will require a mobile application for iOS. Our team has some experience with coding languages, such as C#, HTML, CSS, JavaScript, and SQL. Although we will take up the challenge for learning Swift or Objective-C, any assistance or guidance will be greatly appreciated.
 #List of Contributors 
 Andrew Hollingsworth,
 Peggy Chen,
