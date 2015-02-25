@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <!--
-CIS440 Release 2
+Aeroapps Admin Portal Login Page
 -->
 
 <html lang ="en">
@@ -12,20 +12,19 @@ CIS440 Release 2
     <meta charset = "utf-8"> 
 
     <!-- Link tag for CSS -->
-	<link type="text/css" rel="stylesheet" href="style.css" />
+	<link type="text/css" rel="stylesheet" href="stylesheets/style.css" />
 
     <!-- Web Page Title -->
-    <title>CIS440 Aeroapps</title>
+    <title>Aeroapps Web Portal</title>
 
   </head>
 
-  <body onload ="nmsg()">
+  <body>
 	<div id="header">
-		<p class="sh1">Hello World</p>
-		<p class="sh1">CIS440 Capstone</p>
+		<p class="sh1">Aeroapps Web Portal</p>
 	</div>
 	
-	<form id="joinform" action="process.php" method="post">
+	<form id="joinform" action="menu.htm" method="post">
 
 		<p class="fh1">
 			Please Login here:
@@ -50,10 +49,10 @@ CIS440 Release 2
 		</p>
 		
 		<p class="submit">
-			<input type="submit" value="Log me in!" onfocus="limsg()"/>
+			<input type="submit" value="Log me in!"/>
 			
 			<span class="reset">
-				<input type="reset" value="Clear Form!" onclick="history.go(0)" onfocus="cmsg()"/>
+				<input type="reset" value="Clear Form!" onclick="history.go(0)"/>
 			</span>
 		</p>	
 	</form>
