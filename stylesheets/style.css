@@ -143,14 +143,13 @@ input[type=text],input[type=password],input[type=email]{
 
 #navselection{
 	font-size:			30px;
-	margin-bottom:		70px;
+	margin-bottom:		86px;
 }
 
 #navselection li{
 	list-style:			none;
 	float:				left;
 	width:				333.3px;
-	background:			rgba(150,150,150,1.0);
 	display:			block;
 	color:				white;
 }
@@ -166,6 +165,7 @@ ul#navbar{
 
 #options{
 	width:				1000px;
+	font-size:			26px;
 }
 
 ul#options{
@@ -177,6 +177,7 @@ ul#options{
 #list{
 	margin-top:			50px;
 	text-align:			left;
+	font-size:			23px;
 }
 
 #list li{
