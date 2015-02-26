@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <!--
-Questions Page
+Top Comment
 -->
 
 <html lang ="en">
@@ -15,12 +15,12 @@ Questions Page
 	<link type="text/css" rel="stylesheet" href="stylesheets/style.css" />
 
     <!-- Web Page Title -->
-    <title>Questions</title>
+    <title>Upload File</title>
 
   </head>
 
   <body>
-  	<div id="header">
+	<div id="header">
 		<p>
 			<span class="left"><a href="menu.html"><img src="images/headerlogo.png" alt="Aeroapps Logo" /></a></span>
 			<span class="right">Welcome, Admin</span><br />
@@ -36,36 +36,22 @@ Questions Page
     		
     	</ul>
     </div>
-	<div id="title">Questions</div>
-	<div id="selection">
-    	<ul id="options">
-    		<li><a href="uploadquestion.html">Add</a></li>
-    		<li>Edit</li>
-    		<li>Delete</li>
-    		<li>Search</li>
-    	</ul>
-    </div>
-    <div id=list>
-    	<p>1. Which weather phenomenon is always associated with a thunderstorm?</p>
-    		<ul>
-    			<li>A. Lightning</li>
-    			<li>B. Heavy rain</li>
-    			<li>C. Hail</li>
-			</ul>
-		<p>2. This is the text that would appear for the second question?</p>
-    		<ul>
-    			<li>A. Yes!</li>
-    			<li>B. How would I know?</li>
-    			<li>C. What kind of question is this?</li>
-			</ul>
-    </div>
-    
-    <div id ="footer">
-		<p>
-			&copy;2015, Aeroapps Technology
-		</p>
+	<div id="main">
+		<p id="title">Upload a file</p>
+		
+		<form id="uploadform" action="demo_form.asp">
+  			Select a file: <input type="file" name="img">
+  			<br />
+ 			<p class="submit">
+			<input type ="submit" value="Upload File" />
+			
+			<span class="reset">
+				<input type="reset" value="Restart" onclick="history.go(0)" />
+			</span>
+			</p>
+		</form>	
+		
 	</div>
-	
   </body>
 
 </html>

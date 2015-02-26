@@ -55,6 +55,40 @@ body {
 	/*					H	V	Blr	Spr rgb + new channel of opacity */
 }
 
+
+#uploadform {
+	top:				50px;
+	position: 			relative;
+	color:				#72716F;
+	text-align:			center;
+	width:				35%;
+	margin:				auto;
+	border:				5px double #4169e1;
+	background-color:	#F8F5EC;
+	margin-top:			5px;
+	padding-top:		10px;
+	padding-left:		8px;
+	border-radius:		15px;
+	box-shadow:			5px 5px 3px 3px rgba(25,25,75,.4);
+	/*					H	V	Blr	Spr rgb + new channel of opacity */
+}
+
+#questionform {
+	top:				50px;
+	position: 			relative;
+	color:				#72716F;
+	text-align:			center;
+	width:				400px;
+	margin:				auto;
+	border:				5px double #4169e1;
+	background-color:	#F8F5EC;
+	margin-top:			5px;
+	padding-left:		8px;
+	border-radius:		15px;
+	box-shadow:			5px 5px 3px 3px rgba(25,25,75,.4);
+	/*					H	V	Blr	Spr rgb + new channel of opacity */
+}
+
 .submit {	text-align:	center;	}
 
 .submit input {
