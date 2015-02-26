@@ -24,6 +24,11 @@ body {
 	list-style:none;
 }
 
+#main ul {
+	list-style: none;
+	padding: 0;
+}
+
 #header {
 	clear:				both;
 	text-align:			center;
@@ -121,6 +126,8 @@ input[type=text],input[type=password],input[type=email]{
 	color:				White;
 	background:			rgba(255,255,255,0.5);
 	width:				100%;
+	text-transform:		uppercase;
+	margin-bottom:		-17px;
 }
 #selection{
 	font-size:			20px;
@@ -134,6 +141,29 @@ input[type=text],input[type=password],input[type=email]{
 	display:			block;
 }
 
+#navselection{
+	font-size:			30px;
+	margin-bottom:		70px;
+}
+
+#navselection li{
+	list-style:			none;
+	float:				left;
+	width:				333.3px;
+	background:			rgba(150,150,150,1.0);
+	display:			block;
+	color:				white;
+}
+
+#navbar{
+	width:				1000px;
+}
+
+ul#navbar{
+	list-style:			none;
+	padding:			0;
+}
+
 #options{
 	width:				1000px;
 }
@@ -143,12 +173,24 @@ ul#options{
 	padding:			0;
 }
 
+
 #list{
 	margin-top:			50px;
-	float:				left;
+	text-align:			left;
 }
 
 #list li{
 	text-align:			left;
 	list-style:			none;
+}
+
+a:link { color: #FFFFFF; }
+a:hover { color: #00FF33 !important; }
+a:visited { color: #00ffFF; }
+
+#footer {
+	font-size: 60%;
+	text-align: center;
+	padding-top: 5px;
+	line-height: 1.5em
 }
