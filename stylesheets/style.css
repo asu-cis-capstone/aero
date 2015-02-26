@@ -16,8 +16,12 @@ body {
 	height: auto;
 	margin: auto;
 	margin-top: 75px;
-	font-size: 150%;
+	font-size: 125%;
 	text-align: center;
+}
+
+#main li {
+	list-style:none;
 }
 
 #header {
@@ -27,7 +31,7 @@ body {
 }
 
 .sh1 {
-	font-size:			125%;
+	font-size:			150%;
 	font-weight:		bold;
 }
 
