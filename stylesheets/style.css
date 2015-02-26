@@ -20,6 +20,10 @@ body {
 	text-align: center;
 }
 
+#main li {
+	list-style:none;
+}
+
 #header {
 	clear:				both;
 	text-align:			center;
