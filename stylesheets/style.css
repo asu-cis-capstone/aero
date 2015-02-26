@@ -11,6 +11,15 @@ body {
 	text-align:			center;
 }
 
+#main {
+	border-radius: 15px;
+	height: auto;
+	margin: auto;
+	margin-top: 75px;
+	font-size: 150%;
+	text-align: center;
+}
+
 #header {
 	clear:				both;
 	text-align:			center;
