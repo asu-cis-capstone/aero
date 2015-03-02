@@ -5,7 +5,7 @@ Aeroapps Admin Portal css
 body {
 	color:				#CAC8C3;
 	font-family:		Calibri, Helvetica, Arial, sans-serif;
-	background-color:	#1A0AAC;
+	background-color:	rgba(24,0,0,0.5);
 	width:				1000px;
 	margin:				auto;
 	text-align:			center;
@@ -173,6 +173,7 @@ input[type=text],input[type=password],input[type=email]{
 	width:				500px;
 	background:			rgba(255,255,255,0.5);
 	display:			block;
+	color:				white;
 }
 
 #navselection{
