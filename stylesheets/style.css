@@ -198,6 +198,10 @@ input[type=text],input[type=password],input[type=email]{
 	text-decoration:	none;
 }
 
+#navbar li:hover{
+	background-color:	white;
+}
+
 ul#navbar{
 	list-style:			none;
 	padding:			0;
