@@ -176,14 +176,15 @@ input[type=text],input[type=password],input[type=email]{
 
 #navselection{
 	font-size:			30px;
-	margin-bottom:		86px;
+	margin-bottom:		75px;
 }
 
 #navselection li{
 	list-style:			none;
 	float:				left;
-	width:				333.3px;
+	width:				250px;
 	display:			block;
+	background:			rgba(255,255,255,0.5);
 	color:				white;
 }
 
