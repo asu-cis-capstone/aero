@@ -75,15 +75,13 @@ body {
 
 #questionform {
 	top:				50px;
-	position: 			relative;
 	color:				#72716F;
-	text-align:			center;
-	width:				500px;
-	margin:				auto;
+	width:				60%;
 	border:				5px double #4169e1;
 	background-color:	#F8F5EC;
-	margin-top:			5px;
-	padding-left:		8px;
+	margin-top:			30px;
+	margin-left:		auto;
+	margin-right:		auto;
 	border-radius:		15px;
 	box-shadow:			5px 5px 3px 3px rgba(25,25,75,.4);
 	/*					H	V	Blr	Spr rgb + new channel of opacity */
