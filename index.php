@@ -42,10 +42,25 @@ Aeroapps Admin Portal Login Page
 		<p class="sh1">Aeroapps Web Portal</p>
 	</div>
 	
-	<form id="joinform" action="menu.html" method="post">
+	<form id="joinform" action="loginprocess.php" method="post">
 
 		<p class="fh1">
 			Please login here:
+			<?php
+				// Check return code from loginprocess.php
+				if ($_GET["rc"] == 1)
+				{
+					echo '<p class="logerr">Username not found!</p>';
+				}
+				if ($_GET["rc"] == 2)
+				{
+					echo '<p class="logerr">Password not found!</p>';
+				}
+				if ($_GET["rc"] == 3)
+				{
+					echo '<p class="logerr">Returned from process.php...</p>';
+				}
+			?>
 			<br />
 			<br />
 			<!--	Username	-->

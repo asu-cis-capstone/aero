@@ -240,3 +240,8 @@ a:visited { color: rgba(255,255,255,0.8); }
 	position:			relative;
 	bottom:				0;
 }
+
+.logerr {
+	color: 				red;
+	font-size: 			75%;
+}
