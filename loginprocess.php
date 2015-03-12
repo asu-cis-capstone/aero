@@ -48,7 +48,7 @@
 	// Get and store our PHP session variables
 	$row = mysqli_fetch_array($result);
 	$_SESSION['admin'] = $row['uName'];
-	header('Location: menu.html');
+	header('Location: menu.php');
 	exit;
 	
 	// This block of code MUST be the last block of code in this file

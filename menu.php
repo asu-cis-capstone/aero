@@ -9,12 +9,6 @@ Menu Page
 	session_name("admin");
 	session_start("admin");
 	
-	// Check to see if user is NOT logged in
-	if (!isset($_SESSION["admin"]))
-	{
-		header('Location: index.php');
-		exit;
-	}
 ?>
 
 <html lang ="en">
@@ -37,7 +31,15 @@ Menu Page
 		<p>
 			<span class="left"><a href="menu.html"><img src="images/headerlogo.png" alt="Aeroapps Logo" /></a></span>
 			<?php
+			
+			if (isset($_SESSION["admin"]))
+			{
 				echo '<span class="right">Welcome, ' . $_SESSION["admin"] . '!</span><br />';
+			}
+			else
+			{
+				echo '<span class="right">Welcome, Guest!</span><br />';
+			}
 			?>
 			<span class="right"><span class="small"><a href="logout.php">Log Out</a></span></span>
 			<br />

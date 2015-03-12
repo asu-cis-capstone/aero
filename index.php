@@ -8,12 +8,6 @@ Aeroapps Admin Portal Login Page
 	// Start a PHP session
 	session_name("admin");
 	session_start("admin");
-	
-	if (isset($_SESSION["admin"]))
-	{
-		header('Location: menu.php');
-		exit;
-	}
 ?>
 
 <html lang ="en">
