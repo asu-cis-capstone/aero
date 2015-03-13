@@ -36,7 +36,7 @@ Jose Arballo,
 Ethan Selin,
 Nitin Jain
 #Video Release
-  (video link here)
+  http://youtu.be/F90m6C9DIAY
 #Release Notes 
   v0.4
 
