@@ -35,5 +35,8 @@ Peggy Chen,
 Jose Arballo,
 Ethan Selin,
 Nitin Jain
+#Video Release
+  (video link here)
 #Release Notes 
   v0.4
+
