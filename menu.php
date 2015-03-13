@@ -9,6 +9,13 @@ Menu Page
 	session_name("admin");
 	session_start("admin");
 	
+	// Check to see if user is NOT logged in to prevent unauthorized access
+	/*if (!isset($_SESSION["admin"]))
+	{
+		header('Location: index.php');
+		exit;
+	}
+	*/
 ?>
 
 <html lang ="en">

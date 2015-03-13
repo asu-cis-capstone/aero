@@ -8,6 +8,14 @@ Aeroapps Admin Portal Login Page
 	// Start a PHP session
 	session_name("admin");
 	session_start("admin");
+	
+	// Check to see if user is logged in
+	/*if (isset($_SESSION["admin"]))
+	{
+		header('Location: menu.php');
+		exit;
+	}
+	*/
 ?>
 
 <html lang ="en">

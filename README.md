@@ -36,4 +36,4 @@ Jose Arballo,
 Ethan Selin,
 Nitin Jain
 #Release Notes 
-  v0.1
+  v0.4
