@@ -49,7 +49,7 @@ Questions Page
     <div id=list>
     	<?php
 			echo "<table style='border: solid 1px black;'>";
-			echo "<tr><th>Id</th><th>Firstname</th><th>Lastname</th></tr>";
+			echo "<tr><th>Question Id</th><th>Question Text</th></tr>";
 
 			class TableRows extends RecursiveIteratorIterator { 
     			function __construct($it) { 
