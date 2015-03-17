@@ -49,11 +49,7 @@ Questions Page
     <div id=list>
     	<?php
 			echo "<table style='border: solid 1px black;'>";
-<<<<<<< Updated upstream
 			echo "<tr><th width='10%'>ID</th><th>Question Text</th><th width='8%'>Edit</th><th width='8%'>Delete</th></tr>";
-=======
-			echo "<tr><th>Question Id</th><th>Question Text</th></tr>";
->>>>>>> Stashed changes
 
 			class TableRows extends RecursiveIteratorIterator { 
     			function __construct($it) { 
