@@ -50,7 +50,8 @@ Questions Page
     	<?php
 			echo "<table style='border: solid 1px black;'>";
 			echo "<tr><th>Question Id</th><th>Question Text</th></tr>";
-
+			echo "<th>Question Id</th><th>Question Text</th></tr>";
+			
 			class TableRows extends RecursiveIteratorIterator { 
     			function __construct($it) { 
         			parent::__construct($it, self::LEAVES_ONLY); 
