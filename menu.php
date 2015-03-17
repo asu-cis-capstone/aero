@@ -55,11 +55,11 @@ Menu Page
     <div id="main">
       <h1>Main Menu</h1>
       	<ul>
-    		<li><a href="questions.html">Questions</a></li>
-    		<li><a href="images.html">Images</a></li>
-    		<li><a href="resources.html">Resources</a></li>
-      		<li><a href="explanations.html">Explanations</a></li>
-      		<li><a href="aircrafts.html">Aircrafts</a></li>
+    		<li><a href="questions.php">Questions</a></li>
+    		<li><a href="images.php">Images</a></li>
+    		<li><a href="resources.php">Resources</a></li>
+      		<li><a href="explanations.php">Explanations</a></li>
+      		<li><a href="aircrafts.php">Aircrafts</a></li>
       	</ul>
     </div>
     
