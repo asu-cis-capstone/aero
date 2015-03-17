@@ -49,7 +49,7 @@ Questions Page
     <div id=list>
     	<?php
 			echo "<table style='border: solid 1px black;'>";
-			echo "<tr><th>Question Id</th><th>Question Text</th></tr>";
+			echo "<tr><th width='10%'>ID</th><th>Question Text</th><th width='8%'>Edit</th><th width='8%'>Delete</th></tr>";
 
 			class TableRows extends RecursiveIteratorIterator { 
     			function __construct($it) { 
@@ -57,7 +57,7 @@ Questions Page
     			}
 
     			function current() {
-        			return "<td style='width:150px;border:1px solid black;'>" . parent::current(). "</td>";
+        			return "<td style='width:1000px;border:1px solid black;'>" . parent::current(). "</td>";
     			}
 
     			function beginChildren() { 
