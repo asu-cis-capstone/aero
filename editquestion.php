@@ -39,7 +39,7 @@ Edit Question Page for Aeroapps Technology
     </div>
 	<div id="main">
 		<center>
-		<p id="title">Add a Question</p>
+		<p id="title">Edit a Question</p>
 		
 		<form id="questionform" action="demo_form.asp">
 			<h2>Enter Question Information Below</h2>
@@ -55,8 +55,8 @@ Edit Question Page for Aeroapps Technology
 			<OPTION selected value="A">A</OPTION>
 			<OPTION value="B">B</OPTION>
 			<OPTION value="C">C</OPTION>
-			</SELECT><br />
-			<label>Learning Statement Code</label> <input type="text"><br />
+			</SELECT><br /><br />
+			<label>Learning Statement Code</label><br /> <input type="text"><br />
 			<label>Reference Name</label> <input type="text"><br />
 			<label>Upload an Image:</label> <input type="file" name="img">
   			<br />
