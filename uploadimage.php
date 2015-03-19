@@ -40,7 +40,7 @@ Top Comment
 	<div id="main">
 		<p id="title">Upload a file</p>
 		
-		<form id="uploadform" action="uploadquestion.php" method="POST" enctype="multipart/form-data">
+		<form id="uploadform" action="uploadimage.php" method="POST" enctype="multipart/form-data">
 			File:
 			<input type="file" name="image"><input type="submit" value="upload">
 		</form>
