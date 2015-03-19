@@ -87,8 +87,8 @@ Questions Page
     			while($row = mysqli_fetch_array($query)) {
         			echo "<tr><td style='outline: thin solid black'>".$row['qID']."</td>";
         			echo "<td style='outline: thin solid black'>".$row['qText']."</td>";
-					echo "<td style='outline: thin solid black'><form action='editform.php' method='POST'><input type='hidden' name='tempEditID' value='".$row["qID"]."'/><input type='submit' name='edit-btn' value='Edit' /></form></td>";
-					echo "<td style='outline: thin solid black'><form action='deleteprocess.php' method='POST' onSubmit=\"return confirm('Are you sure you want to delete?')\"><input type='hidden' name='tempDeleteID' value='".$row["qID"]."'/><input type='submit' name='delete-btn' value='Delete' /></form></td></tr>";
+					echo "<td style='outline: thin solid black'><form action='editquestion.php' method='POST'><input type='hidden' name='tempEditID' value='".$row["qID"]."'/><input type='submit' name='edit-btn' value='Edit' /></form></td>";
+					echo "<td style='outline: thin solid black'><form action='deletequestionprocess.php' method='POST' onSubmit=\"return confirm('Are you sure you want to delete?')\"><input type='hidden' name='tempDeleteID' value='".$row["qID"]."'/><input type='submit' name='delete-btn' value='Delete' /></form></td></tr>";
     			}
 			}
 			
