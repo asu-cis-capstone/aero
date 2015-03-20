@@ -40,7 +40,7 @@ Explanations Page
 	<div id="title">Explanations</div>
 	<div id="selection">
     	<ul id="options">
-    		<li><a href="upload.html">Add</a></li>
+    		<li><a href="editquestion.php">Add</a></li>
     		<li>Search</li>
     	</ul>
     </div>

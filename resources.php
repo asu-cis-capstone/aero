@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <!--
-Images Page
+Resources Page
 -->
 
 <html lang ="en">
@@ -15,12 +15,12 @@ Images Page
 	<link type="text/css" rel="stylesheet" href="stylesheets/style.css" />
 
     <!-- Web Page Title -->
-    <title>Images</title>
+    <title>Resources</title>
 
   </head>
 
   <body>
-  	<div id="header">
+	<div id="header">
 		<p>
 			<span class="left"><a href="menu.php"><img src="images/headerlogo.png" alt="Aeroapps Logo" /></a></span>
 			<span class="right">Welcome, Admin</span><br />
@@ -34,26 +34,25 @@ Images Page
     		<li><a href="images.php">Images</a></li>
     		<li><a href="resources.php">Resources</a></li>
       		<li><a href="explanations.php">Explanations</a></li>
-      		<li><a href="aircrafts.php">Aircrafts</a></li>
+			<li><a href="aircrafts.php">Aircrafts</a></li>
     	</ul>
     </div>
-	<div id="title">Images</div>
+	<div id="title">Resources</div>
 	<div id="selection">
     	<ul id="options">
-    		<li><a href="upload.html">Add</a></li>
+    		<li><a href="uploadresource.php">Add</a></li>
     		<li>Search</li>
     	</ul>
     </div>
     <div id=list>
-    	[List of Images here]
+    	Under Construction
     </div>
-	
-	<div id ="footer">
+    
+    <div id ="footer">
 		<p>
 			&copy;2015, Aeroapps Technology
 		</p>
 	</div>
-	
   </body>
 
 </html>

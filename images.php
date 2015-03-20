@@ -64,7 +64,7 @@ Images Page
 	<div id="title">Images</div>
 	<div id="selection">
     	<ul id="options">
-    		<li><a href="uploadquestion.html">Add</a></li>
+    		<li><a href="uploadimage.php">Add</a></li>
     		<li>Search</li>
     	</ul>
     </div>
