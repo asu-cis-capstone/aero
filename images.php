@@ -71,7 +71,7 @@ Images Page
     <div id=list>
     	<?php
 			echo "<table width='100%' cellspacing='6px' style='border: solid 1px black;'>";
-			echo "<tr><th width='10%'>ID</th><th>Images</th><th>Edit</th><th>Delete</th></tr>";
+			echo "<tr><th width='10%'>ID</th><th>Image Name</th><th width='40%'>Image</th><th>Edit</th><th>Delete</th></tr>";
 
 			$servername = "localhost";
 			$username = "root";
@@ -79,14 +79,13 @@ Images Page
 			$dbname = "aeroapps";
 			
 			$con = mysqli_connect($servername, $username, $password, $dbname);
-			
-			$message = "Are you sure?";
 
-			$query = mysqli_query($con, "SELECT qID, qText FROM test_questions") or die(mysqli_error($con));
+			$query = mysqli_query($con, "SELECT id, name, image FROM images") or die(mysqli_error($con));
 			if(mysqli_num_rows($query) > 0) {
     			while($row = mysqli_fetch_array($query)) {
-        			echo "<tr><td style='outline: thin solid black'>".$row['qID']."</td>";
-        			echo "<td style='outline: thin solid black'>".$row['qText']."</td>";
+        			echo "<tr><td style='outline: thin solid black'>".$row['id']."</td>";
+        			echo "<td style='outline: thin solid black'>".$row['name']."</td>";
+        			echo "<td style='outline: thin solid black'><img src=get.php?id=".$row['id']." width='400px'></td>";
 					echo "<td style='outline: thin solid black'><form action='editquestion.php' method='POST'><input type='hidden' name='tempEditID' value='".$row["qID"]."'/><input type='submit' name='edit-btn' value='Edit' /></form></td>";
 					echo "<td style='outline: thin solid black'><form action='deletequestionprocess.php' method='POST' onSubmit=\"return confirm('Are you sure you want to delete?')\"><input type='hidden' name='tempDeleteID' value='".$row["qID"]."'/><input type='submit' name='delete-btn' value='Delete' /></form></td></tr>";
     			}

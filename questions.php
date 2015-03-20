@@ -64,7 +64,7 @@ Questions Page
 	<div id="title">Questions</div>
 	<div id="selection">
     	<ul id="options">
-    		<li><a href="uploadquestion.html">Add</a></li>
+    		<li><a href="uploadquestion.php">Add</a></li>
     		<li>Search</li>
     	</ul>
     </div>
@@ -80,7 +80,6 @@ Questions Page
 			
 			$con = mysqli_connect($servername, $username, $password, $dbname);
 			
-			$message = "Are you sure?";
 
 			$query = mysqli_query($con, "SELECT qID, qText FROM test_questions") or die(mysqli_error($con));
 			if(mysqli_num_rows($query) > 0) {

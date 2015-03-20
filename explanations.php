@@ -4,6 +4,20 @@
 Explanations Page
 -->
 
+<?php
+	// Start a PHP session
+	session_name("admin");
+	session_start("admin");
+	
+	// Check to see if user is NOT logged in to prevent unauthorized access
+	/*if (!isset($_SESSION["admin"]))
+	{
+		header('Location: index.php');
+		exit;
+	}
+	*/
+?>
+
 <html lang ="en">
   	
   <head>
@@ -23,7 +37,17 @@ Explanations Page
 	<div id="header">
 		<p>
 			<span class="left"><a href="menu.php"><img src="images/headerlogo.png" alt="Aeroapps Logo" /></a></span>
-			<span class="right">Welcome, Admin</span><br />
+			<?php
+			
+			if (isset($_SESSION["admin"]))
+			{
+				echo '<span class="right">Welcome, ' . $_SESSION["admin"] . '!</span><br />';
+			}
+			else
+			{
+				echo '<span class="right">Welcome, Guest!</span><br />';
+			}
+			?>
 			<span class="right"><span class="small"><a href="logout.php">Log Out</a></span></span>
 			<br />
 		</p>
