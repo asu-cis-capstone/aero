@@ -43,7 +43,7 @@ Edit Question Page for Aeroapps Technology
 		
 		<form id="questionform" action="demo_form.asp">
 			<h2>Enter Question Information Below</h2>
-			<label>Test</label> <input type="text"><br />
+			<label>Test</label> <input type="text" value="1111"><br />
 			<label>Question ID</label> <input type="text"><br /> 
   			<label>Question Text:</label>
   			<textarea rows="5" cols="30"></textarea><br />

@@ -73,15 +73,10 @@ Questions Page
 			echo "<table width='100%' cellspacing='6px' style='border: solid 1px black;'>";
 			echo "<tr><th width='10%'>ID</th><th>Question Text</th><th>Edit</th><th>Delete</th></tr>";
 
-			$servername = "localhost";
-			$username = "root";
-			$password = "root";
-			$dbname = "aeroapps";
-			
-			$con = mysqli_connect($servername, $username, $password, $dbname);
+			include('connect/local-connect.php');
 			
 
-			$query = mysqli_query($con, "SELECT qID, qText FROM test_questions") or die(mysqli_error($con));
+			$query = mysqli_query($dbc, "SELECT qID, qText FROM test_questions") or die(mysqli_error($con));
 			if(mysqli_num_rows($query) > 0) {
     			while($row = mysqli_fetch_array($query)) {
         			echo "<tr><td style='outline: thin solid black'>".$row['qID']."</td>";

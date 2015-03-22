@@ -9,10 +9,11 @@ Images Page
 	session_name("admin");
 	session_start("admin");
 	
-	// Check to see if user is NOT logged in to prevent unauthorized access
+	
+	// Check to see if user is NOT logged in
 	/*if (!isset($_SESSION["admin"]))
 	{
-		header('Location: index.php');
+		header('Location: questions.php');
 		exit;
 	}
 	*/
@@ -73,21 +74,16 @@ Images Page
 			echo "<table width='100%' cellspacing='6px' style='border: solid 1px black;'>";
 			echo "<tr><th width='10%'>ID</th><th>Image Name</th><th width='40%'>Image</th><th>Edit</th><th>Delete</th></tr>";
 
-			$servername = "localhost";
-			$username = "root";
-			$password = "root";
-			$dbname = "aeroapps";
-			
-			$con = mysqli_connect($servername, $username, $password, $dbname);
+			include('connect/local-connect.php');
 
-			$query = mysqli_query($con, "SELECT id, name, image FROM images") or die(mysqli_error($con));
+			$query = mysqli_query($dbc, "SELECT id, name, image FROM images") or die(mysqli_error($con));
 			if(mysqli_num_rows($query) > 0) {
     			while($row = mysqli_fetch_array($query)) {
         			echo "<tr><td style='outline: thin solid black'>".$row['id']."</td>";
         			echo "<td style='outline: thin solid black'>".$row['name']."</td>";
         			echo "<td style='outline: thin solid black'><img src=get.php?id=".$row['id']." width='400px'></td>";
-					echo "<td style='outline: thin solid black'><form action='editquestion.php' method='POST'><input type='hidden' name='tempEditID' value='".$row["qID"]."'/><input type='submit' name='edit-btn' value='Edit' /></form></td>";
-					echo "<td style='outline: thin solid black'><form action='deletequestionprocess.php' method='POST' onSubmit=\"return confirm('Are you sure you want to delete?')\"><input type='hidden' name='tempDeleteID' value='".$row["qID"]."'/><input type='submit' name='delete-btn' value='Delete' /></form></td></tr>";
+					echo "<td style='outline: thin solid black'><form action='editimage.php' method='POST'><input type='hidden' name='tempEditID' value='".$row["qID"]."'/><input type='submit' name='edit-btn' value='Edit' /></form></td>";
+					echo "<td style='outline: thin solid black'><form action='deleteimageprocess.php' method='POST' onSubmit=\"return confirm('Are you sure you want to delete?')\"><input type='hidden' name='tempDeleteID' value='".$row["id"]."'/><input type='submit' name='delete-btn' value='Delete' /></form></td></tr>";
     			}
 			}
 			
