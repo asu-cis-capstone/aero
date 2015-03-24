@@ -6,7 +6,7 @@ body {
 	color:				#CAC8C3;
 	font-family:		Arial, Helvetica, Arial, sans-serif;
 	background-color:	rgba(24,0,0,0.5);
-	width:				1000px;
+	width:				1200px;
 	margin:				auto;
 	text-align:			center;
 }
@@ -172,7 +172,7 @@ input[type=text],input[type=password],input[type=email]{
 #selection li{
 	list-style:			none;
 	float:				left;
-	width:				500px;
+	width:				600px;
 	background:			rgba(255,255,255,0.4);
 	display:			block;
 	color:				white;
@@ -194,7 +194,7 @@ input[type=text],input[type=password],input[type=email]{
 }
 
 #navbar{
-	width:				1000px;
+	width:				100%;
 	text-decoration:	none;
 }
 
@@ -208,7 +208,7 @@ ul#navbar{
 }
 
 #options{
-	width:				1000px;
+	width:				100%;
 	font-size:			26px;
 }
 

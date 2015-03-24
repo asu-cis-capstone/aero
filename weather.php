@@ -66,7 +66,7 @@ Weather Page
 
     <div id=list>
     	<?php
-			echo "<table cellspacing='3' cellpadding='2' border='0' width='670' style='border: solid 1px black;'>";
+			echo "<table cellspacing='6' cellpadding='4' border='0' width='700' style='border: solid 1px black;'>";
 			echo "<tr align='center'>
 							<th style= 'outline: thin solid black' rowspan='3' width='17'>D<br>a<br>t<br>e</th>
 							<th style= 'outline: thin solid black' rowspan='3' width='32'>Time<br>(mst)</th>
