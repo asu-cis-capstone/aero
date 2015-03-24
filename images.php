@@ -60,6 +60,7 @@ Images Page
     		<li><a href="resources.php">Resources</a></li>
       		<li><a href="explanations.php">Explanations</a></li>
    			<li><a href="aircrafts.php">Aircrafts</a></li>
+   			<li><a href="weather.php">Weather</a></li>
     	</ul>
     </div>
 	<div id="title">Images</div>
