@@ -5,13 +5,6 @@
 	mysql_connect("localhost","root","root") or die(mysql_error());
 	mysql_select_db("aeroapps") or die(mysql_error());
 	
-	$query = mysql_query("SELECT qText FROM test_questions WHERE qID='3999'");
-	
-	echo "The result is " . $query . ".";
-	
-	
-	
-	/*
 	// Values from HTML
 	$test 			= $_POST['test'];
 	$qID 			= $_POST['qID'];
@@ -70,11 +63,11 @@
 				echo "One or more files chosen to upload for Question Images is not an image.";
 			else 
 			{
-				if (!$insert = mysql_query("INSERT INTO images VALUES ('','$qImg". $x ."_name','$qImg". $x ."')"))
+				if (!$insert = mysqli_query("INSERT INTO images VALUES ('','$qImg". $x ."_name','$qImg". $x ."')"))
 					echo "Problem uploading question image(s).";
 				else
 				{
-					$lastid = mysql_insert_id();
+					$lastid = mysqli_insert_id();
 					${'qImgID' . $x} = $lastid;
 					echo "Image(s) uploaded.";
 				}
@@ -97,7 +90,6 @@
 	mysqli_close($dbc);
 	
 	header('Location: uploadquestion.php');
-	*/
 	
 	
 ?>
