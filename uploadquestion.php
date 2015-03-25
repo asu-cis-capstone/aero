@@ -35,6 +35,7 @@ Edit Question Page for Aeroapps Technology
     		<li><a href="resources.php">Resources</a></li>
       		<li><a href="explanations.php">Explanations</a></li>
 			<li><a href="aircrafts.php">Aircrafts</a></li>
+			<li><a href="weather.php">Weather</a></li>
     	</ul>
     </div>
 	<div id="main">
@@ -43,27 +44,27 @@ Edit Question Page for Aeroapps Technology
 		
 		<form id="questionform" action="uploadquestion.php" method="post">
 			<h2>Enter Question Information Below</h2>
-			<label for="test">Test</label> <input type="text" name="test"><br />
-			<label for="qID">Question ID</label> <input type="text" name="qID"><br /> 
+			<label for="test">Test</label> <input type="text" name="test" required placeholder="Test..." /><br />
+			<label for="qID">Question ID</label> <input type="text" name="qID" required placeholder="Question ID..." /><br /> 
   			<label for="qText">Question Text:</label>
-  			<textarea name="qText" rows="5" cols="30"></textarea><br />
+  			<textarea name="qText" rows="5" cols="30" required placeholder="Question Text..." /></textarea><br />
   			<label for="qImg1">Question Image 1:</label> <input type="file" name="qImg1">
   			<label for="qImg2">Question Image 2:</label> <input type="file" name="qImg2">
   			<label for="qImg3">Question Image 3:</label> <input type="file" name="qImg3">
   			<label for="qImg4">Question Image 4:</label> <input type="file" name="qImg4">
   			<label for="qImg5">Question Image 5:</label> <input type="file" name="qImg5"><br />
-  			<label for="aText">Answer Choice A</label> <input type="text" name="aText"><br />
-  			<label for="bText">Answer Choice B</label> <input type="text" name="bText"><br />
-  			<label for="cText">Answer Choice C</label> <input type="text" name="cText"><br />
+  			<label for="aText">Answer Choice A</label> <input type="text" name="aText" required placeholder="Choice A..." /><br />
+  			<label for="bText">Answer Choice B</label> <input type="text" name="bText" required placeholder="Choice B..." /><br />
+  			<label for="cText">Answer Choice C</label> <input type="text" name="cText" required placeholder="Choice C..." /><br />
   			<label>Correct Answer:</label>
   			<SELECT name="Single-line ListBox example">
 			<OPTION selected value="A">A</OPTION>
 			<OPTION value="B">B</OPTION>
 			<OPTION value="C">C</OPTION>
 			</SELECT><br />
-			<label for="ls_code">LS Code</label> <input type="text" name="ls_code"><br />
-			<label for="refName">Reference Name</label> <input type="text" name="refName"><br />
-			<label for="refPincite">Reference Pincite</label> <input type="text" name="refPincite"><br />
+			<label for="ls_code">LS Code</label> <input type="text" name="ls_code" required placeholder="Learning Statement Code..." /><br />
+			<label for="refName">Reference Name</label> <input type="text" name="refName" required placeholder="Reference Name..." /><br />
+			<label for="refPincite">Reference Pincite</label> <input type="text" name="refPincite" required placeholder="Reference Pincite..." /><br />
   			<label>Select Existing Image:</label>
   			<SELECT name="Single-line ListBox example">
 			<OPTION selected value="1">1</OPTION>
@@ -89,13 +90,13 @@ Edit Question Page for Aeroapps Technology
 		// Values from HTML
 		$test 			= $_POST['test'];
 		$qID 			= $_POST['qID'];
-		$qText			= mysqli_real_escape_string($dbc, $_POST['qText']);
-		$aText			= mysqli_real_escape_string($dbc, $_POST['aText']);
-		$bText			= mysqli_real_escape_string($dbc, $_POST['bText']);
-		$cText 			= mysqli_real_escape_string($dbc, $_POST['cText']);
+		$qText			= mysql_real_escape_string($_POST['qText']);
+		$aText			= mysql_real_escape_string($_POST['aText']);
+		$bText			= mysql_real_escape_string($_POST['bText']);
+		$cText 			= mysql_real_escape_string($_POST['cText']);
 		$ls_code		= $_POST['ls_code'];
-		$refName		= mysqli_real_escape_string($dbc, $_POST['refName']);
-		$refPincite 	= mysqli_real_escape_string($dbc, $_POST['refPincite']);
+		$refName		= mysql_real_escape_string($_POST['refName']);
+		$refPincite 	= mysql_real_escape_string($_POST['refPincite']);
 	
 	
 		
