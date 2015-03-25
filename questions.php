@@ -76,7 +76,7 @@ Questions Page
 			include('connect/local-connect.php');
 			
 
-			$query = mysqli_query($dbc, "SELECT qID, qText FROM test_questions") or die(mysqli_error($con));
+			$query = mysqli_query($dbc, "SELECT qID, qText FROM test_questions ORDER BY qID asc") or die(mysqli_error($con));
 			if(mysqli_num_rows($query) > 0) {
     			while($row = mysqli_fetch_array($query)) {
         			echo "<tr><td style='outline: thin solid black'>".$row['qID']."</td>";

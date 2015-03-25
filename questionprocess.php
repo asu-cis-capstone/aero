@@ -5,6 +5,7 @@
 	mysql_connect("localhost","root","root") or die(mysql_error());
 	mysql_select_db("aeroapps") or die(mysql_error());
 	
+	
 	// Values from HTML
 	$test 			= $_POST['test'];
 	$qID 			= $_POST['qID'];
@@ -49,11 +50,11 @@
 	$qImg5_size = getimagesize($_FILES['qImg5']['tmp_name']);
 	
 	// Initialize reference variables for questions tied to images. This is done to prevent multiple image uploads to db
-	$qImgID1 = 0;
-	$qImgID2 = 0;
-	$qImgID3 = 0;
-	$qImgID4 = 0;
-	$qImgID5 = 0;
+	$qImgID1;
+	$qImgID2;
+	$qImgID3;
+	$qImgID4;
+	$qImgID5;
 			
 	// loop through each image. This checks if any file was uploaded for each slot, uploads image, and assigns its ID reference to question
 	for ($x = 1; $x <= 5; $x++) 
@@ -63,11 +64,11 @@
 				echo "One or more files chosen to upload for Question Images is not an image.";
 			else 
 			{
-				if (!$insert = mysqli_query("INSERT INTO images VALUES ('','$qImg". $x ."_name','$qImg". $x ."')"))
+				if (!$insert = mysql_query("INSERT INTO images VALUES ('','$qImg". $x ."_name','$qImg". $x ."')"))
 					echo "Problem uploading question image(s).";
 				else
 				{
-					$lastid = mysqli_insert_id();
+					$lastid = mysql_insert_id();
 					${'qImgID' . $x} = $lastid;
 					echo "Image(s) uploaded.";
 				}
@@ -79,17 +80,15 @@
     	}
 	} 	
 	
-	// Build our SQL statement
-	$query	= 
-	"INSERT INTO test_questions VALUES ('$test', '$qID', '$qText', '$ls_code', '$qImgID1', '$qImgID2', '$qImgID3', '$qImgID4', '$qImgID5', '$refName', '$refPincite')";
-	
-	// Run the query
-	$result = mysqli_query($query) or die('Unable to write to DB!');
+	// Build our SQL statement and Insert Values
+	if (!$query = mysql_query("INSERT INTO test_questions VALUES('$test','$qID','$qText','$ls_code','$qImgID1','$qImgID2','$qImgID3','$qImgID4','$qImgID5','$refName','$refPincite')")) {
+		echo "There was a problem uploading question information.";
+	}
+	else {
+		echo "Question information uploaded!";
+	}
 	
 	// Close the SQL connection
-	mysqli_close($dbc);
-	
-	header('Location: uploadquestion.php');
-	
+	mysql_close($dbc);
 	
 ?>
