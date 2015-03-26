@@ -8,10 +8,12 @@
 	$qID = $_POST['tempDeleteID'];
 	
 	// Build the delete question query
-	$query = "DELETE FROM test_questions WHERE qID = '$qID'";
+	$query 		= "DELETE FROM test_questions WHERE qID = '$qID'";
+	$query2 	= "DELETE FROM test_answers WHERE qID = '$qID'";
 	
 	// Run the delete question query
-	$result = mysqli_query($dbc, $query) or die('Question read error!'); 
+	$result 	= mysqli_query($dbc, $query) or die('Question read error!');
+	$result2 	= mysqli_query($dbc, $query2) or die('Question read error!');  
 	
 	// Close the db connection
 	mysqli_close($dbc);

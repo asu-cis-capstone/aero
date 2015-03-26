@@ -80,21 +80,31 @@ Edit Question Page for Aeroapps Technology
   			<label for="aText">Answer Choice A</label> <input type="text" name="aText" required placeholder="Choice A..." /><br />
   			<label for="bText">Answer Choice B</label> <input type="text" name="bText" required placeholder="Choice B..." /><br />
   			<label for="cText">Answer Choice C</label> <input type="text" name="cText" required placeholder="Choice C..." /><br />
-  			<label>Correct Answer:</label>
-  			<SELECT name="Single-line ListBox example">
+  			<label for="answer">Correct Answer:</label>
+  			<SELECT name="answer">
 			<OPTION selected value="A">A</OPTION>
 			<OPTION value="B">B</OPTION>
 			<OPTION value="C">C</OPTION>
 			</SELECT><br />
+			<label for="exp">Explanation:</label>
+  			<textarea name="exp" rows="5" cols="30" required placeholder="Question Explanation..." /></textarea><br />
+  			<label for="expImg1">Explanation Image 1:</label> <input type="file" name="expImg1">
+  			<label for="expImg2">Explanation Image 2:</label> <input type="file" name="expImg2">
+  			<label for="expImg3">Explanation Image 3:</label> <input type="file" name="expImg3">
+  			<label for="expImg4">Explanation Image 4:</label> <input type="file" name="expImg4">
+  			<label for="expImg5">Explanation Image 5:</label> <input type="file" name="expImg5"><br />
 			<label for="ls_code">LS Code</label> <input type="text" name="ls_code" required placeholder="Learning Statement Code..." /><br />
 			<label for="refName">Reference Name</label> <input type="text" name="refName" required placeholder="Reference Name..." /><br />
 			<label for="refPincite">Reference Pincite</label> <input type="text" name="refPincite" required placeholder="Reference Pincite..." /><br />
+			
+			<!--
   			<label>Select Existing Image:</label>
   			<SELECT name="Single-line ListBox example">
 			<OPTION selected value="1">1</OPTION>
 			<OPTION value="2">2</OPTION>
 			<OPTION value="3">3</OPTION>
 			</SELECT><br />
+			-->
  			
   			<p class="submit">
 			<input type ="submit" value="Submit Question" />
@@ -114,9 +124,21 @@ Edit Question Page for Aeroapps Technology
 		$test 			= $_POST['test'];
 		$qID 			= $_POST['qID'];
 		$qText			= mysqli_real_escape_string($dbc, $_POST['qText']);
+		$file1			= $_FILES['qImg1']['tmp_name'];
+		$file2			= $_FILES['qImg2']['tmp_name'];
+		$file3			= $_FILES['qImg3']['tmp_name'];
+		$file4			= $_FILES['qImg4']['tmp_name'];
+		$file5			= $_FILES['qImg5']['tmp_name'];
 		$aText			= mysqli_real_escape_string($dbc, $_POST['aText']);
 		$bText			= mysqli_real_escape_string($dbc, $_POST['bText']);
 		$cText 			= mysqli_real_escape_string($dbc, $_POST['cText']);
+		$answer 		= $_POST['answer'];
+		$exp			= mysqli_real_escape_string($dbc, $_POST['exp']);
+		$file6			= $_FILES['expImg1']['tmp_name'];
+		$file7			= $_FILES['expImg2']['tmp_name'];
+		$file8			= $_FILES['expImg3']['tmp_name'];
+		$file9			= $_FILES['expImg4']['tmp_name'];
+		$file10			= $_FILES['expImg5']['tmp_name'];
 		$ls_code		= $_POST['ls_code'];
 		$refName		= mysqli_real_escape_string($dbc, $_POST['refName']);
 		$refPincite 	= mysqli_real_escape_string($dbc, $_POST['refPincite']);
@@ -127,13 +149,6 @@ Edit Question Page for Aeroapps Technology
 		$qImgID3 = null;
 		$qImgID4 = null;
 		$qImgID5 = null;
-			
-		// file properties
-		$file1		= $_FILES['qImg1']['tmp_name'];
-		$file2		= $_FILES['qImg2']['tmp_name'];
-		$file3		= $_FILES['qImg3']['tmp_name'];
-		$file4		= $_FILES['qImg4']['tmp_name'];
-		$file5		= $_FILES['qImg5']['tmp_name'];
 		
 		//Question Image 1 Upload
 		if (!isset($file1)) 
@@ -270,6 +285,148 @@ Edit Question Page for Aeroapps Technology
 			}
 		}
 		
+		// Initialize reference variables for questions tied to images. This is done to prevent multiple image uploads to db
+		$expImgID1 = null;
+		$expImgID2 = null;
+		$expImgID3 = null;
+		$expImgID4 = null;
+		$expImgID5 = null;
+		
+		//Explanation Image 1 Upload
+		if (!isset($file6)) 
+			echo " ";
+		else 
+		{
+			// set image file names with appropriate database text
+			// Explanation Image
+			$expImg1 		= addslashes(file_get_contents($_FILES['expImg1']['tmp_name']));
+			$expImg1_name 	= addslashes($_FILES['expImg1']['name']);
+			$expImg1_size 	= getimagesize($_FILES['expImg1']['tmp_name']);
+			
+			if ($expImg1_size==FALSE)
+				echo "Nothing uploaded for Image 6 or it was not an image file.<br>";
+			else 
+			{
+				if (!$insert = mysqli_query($dbc, "INSERT INTO images VALUES ('','$expImg1_name','$expImg1')"))
+				{
+					echo "Problem uploading image.";
+				}
+				else
+				{
+					$lastid = mysqli_insert_id($dbc);
+					$expImgID1 = $lastid;
+				}
+			}
+		}	
+		
+		// Explanation Image 2 Upload
+		if (!isset($file7)) 
+			echo " ";
+		else 
+		{
+			// set image file names with appropriate database text
+			// Explanation Image
+			$expImg2 		= addslashes(file_get_contents($_FILES['expImg2']['tmp_name']));
+			$expImg2_name 	= addslashes($_FILES['expImg2']['name']);
+			$expImg2_size 	= getimagesize($_FILES['expImg2']['tmp_name']);
+			
+			if ($expImg2_size==FALSE)
+				echo "Nothing uploaded for Image 7 or it was not an image file.<br>";
+			else 
+			{
+				if (!$insert = mysqli_query($dbc, "INSERT INTO images VALUES ('','$expImg2_name','$expImg2')"))
+				{
+					echo "Problem uploading image.";
+				}
+				else
+				{
+					$lastid = mysqli_insert_id($dbc);
+					$expImgID2 = $lastid;
+				}
+			}
+		}	
+			
+		//Explanation Image 3 Upload
+		if (!isset($file8)) 
+			echo " ";
+		else 
+		{
+			// set image file names with appropriate database text
+			// Explanation Image
+			$expImg3 		= addslashes(file_get_contents($_FILES['expImg3']['tmp_name']));
+			$expImg3_name 	= addslashes($_FILES['expImg3']['name']);
+			$expImg3_size 	= getimagesize($_FILES['expImg3']['tmp_name']);
+			
+			if ($expImg3_size==FALSE)
+				echo "Nothing uploaded for Image 8 or it was not an image file.<br>";
+			else 
+			{
+				if (!$insert = mysqli_query($dbc, "INSERT INTO images VALUES ('','$expImg3_name','$expImg3')"))
+				{
+					echo "Problem uploading image.";
+				}
+				else
+				{
+					$lastid = mysqli_insert_id($dbc);
+					$expImgID3 = $lastid;
+				}
+			}
+		}
+		
+		//Explanation Image 4 Upload
+		if (!isset($file9)) 
+			echo " ";
+		else 
+		{
+			// set image file names with appropriate database text
+			// Explanation Image
+			$expImg4 		= addslashes(file_get_contents($_FILES['expImg4']['tmp_name']));
+			$expImg4_name 	= addslashes($_FILES['expImg4']['name']);
+			$expImg4_size 	= getimagesize($_FILES['expImg4']['tmp_name']);
+			
+			if ($expImg4_size==FALSE)
+				echo "Nothing uploaded for Image 9 or it was not an image file.<br>";
+			else 
+			{
+				if (!$insert = mysqli_query($dbc, "INSERT INTO images VALUES ('','$expImg4_name','$expImg4')"))
+				{
+					echo "Problem uploading image.";
+				}
+				else
+				{
+					$lastid = mysqli_insert_id($dbc);
+					$expImgID4 = $lastid;
+				}
+			}
+		}
+			
+		//Explanation Image 5 Upload
+		if (!isset($file10)) 
+			echo " ";
+		else 
+		{
+			// set image file names with appropriate database text
+			// Explanation Image
+			$expImg5 		= addslashes(file_get_contents($_FILES['expImg5']['tmp_name']));
+			$expImg5_name 	= addslashes($_FILES['expImg5']['name']);
+			$expImg5_size 	= getimagesize($_FILES['expImg5']['tmp_name']);
+			
+			if ($expImg5_size==FALSE)
+				echo "Nothing uploaded for Image 10 or it was not an image file.<br>";
+			else 
+			{
+				if (!$insert = mysqli_query($dbc, "INSERT INTO images VALUES ('','$expImg5_name','$expImg5')"))
+				{
+					echo "Problem uploading image.";
+				}
+				else
+				{
+					$lastid = mysqli_insert_id($dbc);
+					$expImgID5 = $lastid;
+				}
+			}
+		}
+		
 		$editor 	= $_SESSION['admin'];
 		$now 		= time();
 		date_default_timezone_set('MST');
@@ -282,10 +439,12 @@ Edit Question Page for Aeroapps Technology
 		}
 		else
 		{
-			if (!$query = mysqli_query($dbc, "INSERT INTO test_questions VALUES('$test','$qID','$qText','$ls_code','$qImgID1','$qImgID2','$qImgID3','$qImgID4','$qImgID5','$refName','$refPincite','$editor','$timestamp')")) {
+			if (!$query = mysqli_query($dbc, "INSERT INTO test_questions VALUES('$test','$qID','$qText','$ls_code','$qImgID1','$qImgID2','$qImgID3','$qImgID4','$qImgID5','$refName','$refPincite','$editor','$timestamp')")) 
+			{
 				echo "There was a problem uploading question information.";
 			}
 			else {
+				mysqli_query($dbc, "INSERT INTO test_answers VALUES('$answer','$aText','$bText','$cText','$qID','$exp','$expImgID1','$expImgID2','$expImgID3','$expImgID4','$expImgID5','$editor','$timestamp')");
 				echo "Question information uploaded!";
 			}
 		}
