@@ -36,7 +36,7 @@ Menu Page
   <body>
   	<div id="header">
 		<p>
-			<span class="left"><a href="menu.html"><img src="images/headerlogo.png" alt="Aeroapps Logo" /></a></span>
+			<span class="left"><a href="menu.php"><img src="images/headerlogo.png" alt="Aeroapps Logo" /></a></span>
 			<?php
 			
 			if (isset($_SESSION["admin"]))
