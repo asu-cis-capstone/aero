@@ -4,6 +4,20 @@
 Edit Question Page for Aeroapps Technology
 -->
 
+<?php
+	// Start a PHP session
+	session_name("admin");
+	session_start("admin");
+	
+	// Check to see if user is NOT logged in to prevent unauthorized access
+	/*if (!isset($_SESSION["admin"]))
+	{
+		header('Location: index.php');
+		exit;
+	}
+	*/
+?>
+
 <html lang ="en">
   	
   <head>
@@ -42,10 +56,10 @@ Edit Question Page for Aeroapps Technology
 		<center>
 		<p id="title">Add a Question</p>
 		
-		<form id="questionform" action="uploadquestion.php" method="post">
+		<form id="questionform" action="uploadquestion.php" method="POST" enctype="multipart/form-data">
 			<h2>Enter Question Information Below</h2>
-			<label for="test">Test</label> <input type="text" name="test" required placeholder="Test..." /><br />
-			<label for="qID">Question ID</label> <input type="text" name="qID" required placeholder="Question ID..." /><br /> 
+			<label for="test">Test</label> <input type="text" name="test" required title="Please enter a Test for the Question" autofocus placeholder="Test..." /><br />
+			<label for="qID">Question ID</label> <input type="text" name="qID" required title="Please enter an ID for the Question" placeholder="Question ID..." /><br /> 
   			<label for="qText">Question Text:</label>
   			<textarea name="qText" rows="5" cols="30" required placeholder="Question Text..." /></textarea><br />
   			<label for="qImg1">Question Image 1:</label> <input type="file" name="qImg1">
@@ -84,104 +98,173 @@ Edit Question Page for Aeroapps Technology
 		
 		<?php
 		
-		mysql_connect("localhost","root","root") or die(mysql_error());
-		mysql_select_db("aeroapps") or die(mysql_error());
+		include('connect/local-connect.php');
 		
 		// Values from HTML
 		$test 			= $_POST['test'];
 		$qID 			= $_POST['qID'];
-		$qText			= mysql_real_escape_string($_POST['qText']);
-		$aText			= mysql_real_escape_string($_POST['aText']);
-		$bText			= mysql_real_escape_string($_POST['bText']);
-		$cText 			= mysql_real_escape_string($_POST['cText']);
+		$qText			= mysqli_real_escape_string($dbc, $_POST['qText']);
+		$aText			= mysqli_real_escape_string($dbc, $_POST['aText']);
+		$bText			= mysqli_real_escape_string($dbc, $_POST['bText']);
+		$cText 			= mysqli_real_escape_string($dbc, $_POST['cText']);
 		$ls_code		= $_POST['ls_code'];
-		$refName		= mysql_real_escape_string($_POST['refName']);
-		$refPincite 	= mysql_real_escape_string($_POST['refPincite']);
-	
-	
-		
+		$refName		= mysqli_real_escape_string($dbc, $_POST['refName']);
+		$refPincite 	= mysqli_real_escape_string($dbc, $_POST['refPincite']);
 	
 		// Initialize reference variables for questions tied to images. This is done to prevent multiple image uploads to db
-		$qImgID1;
-		$qImgID2;
-		$qImgID3;
-		$qImgID4;
-		$qImgID5;
+		$qImgID1 = null;
+		$qImgID2 = null;
+		$qImgID3 = null;
+		$qImgID4 = null;
+		$qImgID5 = null;
 			
 		// file properties
-		$file1			= $_FILES['qImg1']['tmp_name'];
-		$file2			= $_FILES['qImg2']['tmp_name'];
-		$file3			= $_FILES['qImg3']['tmp_name'];
-		$file4			= $_FILES['qImg4']['tmp_name'];
-		$file5			= $_FILES['qImg5']['tmp_name'];
+		$file1		= $_FILES['qImg1']['tmp_name'];
+		$file2		= $_FILES['qImg2']['tmp_name'];
+		$file3		= $_FILES['qImg3']['tmp_name'];
+		$file4		= $_FILES['qImg4']['tmp_name'];
+		$file5		= $_FILES['qImg5']['tmp_name'];
 		
-		for ($x = 1; $x <= 5; $x++) 
+		//Question Image 1 Upload
+		if (!isset($file1)) 
+			echo " ";
+		else 
 		{
-			if (!isset(${'file' . $x})) 
-				echo ".";
+			// set image file names with appropriate database text
+			// Question Image
+			$qImg1 			= addslashes(file_get_contents($_FILES['qImg1']['tmp_name']));
+			$qImg1_name 	= addslashes($_FILES['qImg1']['name']);
+			$qImg1_size 	= getimagesize($_FILES['qImg1']['tmp_name']);
+			
+			if ($qImg1_size==FALSE)
+				echo "Nothing uploaded for Image 1 or it was not an image file.<br>";
 			else 
 			{
-				// set image file names with appropriate database text
-				// Question Image
-				${'qImg' . $x} 				= addslashes(file_get_contents($_FILES['qImg'. $x]['tmp_name']));
-				${'qImg' . $x . '_name'} 	= addslashes($_FILES['qImg' . $x]['name']);
-				${'qImg' . $x . '_size'} 	= getimagesize($_FILES['qImg' . $x]['tmp_name']);
-			
-				if (${'qImg' . $x . '_size'}==FALSE)
-					echo "That's not an image.";
-				else 
+				if (!$insert = mysqli_query($dbc, "INSERT INTO images VALUES ('','$qImg1_name','$qImg1')"))
 				{
-					if (!$insert = mysql_query("INSERT INTO images VALUES ('','" . ${'qImg' . $x . '_name'} . "','" . ${'qImg' . $x} . "')"))
-					{
-						echo "Problem uploading image.";
-					}
-					else
-					{
-						$lastid = mysql_insert_id();
-						${'qImgID' . $x} = $lastid;
-					}
+					echo "Problem uploading image.";
 				}
-			}	
+				else
+				{
+					$lastid = mysqli_insert_id($dbc);
+					$qImgID1 = $lastid;
+				}
+			}
+		}	
+		
+		// Question Image 2 Upload
+		if (!isset($file2)) 
+			echo " ";
+		else 
+		{
+			// set image file names with appropriate database text
+			// Question Image
+			$qImg2 			= addslashes(file_get_contents($_FILES['qImg2']['tmp_name']));
+			$qImg2_name 	= addslashes($_FILES['qImg2']['name']);
+			$qImg2_size 	= getimagesize($_FILES['qImg2']['tmp_name']);
+			
+			if ($qImg2_size==FALSE)
+				echo "Nothing uploaded for Image 2 or it was not an image file.<br>";
+			else 
+			{
+				if (!$insert = mysqli_query($dbc, "INSERT INTO images VALUES ('','$qImg2_name','$qImg2')"))
+				{
+					echo "Problem uploading image.";
+				}
+				else
+				{
+					$lastid = mysqli_insert_id($dbc);
+					$qImgID2 = $lastid;
+				}
+			}
+		}	
+			
+		//Question Image 3 Upload
+		if (!isset($file3)) 
+			echo " ";
+		else 
+		{
+			// set image file names with appropriate database text
+			// Question Image
+			$qImg3 			= addslashes(file_get_contents($_FILES['qImg3']['tmp_name']));
+			$qImg3_name 	= addslashes($_FILES['qImg3']['name']);
+			$qImg3_size 	= getimagesize($_FILES['qImg3']['tmp_name']);
+			
+			if ($qImg3_size==FALSE)
+				echo "Nothing uploaded for Image 3 or it was not an image file.<br>";
+			else 
+			{
+				if (!$insert = mysqli_query($dbc, "INSERT INTO images VALUES ('','$qImg3_name','$qImg3')"))
+				{
+					echo "Problem uploading image.";
+				}
+				else
+				{
+					$lastid = mysqli_insert_id($dbc);
+					$qImgID3 = $lastid;
+				}
+			}
+		}
+		
+		//Question Image 4 Upload
+		if (!isset($file4)) 
+			echo " ";
+		else 
+		{
+			// set image file names with appropriate database text
+			// Question Image
+			$qImg4 			= addslashes(file_get_contents($_FILES['qImg4']['tmp_name']));
+			$qImg4_name 	= addslashes($_FILES['qImg4']['name']);
+			$qImg4_size 	= getimagesize($_FILES['qImg4']['tmp_name']);
+			
+			if ($qImg4_size==FALSE)
+				echo "Nothing uploaded for Image 4 or it was not an image file.<br>";
+			else 
+			{
+				if (!$insert = mysqli_query($dbc, "INSERT INTO images VALUES ('','$qImg4_name','$qImg4')"))
+				{
+					echo "Problem uploading image.";
+				}
+				else
+				{
+					$lastid = mysqli_insert_id($dbc);
+					$qImgID4 = $lastid;
+				}
+			}
 		}
 			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-		/*	
-		// loop through each image. This checks if any file was uploaded for each slot, uploads image, and assigns its ID reference to question
-		for ($x = 1; $x <= 5; $x++) 
+		//Question Image 5 Upload
+		if (!isset($file5)) 
+			echo " ";
+		else 
 		{
-    		if (isset(${'file' . $x})) {
-    			if (${'qImg' . $x . '_size'}==FALSE)
-					echo "One or more files chosen to upload for Question Images is not an image.";
-				else 
+			// set image file names with appropriate database text
+			// Question Image
+			$qImg5 			= addslashes(file_get_contents($_FILES['qImg5']['tmp_name']));
+			$qImg5_name 	= addslashes($_FILES['qImg5']['name']);
+			$qImg5_size 	= getimagesize($_FILES['qImg5']['tmp_name']);
+			
+			if ($qImg5_size==FALSE)
+				echo "Nothing uploaded for Image 5 or it was not an image file.<br>";
+			else 
+			{
+				if (!$insert = mysqli_query($dbc, "INSERT INTO images VALUES ('','$qImg5_name','$qImg5')"))
 				{
-					if (!$insert = mysql_query("INSERT INTO images VALUES ('','$qImg". $x ."_name','$qImg". $x ."')"))
-						echo "Problem uploading question image(s).";
-					else
-					{
-						$lastid = mysql_insert_id();
-						${'qImgID' . $x} = $lastid;
-						echo "Image(s) uploaded.";
-					}
+					echo "Problem uploading image.";
 				}
-    		}
-    		else
-    		{
-    		
-    		}
-		} 
-		*/	
-	
+				else
+				{
+					$lastid = mysqli_insert_id($dbc);
+					$qImgID5 = $lastid;
+				}
+			}
+		}
+		
+		$editor 	= $_SESSION['admin'];
+		$now 		= time();
+		date_default_timezone_set('MST');
+		$timestamp 	= date('Y-m-d H:i:s', $now);
+			
 		// Build our SQL statement and Insert Values
 		if (empty($_POST['test'])) 
 		{
@@ -189,7 +272,7 @@ Edit Question Page for Aeroapps Technology
 		}
 		else
 		{
-			if (!$query = mysql_query("INSERT INTO test_questions VALUES('$test','$qID','$qText','$ls_code','$qImgID1','$qImgID2','$qImgID3','$qImgID4','$qImgID5','$refName','$refPincite')")) {
+			if (!$query = mysqli_query($dbc, "INSERT INTO test_questions VALUES('$test','$qID','$qText','$ls_code','$qImgID1','$qImgID2','$qImgID3','$qImgID4','$qImgID5','$refName','$refPincite','$editor','$timestamp')")) {
 				echo "There was a problem uploading question information.";
 			}
 			else {
@@ -198,7 +281,7 @@ Edit Question Page for Aeroapps Technology
 		}
 	
 		// Close the SQL connection
-		mysql_close($dbc);
+		mysqli_close($dbc);
 		
 		?>
 	</div>

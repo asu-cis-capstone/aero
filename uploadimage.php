@@ -51,8 +51,7 @@ Top Comment
 		
 		
 		// connect to database
-		mysql_connect("localhost","root","root") or die(mysql_error());
-		mysql_select_db("aeroapps") or die(mysql_error());
+		include('connect/local-connect.php');
 		
 		// file properties
 		$file = $_FILES['image']['tmp_name'];
@@ -67,11 +66,11 @@ Top Comment
 			if ($image_size==FALSE)
 				echo "That's not an image.";
 			else {
-				if (!$insert = mysql_query("INSERT INTO images VALUES ('','$image_name','$image')"))
+				if (!$insert = mysqli_query($dbc, "INSERT INTO images VALUES ('','$image_name','$image')"))
 					echo "Problem uploading image.";
 				else
 				{
-					$lastid = mysql_insert_id();
+					$lastid = mysqli_insert_id($dbc);
 					echo "Image uploaded.<p />Your image:<p /><img src=get.php?id=$lastid>";
 				}
 			}

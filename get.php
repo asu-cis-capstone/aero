@@ -1,12 +1,13 @@
 <?php
 	// connect to database
-	mysql_connect("localhost","root","root") or die(mysql_error());
-	mysql_select_db("aeroapps") or die(mysql_error());
+	include('connect/local-connect.php');
 		
 	$id = addslashes($_REQUEST['id']);	
 	
-	$image = mysql_query("SELECT * FROM images WHERE id=$id");
-	$image = mysql_fetch_assoc($image);
+	$query = "SELECT * FROM images WHERE id = '$id'";
+	
+	$image = mysqli_query($dbc, $query);
+	$image = mysqli_fetch_assoc($image);
 	$image = $image['image'];
 	
 	header("Content-type: image/jpeg");
