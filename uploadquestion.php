@@ -37,7 +37,17 @@ Edit Question Page for Aeroapps Technology
 	<div id="header">
 		<p>
 			<span class="left"><a href="menu.php"><img src="images/headerlogo.png" alt="Aeroapps Logo" /></a></span>
-			<span class="right">Welcome, Admin</span><br />
+			<?php
+			
+			if (isset($_SESSION["admin"]))
+			{
+				echo '<span class="right">Welcome, ' . $_SESSION["admin"] . '!</span><br />';
+			}
+			else
+			{
+				echo '<span class="right">Welcome, Guest!</span><br />';
+			}
+			?>
 			<span class="right"><span class="small"><a href="logout.php">Log Out</a></span></span>
 			<br />
 		</p>
