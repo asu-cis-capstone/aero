@@ -104,6 +104,12 @@ Top Comment
 		?>
 		
 	</div>
+	
+	<div id ="footer">
+		<p>
+			&copy;2015, Aeroapps Technology
+		</p>
+	</div>
   </body>
 
 </html>

@@ -454,6 +454,12 @@ Edit Question Page for Aeroapps Technology
 		
 		?>
 	</div>
+	
+	<div id ="footer">
+		<p>
+			&copy;2015, Aeroapps Technology
+		</p>
+	</div>
   </body>
 
 </html>
