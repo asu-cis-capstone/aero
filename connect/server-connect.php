@@ -8,5 +8,5 @@
 	$db		= 'aeroapps';
 	
 	// Connect to the DB
-	$dbc = mysqli_connect($host, $user, $pw, $db) or die('Unable to connect! (SERVER)');
+	$dbc = mysqli_connect($host,$user,$pw,$db) or die('Unable to connect! (SERVER)');
 ?>
