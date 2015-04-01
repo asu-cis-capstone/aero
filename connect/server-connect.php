@@ -2,11 +2,12 @@
 	// server-connect.php
 
 	// Variables
-	$host	= 'www.aeroappstechnology.com';
+	$host	= 'localhost';
 	$user	= 'jarballo';
 	$pw		= 'aeroapps';
 	$db		= 'aeroapps';
 	
 	// Connect to the DB
-	$dbc = mysqli_connect($host,$user,$pw,$db) or die('Unable to connect! (SERVER)');
+	$dbc = mysql_connect($host,$user,$pw) or die('unable to connect! (SERVER)');
+	mysql_select_db("aeroapps") or die(mysql_error());
 ?>

@@ -8,5 +8,6 @@
 	$db		='aeroapps';
 	
 	//connect to the DB
-	$dbc = mysqli_connect($host,$user,$pw,$db) or die('unable to connect! (LOCAL)');
+	$dbc = mysql_connect($host,$user,$pw) or die('unable to connect! (LOCAL)');
+	mysql_select_db("aeroapps") or die(mysql_error());
 ?>
