@@ -12,11 +12,11 @@
 	$query2 	= "DELETE FROM test_answers WHERE qID = '$qID'";
 	
 	// Run the delete question query
-	$result 	= mysqli_query($dbc, $query) or die('Question read error!');
-	$result2 	= mysqli_query($dbc, $query2) or die('Question read error!');  
+	$result 	= mysql_query($query) or die('Question read error!');
+	$result2 	= mysql_query($query2) or die('Question read error!');  
 	
 	// Close the db connection
-	mysqli_close($dbc);
+	mysql_close($dbc);
 	
 	// start a PHP session
 	session_name('admin');

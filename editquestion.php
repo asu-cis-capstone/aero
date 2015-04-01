@@ -68,34 +68,122 @@ Edit Question Page for Aeroapps Technology
 		
 		<form id="questionform" action="#" method="POST" enctype="multipart/form-data">
 			<h2>Enter Question Information Below</h2>
-			<label for="test">Test</label> <input type="text" name="test" required title="Please enter a Test for the Question" autofocus value="PPL-AIR" /><br />
-			<label for="qID">Question ID</label> <input type="text" name="qID" required title="Please enter an ID for the Question" value="4002" /><br /> 
-  			<label for="qText">Question Text:</label>
-  			<textarea name="qText" rows="5" cols="30" required />What is the purpose of the rudder on an airplane?</textarea><br />
+			
+			<?php
+		
+			// Set up db connection
+			include('connect/local-connect.php');
+	
+			// PHP variables for the HTML elements
+			$qID = $_POST['tempEditID'];
+	
+			// Build the edit question query
+			$questionQuery 	= "SELECT * FROM test_questions WHERE qID = '$qID'";
+			$answerQuery 	= "SELECT * FROM test_answers WHERE qID = '$qID'";
+		
+			// Run the queries
+			$questionResult 	= mysql_query($questionQuery) or die('Question read error!');
+			$imageResult 		= mysql_query($answerQuery) or die('Answer read error!');
+		
+			// Fetch all elements of a table and store them as array
+			$questionRow 	= mysql_fetch_array($questionResult);
+			$answerRow 		= mysql_fetch_array($imageResult);
+			
+			$qImgID1 = $questionRow['qImgID1'];
+			$qImgID2 = $questionRow['qImgID2'];
+			$qImgID3 = $questionRow['qImgID3'];
+			$qImgID4 = $questionRow['qImgID4'];
+			$qImgID5 = $questionRow['qImgID5'];
+			
+			// Build/Run Image 1 Queries and fetch elements of table and store them as array
+			$imageQuery1 	= "SELECT * FROM images WHERE id = '$qImgID1'";
+			$imageResult1	= mysql_query($imageQuery1) or die('Image 1 read error!');
+			$imageRow1 		= mysql_fetch_array($imageResult1);
+			
+			// Build/Run Image 2 Queries and fetch elements of table and store them as array
+			$imageQuery2 	= "SELECT * FROM images WHERE id = '$qImgID2'";
+			$imageResult2	= mysql_query($imageQuery2) or die('Image 2 read error!');
+			$imageRow2 		= mysql_fetch_array($imageResult2);
+			
+			// Build/Run Image 3 Queries and fetch elements of table and store them as array
+			$imageQuery3 	= "SELECT * FROM images WHERE id = '$qImgID3'";
+			$imageResult3	= mysql_query($imageQuery3) or die('Image 3 read error!');
+			$imageRow3 		= mysql_fetch_array($imageResult3);
+			
+			// Build/Run Image 4 Queries and fetch elements of table and store them as array
+			$imageQuery4 	= "SELECT * FROM images WHERE id = '$qImgID4'";
+			$imageResult4	= mysql_query($imageQuery4) or die('Image 4 read error!');
+			$imageRow4 		= mysql_fetch_array($imageResult4);
+			
+			// Build/Run Image 5 Queries and fetch elements of table and store them as array
+			$imageQuery5 	= "SELECT * FROM images WHERE id = '$qImgID5'";
+			$imageResult5	= mysql_query($imageQuery5) or die('Image 5 read error!');
+			$imageRow5		= mysql_fetch_array($imageResult5);
+			
+			
+			
+			echo '<label for="editor">Last Edited By:</label>';
+			echo $questionRow['editor'];
+			echo '<br>';
+			echo '<label for="timestamp">Last Edit Time:</label>';
+			echo $questionRow["edit_time"];
+			echo '<br><br>';
+			
+			echo '<label for="test">Test</label> <input type="text" name="test" required title="Please enter a Test for the Question" autofocus value="'.$questionRow["test"].'" /><br />
+			<label for="qID">Question ID</label> <input type="text" name="qID" required title="Please enter an ID for the Question" value="'.$questionRow["qID"].'" /><br /> 
+ 			<label for="qText">Question Text:</label>
+			<textarea name="qText" rows="5" cols="30" required />'.$questionRow["qText"].'</textarea><br />
   			<label for="qImg1">Question Image 1:</label> <input type="file" name="qImg1">
   			<label for="qImg2">Question Image 2:</label> <input type="file" name="qImg2">
   			<label for="qImg3">Question Image 3:</label> <input type="file" name="qImg3">
   			<label for="qImg4">Question Image 4:</label> <input type="file" name="qImg4">
   			<label for="qImg5">Question Image 5:</label> <input type="file" name="qImg5"><br />
-  			<label for="aText">Answer Choice A</label> <input type="text" name="aText" required value="To control yaw." /><br />
-  			<label for="bText">Answer Choice B</label> <input type="text" name="bText" required value="To control overbanking tendency." /><br />
-  			<label for="cText">Answer Choice C</label> <input type="text" name="cText" required value="To control roll." /><br />
+  			<label for="aText">Answer Choice A</label> <input type="text" name="aText" required value="'.$answerRow["aText"].'" /><br />
+  			<label for="bText">Answer Choice B</label> <input type="text" name="bText" required value="'.$answerRow["bText"].'" /><br />
+  			<label for="cText">Answer Choice C</label> <input type="text" name="cText" required value="'.$answerRow["cText"].'" /><br />
   			<label for="answer">Correct Answer:</label>
-  			<SELECT name="answer">
-			<OPTION selected value="A">A</OPTION>
-			<OPTION value="B">B</OPTION>
-			<OPTION value="C">C</OPTION>
-			</SELECT><br />
+  			<SELECT name="answer">';
+  			
+			if ($answerRow["answer"] == "A")
+			{
+				echo '<OPTION selected value="A">A</OPTION>';
+			}
+			else
+			{
+				echo '<OPTION value="A">A</OPTION>';
+			}
+			if ($answerRow["answer"] == "B")
+			{
+				echo '<OPTION selected value="B">B</OPTION>';
+			}
+			else
+			{
+				echo '<OPTION value="B">B</OPTION>';
+			}
+			if ($answerRow["answer"] == "C")
+			{
+				echo '<OPTION selected value="C">C</OPTION>';
+			}
+			else
+			{
+				echo '<OPTION value="C">C</OPTION>';
+			}
+		
+			
+			echo '</SELECT><br />
 			<label for="exp">Explanation:</label>
-  			<textarea name="exp" rows="5" cols="30" required placeholder="Question Explanation..." /></textarea><br />
+  			<textarea name="exp" rows="5" cols="30" required />'.$answerRow["exp"].'</textarea><br />
   			<label for="expImg1">Explanation Image 1:</label> <input type="file" name="expImg1">
   			<label for="expImg2">Explanation Image 2:</label> <input type="file" name="expImg2">
   			<label for="expImg3">Explanation Image 3:</label> <input type="file" name="expImg3">
   			<label for="expImg4">Explanation Image 4:</label> <input type="file" name="expImg4">
   			<label for="expImg5">Explanation Image 5:</label> <input type="file" name="expImg5"><br />
-			<label for="ls_code">LS Code</label> <input type="text" name="ls_code" required value="PLT473" /><br />
-			<label for="refName">Reference Name</label> <input type="text" name="refName" required value="PHAK" /><br />
-			<label for="refPincite">Reference Pincite</label> <input type="text" name="refPincite" required value="5" /><br />
+			<label for="ls_code">LS Code</label> <input type="text" name="ls_code" required value="'.$questionRow["ls_code"].'" /><br />
+			<label for="refName">Reference Name</label> <input type="text" name="refName" required value="'.$questionRow["refName"].'" /><br />
+			<label for="refPincite">Reference Pincite</label> <input type="text" name="refPincite" required value="'.$questionRow["refPincite"].'" /><br />';
+			
+			
+			?>
 			
 			<!--
   			<label>Select Existing Image:</label>

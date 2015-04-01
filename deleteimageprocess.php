@@ -11,10 +11,10 @@
 	$query = "DELETE FROM images WHERE id = '$id'";
 	
 	// Run the delete question query
-	$result = mysqli_query($dbc, $query) or die('Image read error!'); 
+	$result = mysql_query($query) or die('Image read error!'); 
 	
 	// Close the db connection
-	mysqli_close($dbc);
+	mysql_close($dbc);
 	
 	// start a PHP session
 	session_name('admin');

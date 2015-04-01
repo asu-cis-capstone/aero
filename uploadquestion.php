@@ -123,25 +123,25 @@ Edit Question Page for Aeroapps Technology
 		// Values from HTML
 		$test 			= $_POST['test'];
 		$qID 			= $_POST['qID'];
-		$qText			= mysqli_real_escape_string($dbc, $_POST['qText']);
+		$qText			= mysql_real_escape_string($_POST['qText']);
 		$file1			= $_FILES['qImg1']['tmp_name'];
 		$file2			= $_FILES['qImg2']['tmp_name'];
 		$file3			= $_FILES['qImg3']['tmp_name'];
 		$file4			= $_FILES['qImg4']['tmp_name'];
 		$file5			= $_FILES['qImg5']['tmp_name'];
-		$aText			= mysqli_real_escape_string($dbc, $_POST['aText']);
-		$bText			= mysqli_real_escape_string($dbc, $_POST['bText']);
-		$cText 			= mysqli_real_escape_string($dbc, $_POST['cText']);
+		$aText			= mysql_real_escape_string($_POST['aText']);
+		$bText			= mysql_real_escape_string($_POST['bText']);
+		$cText 			= mysql_real_escape_string($_POST['cText']);
 		$answer 		= $_POST['answer'];
-		$exp			= mysqli_real_escape_string($dbc, $_POST['exp']);
+		$exp			= mysql_real_escape_string($_POST['exp']);
 		$file6			= $_FILES['expImg1']['tmp_name'];
 		$file7			= $_FILES['expImg2']['tmp_name'];
 		$file8			= $_FILES['expImg3']['tmp_name'];
 		$file9			= $_FILES['expImg4']['tmp_name'];
 		$file10			= $_FILES['expImg5']['tmp_name'];
 		$ls_code		= $_POST['ls_code'];
-		$refName		= mysqli_real_escape_string($dbc, $_POST['refName']);
-		$refPincite 	= mysqli_real_escape_string($dbc, $_POST['refPincite']);
+		$refName		= mysql_real_escape_string($_POST['refName']);
+		$refPincite 	= mysql_real_escape_string($_POST['refPincite']);
 	
 		// Initialize reference variables for questions tied to images. This is done to prevent multiple image uploads to db
 		$qImgID1 = null;
@@ -165,13 +165,13 @@ Edit Question Page for Aeroapps Technology
 				echo "Nothing uploaded for Image 1 or it was not an image file.<br>";
 			else 
 			{
-				if (!$insert = mysqli_query($dbc, "INSERT INTO images VALUES ('','$qImg1_name','$qImg1')"))
+				if (!$insert = mysql_query("INSERT INTO images VALUES ('','$qImg1_name','$qImg1')"))
 				{
 					echo "Problem uploading image.";
 				}
 				else
 				{
-					$lastid = mysqli_insert_id($dbc);
+					$lastid = mysql_insert_id();
 					$qImgID1 = $lastid;
 				}
 			}
@@ -192,13 +192,13 @@ Edit Question Page for Aeroapps Technology
 				echo "Nothing uploaded for Image 2 or it was not an image file.<br>";
 			else 
 			{
-				if (!$insert = mysqli_query($dbc, "INSERT INTO images VALUES ('','$qImg2_name','$qImg2')"))
+				if (!$insert = mysql_query("INSERT INTO images VALUES ('','$qImg2_name','$qImg2')"))
 				{
 					echo "Problem uploading image.";
 				}
 				else
 				{
-					$lastid = mysqli_insert_id($dbc);
+					$lastid = mysql_insert_id();
 					$qImgID2 = $lastid;
 				}
 			}
@@ -219,13 +219,13 @@ Edit Question Page for Aeroapps Technology
 				echo "Nothing uploaded for Image 3 or it was not an image file.<br>";
 			else 
 			{
-				if (!$insert = mysqli_query($dbc, "INSERT INTO images VALUES ('','$qImg3_name','$qImg3')"))
+				if (!$insert = mysql_query("INSERT INTO images VALUES ('','$qImg3_name','$qImg3')"))
 				{
 					echo "Problem uploading image.";
 				}
 				else
 				{
-					$lastid = mysqli_insert_id($dbc);
+					$lastid = mysql_insert_id();
 					$qImgID3 = $lastid;
 				}
 			}
@@ -246,13 +246,13 @@ Edit Question Page for Aeroapps Technology
 				echo "Nothing uploaded for Image 4 or it was not an image file.<br>";
 			else 
 			{
-				if (!$insert = mysqli_query($dbc, "INSERT INTO images VALUES ('','$qImg4_name','$qImg4')"))
+				if (!$insert = mysql_query("INSERT INTO images VALUES ('','$qImg4_name','$qImg4')"))
 				{
 					echo "Problem uploading image.";
 				}
 				else
 				{
-					$lastid = mysqli_insert_id($dbc);
+					$lastid = mysql_insert_id();
 					$qImgID4 = $lastid;
 				}
 			}
@@ -273,13 +273,13 @@ Edit Question Page for Aeroapps Technology
 				echo "Nothing uploaded for Image 5 or it was not an image file.<br>";
 			else 
 			{
-				if (!$insert = mysqli_query($dbc, "INSERT INTO images VALUES ('','$qImg5_name','$qImg5')"))
+				if (!$insert = mysql_query("INSERT INTO images VALUES ('','$qImg5_name','$qImg5')"))
 				{
 					echo "Problem uploading image.";
 				}
 				else
 				{
-					$lastid = mysqli_insert_id($dbc);
+					$lastid = mysql_insert_id();
 					$qImgID5 = $lastid;
 				}
 			}
@@ -307,13 +307,13 @@ Edit Question Page for Aeroapps Technology
 				echo "Nothing uploaded for Image 6 or it was not an image file.<br>";
 			else 
 			{
-				if (!$insert = mysqli_query($dbc, "INSERT INTO images VALUES ('','$expImg1_name','$expImg1')"))
+				if (!$insert = mysql_query("INSERT INTO images VALUES ('','$expImg1_name','$expImg1')"))
 				{
 					echo "Problem uploading image.";
 				}
 				else
 				{
-					$lastid = mysqli_insert_id($dbc);
+					$lastid = mysql_insert_id();
 					$expImgID1 = $lastid;
 				}
 			}
@@ -334,13 +334,13 @@ Edit Question Page for Aeroapps Technology
 				echo "Nothing uploaded for Image 7 or it was not an image file.<br>";
 			else 
 			{
-				if (!$insert = mysqli_query($dbc, "INSERT INTO images VALUES ('','$expImg2_name','$expImg2')"))
+				if (!$insert = mysql_query("INSERT INTO images VALUES ('','$expImg2_name','$expImg2')"))
 				{
 					echo "Problem uploading image.";
 				}
 				else
 				{
-					$lastid = mysqli_insert_id($dbc);
+					$lastid = mysql_insert_id();
 					$expImgID2 = $lastid;
 				}
 			}
@@ -361,13 +361,13 @@ Edit Question Page for Aeroapps Technology
 				echo "Nothing uploaded for Image 8 or it was not an image file.<br>";
 			else 
 			{
-				if (!$insert = mysqli_query($dbc, "INSERT INTO images VALUES ('','$expImg3_name','$expImg3')"))
+				if (!$insert = mysql_query("INSERT INTO images VALUES ('','$expImg3_name','$expImg3')"))
 				{
 					echo "Problem uploading image.";
 				}
 				else
 				{
-					$lastid = mysqli_insert_id($dbc);
+					$lastid = mysql_insert_id();
 					$expImgID3 = $lastid;
 				}
 			}
@@ -388,13 +388,13 @@ Edit Question Page for Aeroapps Technology
 				echo "Nothing uploaded for Image 9 or it was not an image file.<br>";
 			else 
 			{
-				if (!$insert = mysqli_query($dbc, "INSERT INTO images VALUES ('','$expImg4_name','$expImg4')"))
+				if (!$insert = mysql_query("INSERT INTO images VALUES ('','$expImg4_name','$expImg4')"))
 				{
 					echo "Problem uploading image.";
 				}
 				else
 				{
-					$lastid = mysqli_insert_id($dbc);
+					$lastid = mysql_insert_id();
 					$expImgID4 = $lastid;
 				}
 			}
@@ -415,13 +415,13 @@ Edit Question Page for Aeroapps Technology
 				echo "Nothing uploaded for Image 10 or it was not an image file.<br>";
 			else 
 			{
-				if (!$insert = mysqli_query($dbc, "INSERT INTO images VALUES ('','$expImg5_name','$expImg5')"))
+				if (!$insert = mysql_query("INSERT INTO images VALUES ('','$expImg5_name','$expImg5')"))
 				{
 					echo "Problem uploading image.";
 				}
 				else
 				{
-					$lastid = mysqli_insert_id($dbc);
+					$lastid = mysql_insert_id();
 					$expImgID5 = $lastid;
 				}
 			}
@@ -439,18 +439,18 @@ Edit Question Page for Aeroapps Technology
 		}
 		else
 		{
-			if (!$query = mysqli_query($dbc, "INSERT INTO test_questions VALUES('$test','$qID','$qText','$ls_code','$qImgID1','$qImgID2','$qImgID3','$qImgID4','$qImgID5','$refName','$refPincite','$editor','$timestamp')")) 
+			if (!$query = mysql_query("INSERT INTO test_questions VALUES('$test','$qID','$qText','$ls_code','$qImgID1','$qImgID2','$qImgID3','$qImgID4','$qImgID5','$refName','$refPincite','$editor','$timestamp')")) 
 			{
 				echo "There was a problem uploading question information.";
 			}
 			else {
-				mysqli_query($dbc, "INSERT INTO test_answers VALUES('$answer','$aText','$bText','$cText','$qID','$exp','$expImgID1','$expImgID2','$expImgID3','$expImgID4','$expImgID5','$editor','$timestamp')");
+				mysql_query("INSERT INTO test_answers VALUES('$answer','$aText','$bText','$cText','$qID','$exp','$expImgID1','$expImgID2','$expImgID3','$expImgID4','$expImgID5','$editor','$timestamp')");
 				echo "Question information uploaded!";
 			}
 		}
 	
 		// Close the SQL connection
-		mysqli_close($dbc);
+		mysql_close($dbc);
 		
 		?>
 	</div>

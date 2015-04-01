@@ -77,9 +77,9 @@ Questions Page
 			include('connect/local-connect.php');
 			
 
-			$query = mysqli_query($dbc, "SELECT qID, qText FROM test_questions ORDER BY qID asc") or die(mysqli_error($con));
-			if(mysqli_num_rows($query) > 0) {
-    			while($row = mysqli_fetch_array($query)) {
+			$query = mysql_query("SELECT * FROM test_questions ORDER BY qID asc") or die(mysql_error($dbc));
+			if(mysql_num_rows($query) > 0) {
+    			while($row = mysql_fetch_array($query)) {
         			echo "<tr><td style='outline: thin solid black'>".$row['qID']."</td>";
         			echo "<td style='outline: thin solid black'>".$row['qText']."</td>";
 					echo "<td style='outline: thin solid black'><form action='editquestion.php' method='POST'><input type='hidden' name='tempEditID' value='".$row["qID"]."'/><input type='submit' name='edit-btn' value='Edit' /></form></td>";

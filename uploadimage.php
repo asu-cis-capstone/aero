@@ -90,11 +90,11 @@ Top Comment
 			if ($image_size==FALSE)
 				echo "That's not an image.";
 			else {
-				if (!$insert = mysqli_query($dbc, "INSERT INTO images VALUES ('','$image_name','$image')"))
+				if (!$insert = mysql_query("INSERT INTO images VALUES ('','$image_name','$image')"))
 					echo "Problem uploading image.";
 				else
 				{
-					$lastid = mysqli_insert_id($dbc);
+					$lastid = mysql_insert_id();
 					echo "Image uploaded.<p />Your image:<p /><img src=get.php?id=$lastid>";
 				}
 			}

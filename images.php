@@ -77,9 +77,9 @@ Images Page
 
 			include('connect/local-connect.php');
 
-			$query = mysqli_query($dbc, "SELECT id, name, image FROM images") or die(mysqli_error($dbc));
-			if(mysqli_num_rows($query) > 0) {
-    			while($row = mysqli_fetch_array($query)) {
+			$query = mysql_query("SELECT id, name, image FROM images") or die(mysql_error($dbc));
+			if(mysql_num_rows($query) > 0) {
+    			while($row = mysql_fetch_array($query)) {
         			echo "<tr><td style='outline: thin solid black'>".$row['id']."</td>";
         			echo "<td style='outline: thin solid black'>".$row['name']."</td>";
         			echo "<td style='outline: thin solid black'><img src=get.php?id=".$row['id']." width='400px'></td>";

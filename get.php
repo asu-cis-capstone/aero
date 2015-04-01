@@ -6,8 +6,8 @@
 	
 	$query = "SELECT * FROM images WHERE id = '$id'";
 	
-	$image = mysqli_query($dbc, $query);
-	$image = mysqli_fetch_assoc($image);
+	$image = mysql_query($query);
+	$image = mysql_fetch_assoc($image);
 	$image = $image['image'];
 	
 	header("Content-type: image/jpeg");
