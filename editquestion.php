@@ -29,7 +29,7 @@ Edit Question Page for Aeroapps Technology
 	<link type="text/css" rel="stylesheet" href="stylesheets/style.css" />
 
     <!-- Web Page Title -->
-    <title></title>
+    <title>Edit Question</title>
 
   </head>
 
