@@ -4,12 +4,13 @@ Aeroapps Admin Portal css
 
 body {
 	
-	font-family:		Arial, Helvetica, Arial, sans-serif;
-	background-image:	url(../images/blue-sky.jpg);
-    	background-color: 		#cccccc;
-	width:				1000px;
-	margin:				auto;
-	text-align:			center;
+	font-family:			Arial, Helvetica, Arial, sans-serif;
+	background-image:		url(../images/blue-sky.jpg);
+	background-repeat:	 	no-repeat;
+    background-color: 		#cccccc;
+	width:					1000px;
+	margin:					auto;
+	text-align:				center;
 }
 
 #main {
