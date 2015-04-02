@@ -72,7 +72,7 @@ Questions Page
     <div id=list>
     	<?php
 			echo "<table width='100%' cellspacing='6px' style='border: solid 1px black;'>";
-			echo "<tr><th width='10%'>ID</th><th>Question Text</th><th>Edit</th><th>Delete</th></tr>";
+			echo "<tr><th width='10%'>ID</th><th>Question Text</th><th>View</th><th>Edit</th><th>Delete</th></tr>";
 
 			include('connect/local-connect.php');
 			
@@ -82,6 +82,7 @@ Questions Page
     			while($row = mysql_fetch_array($query)) {
         			echo "<tr><td style='outline: thin solid black'>".$row['qID']."</td>";
         			echo "<td style='outline: thin solid black'>".$row['qText']."</td>";
+        			echo "<td style='outline: thin solid black'><form action='viewquestion.php' method='POST'><input type='hidden' name='tempViewID' value='".$row["qID"]."'/><input type='submit' name='view-btn' value='View' /></form></td>";
 					echo "<td style='outline: thin solid black'><form action='editquestion.php' method='POST'><input type='hidden' name='tempEditID' value='".$row["qID"]."'/><input type='submit' name='edit-btn' value='Edit' /></form></td>";
 					echo "<td style='outline: thin solid black'><form action='deletequestionprocess.php' method='POST' onSubmit=\"return confirm('Are you sure you want to delete?')\"><input type='hidden' name='tempDeleteID' value='".$row["qID"]."'/><input type='submit' name='delete-btn' value='Delete' /></form></td></tr>";
     			}
