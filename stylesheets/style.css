@@ -1,12 +1,13 @@
-/*
+<html><head></head><body><pre style="word-wrap: break-word; white-space: pre-wrap;">/*
 Aeroapps Admin Portal css
 */
 
 body {
-	color:				#CAC8C3;
+	
 	font-family:		Arial, Helvetica, Arial, sans-serif;
-	background-color:	rgba(24,0,0,0.5);
-	width:				1200px;
+	background-image:	url(../images/blue_background.jpg);
+    	background-color: 		#cccccc;
+	width:				1000px;
 	margin:				auto;
 	text-align:			center;
 }
@@ -22,29 +23,35 @@ body {
 
 #main li {
 	list-style:none;
+	
 }
 
 #main ul {
 	list-style: none;
 	padding: 0;
+	border: 2px solid #d3d3d3;
+        border-radius: 100px;
 }
 
 #header {
 	clear:				both;
+	height:				100px;
 	text-align:			center;
 	margin-bottom:		5px;
+	
 }
 
 .sh1 {
-	font-size:			150%;
+	font-size:			300%;
 	font-weight:		bold;
+	color:			#4169E1;
 }
 
 
 #joinform {
 	color:				#72716F;
 	text-align:			center;
-	width:				40%;
+	width:				35%;
 	margin:				auto;
 	border:				5px double #4169e1;
 	background-color:	#F8F5EC;
@@ -172,7 +179,7 @@ input[type=text],input[type=password],input[type=email]{
 #selection li{
 	list-style:			none;
 	float:				left;
-	width:				600px;
+	width:				500px;
 	background:			rgba(255,255,255,0.4);
 	display:			block;
 	color:				white;
@@ -181,6 +188,8 @@ input[type=text],input[type=password],input[type=email]{
 
 #navselection{
 	font-size:			30px;
+	border: 2px solid #d3d3d3;
+        border-radius: 100px;
 	margin-bottom:		70px;
 }
 
@@ -194,7 +203,7 @@ input[type=text],input[type=password],input[type=email]{
 }
 
 #navbar{
-	width:				100%;
+	width:				1000px;
 	text-decoration:	none;
 }
 
@@ -208,7 +217,7 @@ ul#navbar{
 }
 
 #options{
-	width:				100%;
+	width:				1000px;
 	font-size:			26px;
 }
 
@@ -229,7 +238,7 @@ ul#options{
 }
 
 a:link { color: #000000; }
-a:hover { color: #ffffff !important; }
+a:hover { color: #4169E1!important; }
 a:visited { color: rgba(255,255,255,0.8); }
 
 #footer {
@@ -244,12 +253,4 @@ a:visited { color: rgba(255,255,255,0.8); }
 .logerr {
 	color: 				red;
 	font-size: 			75%;
-}
-
-.hidden{
-    display:none;
-}
-
-.unhidden{
-    display:block;
-}
+}</pre></body></html>
