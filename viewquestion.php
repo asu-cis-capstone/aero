@@ -124,7 +124,10 @@ View Question Page for Aeroapps Technology
 			echo '<p>Question #: '.$qID.'</p>';
 			echo '<p>Test: '.$questionRow['test'].'</p>';
 			echo '<p>Text: '.$questionRow['qText'].'</p>';
-			echo "<p><img src=get.php?id=".$imageRow1['id']." width='400px'>";
+			if ($imageRow1['id'] != 0)
+			{
+				echo "<p><img src=get.php?id=".$imageRow1['id']." width='400px'>";
+			}
 			
 			
 			
