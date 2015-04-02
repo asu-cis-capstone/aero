@@ -139,111 +139,127 @@ public class AidapRequest {
 					return true;
 				}
 			};
-// use the client certificate
-KeyStore ks = KeyStore.getInstance("PKCS12");
-ks.load(new FileInputStream(new File(keyStorePath)),
-keyStorePswd.toCharArray());
-KeyManagerFactory kmf =
-KeyManagerFactory.getInstance("SunX509");
-kmf.init(ks, keyStorePswd.toCharArray());
-// Set socket context and setup socket factory
-SSLContext context = SSLContext.getInstance("TLS");
-context.init(kmf.getKeyManagers(),
-new TrustManager[]{tm},
-null);
-SSLSocketFactory sockFactory = context.getSocketFactory();
-((HttpsURLConnection) c).setSSLSocketFactory(sockFactory);
-} else {
-System.err.println("Go - else not https");
-}
-// Set up request parameters
-c.setAllowUserInteraction(false);
-c.setDoInput(true);
-c.setDoOutput(true);
-c.setUseCaches(false);
-c.setRequestProperty(typeLine.substring(0, typeLine.indexOf(":")).trim(),
-typeLine.substring(typeLine.indexOf(":") + 1).trim());
-if (!encodeLine.equals("")) {
-c.setRequestProperty(encodeLine.substring(0, encodeLine.indexOf(":")).trim(),
-encodeLine.substring(encodeLine.indexOf(":") + 1).trim());
-}
-c.setRequestMethod(POST);
-if (queryLine == null || queryLine.length() == 0) {
-c.setRequestMethod("GET");
-}
-// Connect to server
-System.err.println("Connecting to server...");
-c.connect();
-System.err.println("Send request to server");
-// Write HTTP Request
-if (queryLine.length() > 0) {
-bos = new BufferedOutputStream(c.getOutputStream());
-byte[] buf = queryLine.getBytes();
-bos.write(buf, 0, buf.length);
-bos.flush();
-}
-//Read HTTP Response
-System.err.println("Read response from server...");
-is = new BufferedInputStream(c.getInputStream());
-// read-in appropriately based on whether returned data
-// has content encoding gzip
-String contentEncoding = c.getContentEncoding();
-if (contentEncoding != null && contentEncoding.equalsIgnoreCase("gzip")) {
-try {
-if (is.markSupported()) {
-is.mark(2);
-}
-is = new GZIPInputStream(is);
-} catch (IOException e) {
-if (is.markSupported()) {
-is.reset();
-}
-is = new BufferedInputStream(is);
-}
-}
-// Read the response in
-System.out.println("Starting read");
-byte[] buff = new byte[8192];
-int numOfBytes;
-boolean downloading = true;
-int loaded = 0;
-FileOutputStream fileWriter = new FileOutputStream(resultsDir + "\\" +
-testcaseFile + "_out.txt");
-System.out.println("Start write");
-while ((numOfBytes = is.read(buff)) > 0) {
-fileWriter.write(buff, 0, numOfBytes);
-}
-fileWriter.close();
-System.err.println("End of run");
-} catch (IOException e) {
-System.err.println("io error: " + e.getMessage());
-e.printStackTrace();
-} catch (Exception e) {
-System.err.println("exception: " + e.getMessage());
-e.printStackTrace();
-} finally {
-// Close input stream
-if (is != null) {
-try {
-is.close();
-} catch (IOException e) {
-}
-is = null;
-}
-// Close output stream
-if (bos != null) {
-try {
-bos.close();
-} catch (IOException e) {
-}
-bos = null;
-}
-// Close connection
-if (c != null) {
-c.disconnect();
-c = null;
-}
-}
+			
+			// use the client certificate
+			KeyStore ks = KeyStore.getInstance("PKCS12");
+			ks.load(new FileInputStream(new File(keyStorePath)),
+				keyStorePswd.toCharArray());
+				
+			KeyManagerFactory kmf =
+				KeyManagerFactory.getInstance("SunX509");
+			kmf.init(ks, keyStorePswd.toCharArray());
+			
+		// Set socket context and setup socket factory
+		SSLContext context = SSLContext.getInstance("TLS");
+		context.init(kmf.getKeyManagers(),
+			new TrustManager[]{tm},
+			null);
+			
+		SSLSocketFactory sockFactory = context.getSocketFactory();
+		((HttpsURLConnection) c).setSSLSocketFactory(sockFactory);
+		} 
+		else {
+			System.err.println("Go - else not https");
+		}
+		
+		// Set up request parameters
+		c.setAllowUserInteraction(false);
+		c.setDoInput(true);
+		c.setDoOutput(true);
+		c.setUseCaches(false);
+		c.setRequestProperty(typeLine.substring(0, typeLine.indexOf(":")).trim(),
+			typeLine.substring(typeLine.indexOf(":") + 1).trim());
+		if (!encodeLine.equals("")) {
+			c.setRequestProperty(encodeLine.substring(0, encodeLine.indexOf(":")).trim(),
+			encodeLine.substring(encodeLine.indexOf(":") + 1).trim());
+		}
+		c.setRequestMethod(POST);
+		if (queryLine == null || queryLine.length() == 0) {
+			c.setRequestMethod("GET");
+		}
+		
+		// Connect to server
+		System.err.println("Connecting to server...");
+		c.connect();
+		
+		System.err.println("Send request to server");
+		// Write HTTP Request
+		if (queryLine.length() > 0) {
+			bos = new BufferedOutputStream(c.getOutputStream());
+			byte[] buf = queryLine.getBytes();
+			bos.write(buf, 0, buf.length);
+			bos.flush();
+		}
+		
+		//Read HTTP Response
+		System.err.println("Read response from server...");
+		is = new BufferedInputStream(c.getInputStream());
+
+		// read-in appropriately based on whether returned data
+				// has content encoding gzip
+		String contentEncoding = c.getContentEncoding();
+		if (contentEncoding != null && contentEncoding.equalsIgnoreCase("gzip")) {
+			try {
+				if (is.markSupported()) {
+					is.mark(2);
+				}
+				is = new GZIPInputStream(is);
+			} catch (IOException e) {
+				if (is.markSupported()) {
+					is.reset();
+				}
+				is = new BufferedInputStream(is);
+			}
+		}
+		
+		// Read the response in
+		System.out.println("Starting read");
+		byte[] buff = new byte[8192];
+		int numOfBytes;
+		boolean downloading = true;
+		int loaded = 0;
+
+		FileOutputStream fileWriter = new FileOutputStream(resultsDir + "\\" +
+	testcaseFile + "_out.txt");
+		System.out.println("Start write");
+		while ((numOfBytes = is.read(buff)) > 0) {
+			fileWriter.write(buff, 0, numOfBytes);
+		}
+		fileWriter.close();
+
+		System.err.println("End of run");
+
+	} catch (IOException e) {
+		System.err.println("io error: " + e.getMessage());
+		e.printStackTrace();
+	} catch (Exception e) {
+		System.err.println("exception: " + e.getMessage());
+		e.printStackTrace();
+	} finally {
+
+		// Close input stream
+		if (is != null) {
+			try {
+				is.close();
+			} catch (IOException e) {
+			}
+			is = null;
+		}
+	
+		// Close output stream
+		if (bos != null) {
+			try {
+				bos.close();
+			} catch (IOException e) {
+			}
+			bos = null;
+		}
+		// Close connection
+		if (c != null) {
+			c.disconnect();
+			c = null;
+		}
+	}
 } //end of go()
 /***********************************************************************
 /
@@ -256,56 +272,61 @@ c = null;
 /**--------------------------------------------------------------------*/
 /** initial 2004/06/05 New E Hwang */
 /***********************************************************************
-/
-private static boolean readTC() {
-String lastLine = "";
-String line;
-try {
-File configFile = new File(testcaseDir, testcaseFile);
-/* Example
-POST /aidap/<servlet name> HTTP/1.1
-Content-type: application/x-www-form-urlencoded
-Accept-Encoding: gzip
-Content-length: <input_parameter’s length>
-<a blank line>
-uid=uid&password=upassword&&type=a&active=y
 */
-if (!configFile.exists()) {
-return false;
-}
-System.out.println(configFile.getName());
-BufferedReader in = new BufferedReader(new FileReader(configFile));
-while ((line = in.readLine()) != null) {
-if (line.startsWith(POST)) {
-postLine = line.trim();
-}
-if (line.startsWith(TYPE)) {
-typeLine = line.trim();
-}
-if (line.startsWith(LEN)) {
-lenLine = line.trim();
-}
-if (line.startsWith(ENC)) {
-encodeLine = line.trim();
-}
-lastLine = line.trim();
-}
-// must have action, uid, password, and type
-if (postLine.length() == 0 || typeLine.length() == 0 || lenLine.length() == 0) {
-System.err.println("Required argument missing");
-return false;
-}
-if (lastLine.startsWith(POST) || lastLine.startsWith(TYPE) ||
-lastLine.startsWith(LEN) || lastLine.equals("")) {
-System.err.println("Missing a request parameter");
-return false;
-}
-queryLine = lastLine;
-return true;
-} catch (Exception e) {
-System.err.println("Error finding and/or reading" + testcaseDir + "\\" +
+
+private static boolean readTC() {
+	String lastLine = "";
+	String line;
+
+	try {
+		File configFile = new File(testcaseDir, testcaseFile);
+		/* Example
+			POST /aidap/<servlet name> HTTP/1.1
+			Content-type: application/x-www-form-urlencoded
+			Accept-Encoding: gzip
+			Content-length: <input_parameter’s length>
+			<a blank line>
+				uid=uid&password=upassword&&type=a&active=y
+				*/
+		if (!configFile.exists()) {
+			return false;
+		}
+		System.out.println(configFile.getName());
+		BufferedReader in = new BufferedReader(new FileReader(configFile));
+		while ((line = in.readLine()) != null) {
+			if (line.startsWith(POST)) {
+				postLine = line.trim();
+			}
+			if (line.startsWith(TYPE)) {
+				typeLine = line.trim();
+			}
+			if (line.startsWith(LEN)) {
+				lenLine = line.trim();
+			}
+			if (line.startsWith(ENC)) {
+				encodeLine = line.trim();
+			}
+			lastLine = line.trim();
+		}
+		// must have action, uid, password, and type
+		if (postLine.length() == 0 || typeLine.length() == 0 || lenLine.length() == 0) {
+			System.err.println("Required argument missing");
+			return false;
+		}
+		
+		if (lastLine.startsWith(POST) || lastLine.startsWith(TYPE) ||
+	lastLine.startsWith(LEN) || lastLine.equals("")) {
+			System.err.println("Missing a request parameter");
+			return false;
+		}
+
+		queryLine = lastLine;
+		return true;
+	} catch (Exception e) {
+		System.err.println("Error finding and/or reading" + testcaseDir + "\\" +
 testcaseFile);
-return false;
-}
-} //end of getUsageText()
+			return false;
+		}
+	} //end of getUsageText()
+
 }
