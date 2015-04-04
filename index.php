@@ -41,7 +41,7 @@ Aeroapps Admin Portal Login Page
 		</p>
 	</div>
 	<div id="main">
-		<p class="sh1">Aeroapps Web Portal</p>
+		<h1>Aeroapps Web Portal</h1>
 	</div>
 	
 	<form id="joinform" action="loginprocess.php" method="post">

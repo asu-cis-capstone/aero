@@ -46,7 +46,7 @@ import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
 
 public class AidapRequest {
-	static String POST = "POST";
+	static String POST = "URL";
 	static String TYPE = "Content-type:";
 	static String LEN = "Content-length:";
 	static String ENC = "Accept-Encoding:";
@@ -59,13 +59,13 @@ public class AidapRequest {
 	
 	// instance variables
 	boolean useGZIP = true;
-	static String postLine = "";
-	static String typeLine = "";
+	static String postLine = "https://www.aidap.naimes.faa.gov/aidap/XmlNotamServlet HTTP/1.1";
+	static String typeLine = "application/x-www-form-urlencoded";
 	static String lenLine = "";
-	static String encodeLine = "";
+	static String encodeLine = "gzip";
 	static String queryLine = "";
-	static String keyStorePath = "aidapuser.pfx";
-	static String keyStorePswd = "password";
+	static String keyStorePath = "aeroapps";
+	static String keyStorePswd = "Diode1234!";
 	/**
 	* Main Method
 	* @param args

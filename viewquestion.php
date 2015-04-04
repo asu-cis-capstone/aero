@@ -31,6 +31,7 @@ View Question Page for Aeroapps Technology
     <!-- Web Page Title -->
     <title>View Question</title>
 
+
   </head>
 
   <body>
@@ -64,7 +65,7 @@ View Question Page for Aeroapps Technology
     </div>
 	<div id="main">
 		<center>
-		<p id="title">View a Question</p>
+		<p id="title">View Question</p>
 		
 		<form id="questionform" action="#" method="POST" enctype="multipart/form-data">
 			
@@ -121,18 +122,47 @@ View Question Page for Aeroapps Technology
 			$imageRow5		= mysql_fetch_array($imageResult5);
 			
 			
-			echo '<p>Question #: '.$qID.'</p>';
+			echo '<p>Question #'.$qID.'</p>';
 			echo '<p>Test: '.$questionRow['test'].'</p>';
-			echo '<p>Text: '.$questionRow['qText'].'</p>';
+			echo '<p>'.$questionRow['qText'].'</p>';
+			echo '<div class="">';
+			echo 'A: '.$answerRow['aText'].'<br />';
+			echo 'B: '.$answerRow['bText'].'<br />';
+			echo 'C: '.$answerRow['cText'].'<br />';
+			echo '</div>';
 			if ($imageRow1['id'] != 0)
 			{
 				echo "<p><img src=get.php?id=".$imageRow1['id']." width='400px'>";
 			}
-			
-			
+			else
+			{
+				echo '';
+			}
 			
 			
 			?>
+			
+			<script type="text/javascript"> 
+			function showHide(divId){
+    			var theDiv = document.getElementById(divId);
+    			if(theDiv.style.display=="none"){
+        			theDiv.style.display="";
+    			}else{
+        			theDiv.style.display="none";
+    			}    
+			}
+			</script>
+			<br />
+			<input type="button" onclick="showHide('hidethis')" value="Show/Hide Answer"> 
+			<div id="hidethis" style="display:none">
+			<?php
+				
+				echo '<p>Answer: '.$answerRow['answer'].'</p>';
+				echo '<p>Explanation:<br />'.$answerRow['exp'].'</p>';
+				
+			?>
+			</div>
+			
   			
 		</form>	
 		</center>

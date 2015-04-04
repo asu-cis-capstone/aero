@@ -6,8 +6,10 @@ body {
 	
 	font-family:			Arial, Helvetica, Arial, sans-serif;
 	background-image:		url(../images/blue-sky.jpg);
+	background-repeat:		no-repeat;
+	background-attachment: 	fixed;
     background-color: 		#cccccc;
-	width:					1000px;
+	width:					1200px;
 	margin:					auto;
 	text-align:				center;
 }
@@ -51,7 +53,7 @@ body {
 #joinform {
 	color:				#72716F;
 	text-align:			center;
-	width:				35%;
+	width:				40%;
 	margin:				auto;
 	border:				5px double #4169e1;
 	background-color:	#F8F5EC;
@@ -179,7 +181,7 @@ input[type=text],input[type=password],input[type=email]{
 #selection li{
 	list-style:			none;
 	float:				left;
-	width:				500px;
+	width:				600px;
 	background:			rgba(255,255,255,0.4);
 	display:			block;
 	color:				white;
@@ -188,8 +190,6 @@ input[type=text],input[type=password],input[type=email]{
 
 #navselection{
 	font-size:			30px;
-	border: 2px solid #d3d3d3;
-        border-radius: 100px;
 	margin-bottom:		70px;
 }
 
@@ -198,12 +198,14 @@ input[type=text],input[type=password],input[type=email]{
 	float:				left;
 	width:				200px;
 	display:			block;
+	border-radius: 		5px;
 	background:			rgba(0,0,0,0.5);
+
 	color:				white;
 }
 
 #navbar{
-	width:				1000px;
+	width:				100%;
 	text-decoration:	none;
 }
 
@@ -217,7 +219,7 @@ ul#navbar{
 }
 
 #options{
-	width:				1000px;
+	width:				100%;
 	font-size:			26px;
 }
 
@@ -237,7 +239,7 @@ ul#options{
 	list-style:			none;
 }
 
-a:link { color: #000000; }
+a:link { color: #FFFFFF; }
 a:hover { color: #4169E1!important; }
 a:visited { color: rgba(255,255,255,0.8); }
 
@@ -253,4 +255,12 @@ a:visited { color: rgba(255,255,255,0.8); }
 .logerr {
 	color: 				red;
 	font-size: 			75%;
+}
+
+.hidden{
+    display:none;
+}
+
+.unhidden{
+    display:block;
 }
