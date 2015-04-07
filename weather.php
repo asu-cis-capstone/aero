@@ -94,6 +94,72 @@ Weather Page
 			
 
 			echo "</table>";
+			
+			$string = <<<XML
+			<!DOCTYPE notam-query-result-set [
+<!ELEMENT notam-query-result-set (start-time, usns-lastmod-dtg, query-type,
+query-parameter, notam-rec1, rec-count, end-time)>
+<!ELEMENT start-time (#PCDATA)>
+<!ELEMENT usns-lastmod-dtg (#PCDATA)>
+<!ELEMENT query-type (#PCDATA)>
+<!ELEMENT query-parameter (#PCDATA)>
+<!ELEMENT notam-rec (source_id, account_id, notam_id, xoveraccountid2, xovernotamid2, notam_part,
+cns_location_id, icao_id, icao_name2, total_parts, notam_cancel_dtg2, notam_effective_dtg2,
+notam_expire_dtg2, notam_delete_dtg2, notam_lastmod_dtg, notam_text, notam_report, notam_nrc2,
+notam_qcode2, notam_altkey3, series2, 3, originid2, 3, artcc_id2, 3, notam_origin_dtg3, create_dtg2 ,3, notam_a2,
+3, notam_b2, 3, notam_c2, 3, notam_d2, 3, notam_e2, 3, notam_f2, 3, notam_g2, 3, notam_q2, 3)>
+<!ELEMENT source_id (#PCDATA)>
+<!ELEMENT account_id (#PCDATA)>
+<!ELEMENT notam_id (#PCDATA)>
+<!ELEMENT xoveraccountid (#PCDATA)>
+<!ELEMENT xovernotamid (#PCDATA)>
+<!ELEMENT notam_part (#PCDATA)>
+<!ELEMENT cns_location_id (#PCDATA)>
+<!ELEMENT icao_id (#PCDATA)>
+<!ELEMENT icao_name (#PCDATA)>
+<!ELEMENT total_parts (#PCDATA)>
+<!ELEMENT notam_cancel_dtg (#PCDATA)>
+<!ELEMENT notam_effective_dtg (#PCDATA)>
+<!ELEMENT notam_expire_dtg (#PCDATA)>
+<!ELEMENT notam_delete_dtg (#PCDATA)>
+<!ELEMENT notam_lastmod_dtg (#PCDATA)>
+<!ELEMENT notam_text (#PCDATA)>
+<!ELEMENT notam_report (#PCDATA)>
+<!ELEMENT notam_nrc (#PCDATA)>
+<!ELEMENT notam_qcode (#PCDATA)>
+<!ELEMENT notam_altkey (#PCDATA)>
+<!ELEMENT series (#PCDATA)>
+<!ELEMENT originid (#PCDATA)>
+<!ELEMENT artcc_id (#PCDATA)>
+<!ELEMENT notam_origin_dtg (#PCDATA)>
+<!ELEMENT create_dtg (#PCDATA)>
+<!ELEMENT notam_a (#PCDATA)>
+<!ELEMENT notam_b (#PCDATA)>
+<!ELEMENT notam_c (#PCDATA)>
+<!ELEMENT notam_d (#PCDATA)>
+<!ELEMENT notam_e (#PCDATA)>
+<!ELEMENT notam_f (#PCDATA)>
+<!ELEMENT notam_g (#PCDATA)>
+<!ELEMENT notam_q (#PCDATA)>
+<!ELEMENT rec-count (#PCDATA)>
+<!ELEMENT end-time (#PCDATA)>
+]>
+XML;
+
+
+
+		$url = "https://www.aidap.naimes.faa.gov/aidap/XmlNotamServlet HTTP/1.1";
+
+		$post_data = array('xml' => $string);
+		$stream_options = array(
+    		'http' => array(
+      		  'method'  => 'POST',
+      		  'header'  => 'Content-type: application/x-www-form-urlencoded' . "\r\n",
+     		   'content' =>  http_build_query($post_data)));
+
+		$context  = stream_context_create($stream_options);
+		$response = file_get_contents($url, null, $context);
+
 		?>
     </div>
 
