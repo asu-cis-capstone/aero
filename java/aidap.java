@@ -59,7 +59,7 @@ public class AidapRequest {
 	
 	// instance variables
 	boolean useGZIP = true;
-	static String postLine = "https://www.aidap.naimes.faa.gov/aidap/XmlNotamServlet HTTP/1.1";
+	static String postLine = "https://www.aidap.naimes.faa.gov/aidap/XmlNotamServlet?uid=aeroapps&password=Diode1234!&location_id=KCHD";
 	static String typeLine = "application/x-www-form-urlencoded";
 	static String lenLine = "";
 	static String encodeLine = "gzip";

@@ -95,24 +95,13 @@ Weather Page
 
 			echo "</table>";*/
 			
-
-
-$url = 'https://www.aidap.naimes.faa.gov/aidap/XmlNotamServlet HTTP/1.1';
-$data = array('uid' => 'aeroapps', 'password' => 'Diode1234!', 'location_id' => 'KCHD');
-
-// use key 'http' even if you send the request to https://...
-$options = array(
-    'http' => array(
-        'header'  => "Content-type: application/x-www-form-urlencoded",
-        'method'  => 'POST',
-        'content' => http_build_query($data),
-    ),
-);
-$context  = stream_context_create($options);
-$result = file_get_contents($url, 1, $context);
-
-var_dump($result);
-
+			$ch = curl_init();
+			curl_setopt($ch, CURLOPT_URL, 'https://www.aidap.naimes.faa.gov/aidap/XmlNotamServlet?uid=aeroapps&password=Diode1234!&location_id=KCHD');
+			curl_setopt($ch, CURLOPT_POST, 1);
+			curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/x-www-form-urlencoded'));   
+			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); 
+			$result = curl_exec($ch);
+			echo $result;
 
 		?>
     </div>
