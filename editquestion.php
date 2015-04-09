@@ -228,7 +228,7 @@ Edit Question Page for Aeroapps Technology
 		}
 		else
 		{
-			if (!$query = mysql_query("UPDATE test_questions SET qID = '$newqID' WHERE qID = '$qID'")) 
+			if (!$query = mysql_query("UPDATE test_questions SET qID = '$newqID', qText = '$qText' WHERE qID = '".$_POST['tempEditID']."'")) 
 			{
 				echo "There was a problem uploading question information.";
 			}
