@@ -19,8 +19,8 @@
 	mysql_close($dbc);
 	
 	// start a PHP session
-	session_name('admin');
-	session_start('admin');
+	session_name('logged');
+	session_start('logged');
 	
 	// Redirect back to Questions.php
 	header('Location: questions.php');

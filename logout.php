@@ -1,9 +1,9 @@
 <?php
 	// logout.php
 	
-	session_name("admin");
-	session_start("admin");
-	session_unset("admin");
+	session_name("logged");
+	session_start("logged");
+	session_unset("logged");
 	session_destroy();
 	header('Location: index.php');
 ?>

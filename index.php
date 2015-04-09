@@ -6,11 +6,11 @@ Aeroapps Admin Portal Login Page
 
 <?php
 	// Start a PHP session
-	session_name("admin");
-	session_start("admin");
+	session_name("logged");
+	session_start("logged");
 	
 	// Check to see if user is logged in
-	/*if (isset($_SESSION["admin"]))
+	/*if (isset($_SESSION["name"]))
 	{
 		header('Location: menu.php');
 		exit;

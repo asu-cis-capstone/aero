@@ -42,12 +42,13 @@
 	mysql_close($dbc);
 	
 	// start a PHP session
-	session_name('admin');
-	session_start('admin');
+	session_name('logged');
+	session_start('logged');
 	
 	// Get and store our PHP session variables
 	$row = mysql_fetch_array($result);
-	$_SESSION['admin'] = $row['uName'];
+	$_SESSION['name'] = $row['uName'];
+	$_SESSION['type'] = $row['uType'];
 	header('Location: menu.php');
 	exit;
 	
