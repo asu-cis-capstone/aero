@@ -6,14 +6,19 @@ Menu Page
 
 <?php
 // Start a PHP session
-session_name("admin");
-session_start("admin");
+session_name("logged");
+session_start("logged");
 
 // Check to see if user is NOT logged in to prevent unauthorized access
-if(!isset($_SESSION['admin'])){
-header('Location: index.php')
-exit;
+if($_SESSION['type'] == 'admin' || $_SESSION['type'] == 'user')
+{
+	echo '';
 }
+else
+{
+	header("Location: http://google.com/");
+	die();
+}	
 ?>
 
 
@@ -38,9 +43,9 @@ exit;
 			<span class="left"><a href="menu.php"><img src="images/headerlogo.png" alt="Aeroapps Logo" /></a></span>
 			<?php
 			
-			if (isset($_SESSION["admin"]))
+			if (isset($_SESSION["name"]))
 			{
-				echo '<span class="right">Welcome, ' . $_SESSION["admin"] . '!</span><br />';
+				echo '<span class="right">Welcome, ' . $_SESSION["name"] . '!</span><br />';
 			}
 			else
 			{
