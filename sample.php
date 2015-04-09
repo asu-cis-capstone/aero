@@ -17,4 +17,6 @@ for ($x = 1; $x <= 5; $x++)
     	}
 	} 	
 	
+	("UPDATE test_answers SET answer = ".$answerRow[''].", aText = ".$answerRow[''].", bText = ".$answerRow[''].", cText = ".$answerRow[''].", qID = ".$answerRow[''].", exp = ".$answerRow[''].", expImgID1 = ".$answerRow[''].", expImgID2 = ".$answerRow[''].", expImgID3 = ".$answerRow[''].", expImgID4 = ".$answerRow[''].", expImgID5 = ".$answerRow[''].", editor = ".$editor.", timestamp = ".$timestamp." WHERE qID = '$qID'")
+	
 ?>

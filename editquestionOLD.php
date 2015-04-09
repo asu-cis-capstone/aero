@@ -6,11 +6,11 @@ Edit Question Page for Aeroapps Technology
 
 <?php
 	// Start a PHP session
-	session_name("logged");
-	session_start("logged");
+	session_name("admin");
+	session_start("admin");
 	
 	// Check to see if user is NOT logged in to prevent unauthorized access
-	/*if (!isset($_SESSION["name"]))
+	/*if (!isset($_SESSION["admin"]))
 	{
 		header('Location: index.php');
 		exit;
@@ -39,9 +39,9 @@ Edit Question Page for Aeroapps Technology
 			<span class="left"><a href="menu.php"><img src="images/headerlogo.png" alt="Aeroapps Logo" /></a></span>
 			<?php
 			
-			if (isset($_SESSION["name"]))
+			if (isset($_SESSION["admin"]))
 			{
-				echo '<span class="right">Welcome, ' . $_SESSION["name"] . '!</span><br />';
+				echo '<span class="right">Welcome, ' . $_SESSION["admin"] . '!</span><br />';
 			}
 			else
 			{
@@ -130,7 +130,7 @@ Edit Question Page for Aeroapps Technology
 			echo '<br><br>';
 			
 			echo '<label for="test">Test</label> <input type="text" name="test" required title="Please enter a Test for the Question" autofocus value="'.$questionRow["test"].'" /><br />
-			<label for="newqID">Question ID</label> <input type="text" name="newqID" required title="Please enter an ID for the Question" value="'.$questionRow["qID"].'" /><br /> 
+			<label for="qID">Question ID</label> <input type="text" name="qID" required title="Please enter an ID for the Question" value="'.$questionRow["qID"].'" /><br /> 
  			<label for="qText">Question Text:</label>
 			<textarea name="qText" rows="5" cols="30" required />'.$questionRow["qText"].'</textarea><br />
   			<label for="qImg1">Question Image 1:</label> <input type="file" name="qImg1">
@@ -183,17 +183,18 @@ Edit Question Page for Aeroapps Technology
 			<label for="refPincite">Reference Pincite</label> <input type="text" name="refPincite" required value="'.$questionRow["refPincite"].'" /><br />';
 			
 			
+			?>
 			
-			/*<!--
+			<!--
   			<label>Select Existing Image:</label>
   			<SELECT name="Single-line ListBox example">
 			<OPTION selected value="1">1</OPTION>
 			<OPTION value="2">2</OPTION>
 			<OPTION value="3">3</OPTION>
 			</SELECT><br />
-			-->*/
+			-->
  			
-  			echo '<p class="submit">
+  			<p class="submit">
 			<input type ="submit" value="Submit Question" />
 			
 			<span class="reset">
@@ -201,47 +202,7 @@ Edit Question Page for Aeroapps Technology
 			</span>
 		</p>
 		</form>	
-		</center>';
-		
-		// Values from HTML
-		$test 			= $_POST['test'];
-		$newqID 		= $_POST['newqID'];
-		$qText			= mysql_real_escape_string($_POST['qText']);
-		$aText			= mysql_real_escape_string($_POST['aText']);
-		$bText			= mysql_real_escape_string($_POST['bText']);
-		$cText 			= mysql_real_escape_string($_POST['cText']);
-		$answer 		= $_POST['answer'];
-		$exp			= mysql_real_escape_string($_POST['exp']);
-		$ls_code		= $_POST['ls_code'];
-		$refName		= mysql_real_escape_string($_POST['refName']);
-		$refPincite 	= mysql_real_escape_string($_POST['refPincite']);
-		
-		$editor 	= $_SESSION['admin'];
-		$now 		= time();
-		date_default_timezone_set('MST');
-		$timestamp 	= date('Y-m-d H:i:s', $now);
-			
-		// Build our SQL statement and Insert Values
-		if (empty($_POST['test'])) 
-		{
-			echo "Please enter the question information.";
-		}
-		else
-		{
-			if (!$query = mysql_query("UPDATE test_questions SET qID = '$newqID' WHERE qID = '$qID'")) 
-			{
-				echo "There was a problem uploading question information.";
-			}
-			else {
-				mysql_query("UPDATE test_answers SET answer = '$answer', aText = '$aText', bText = '$bText', cText = '$cText', qID = '$qID', exp = '$exp', expImgID1 = '$expImgID1', expImgID2 = '$expImgID2', expImgID3 = '$expImgID3', expImgID4 = '$expImgID4', expImgID5 = '$expImgID5', editor = '$editor', timestamp = '$timestamp' WHERE qID = '$qID'");
-				echo "Question information uploaded!";
-			}
-		}
-	
-		// Close the SQL connection
-		mysql_close($dbc);
-		
-		?>
+		</center>
 	</div>
 	
 	<div id ="footer">
