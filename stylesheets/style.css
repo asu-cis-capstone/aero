@@ -211,8 +211,14 @@ input[type=text],input[type=password],input[type=email]{
 	text-decoration:	none;
 }
 
+#navbar li a{
+	text-decoration: 	none;
+	font-family:		Optima;
+}	
+
 #navbar li:hover{
 	background-color:	rgba(255,255,255,0.8);
+	
 }
 
 ul#navbar{
