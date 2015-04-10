@@ -66,16 +66,20 @@ Edit Question Page for Aeroapps Technology
 		<center>
 		<p id="title">Edit a Question</p>
 		
-		<form id="questionform" action="#" method="POST" enctype="multipart/form-data">
-			<h2>Enter Question Information Below</h2>
+		<?php
+		$qID = $_POST['tempEditID'];
+		$oldqID = $qID;
+		
+		echo '<form id="questionform" action="editquestion.php" method="POST" enctype="multipart/form-data">
+			<h2>Enter Question Information Below</h2>';
 			
-			<?php
+			
 		
 			// Set up db connection
 			include('connect/local-connect.php');
 	
 			// PHP variables for the HTML elements
-			$qID = $_POST['tempEditID'];
+			
 	
 			// Build the edit question query
 			$questionQuery 	= "SELECT * FROM test_questions WHERE qID = '$qID'";
@@ -216,10 +220,11 @@ Edit Question Page for Aeroapps Technology
 		$refName		= mysql_real_escape_string($_POST['refName']);
 		$refPincite 	= mysql_real_escape_string($_POST['refPincite']);
 		
-		$editor 	= $_SESSION['admin'];
+		$editor 	= $_SESSION['name'];
 		$now 		= time();
 		date_default_timezone_set('MST');
 		$timestamp 	= date('Y-m-d H:i:s', $now);
+		
 			
 		// Build our SQL statement and Insert Values
 		if (empty($_POST['test'])) 
@@ -228,12 +233,12 @@ Edit Question Page for Aeroapps Technology
 		}
 		else
 		{
-			if (!$query = mysql_query("UPDATE test_questions SET qID = '$newqID', qText = '$qText' WHERE qID = '".$_POST['tempEditID']."'")) 
+			if (!$query = mysql_query("UPDATE test_questions SET qID = '$newqID', qText = '$qText', editor = '$editor', edit_time = '$timestamp' WHERE qID = '3997'")) 
 			{
 				echo "There was a problem uploading question information.";
 			}
 			else {
-				mysql_query("UPDATE test_answers SET answer = '$answer', aText = '$aText', bText = '$bText', cText = '$cText', qID = '$qID', exp = '$exp', expImgID1 = '$expImgID1', expImgID2 = '$expImgID2', expImgID3 = '$expImgID3', expImgID4 = '$expImgID4', expImgID5 = '$expImgID5', editor = '$editor', timestamp = '$timestamp' WHERE qID = '$qID'");
+				mysql_query("UPDATE test_answers SET answer = '$answer', aText = '$aText', bText = '$bText', cText = '$cText', qID = '$newqID', exp = '$exp', expImgID1 = '$expImgID1', expImgID2 = '$expImgID2', expImgID3 = '$expImgID3', expImgID4 = '$expImgID4', expImgID5 = '$expImgID5', editor = '$editor', edit_time = '$timestamp' WHERE qID = '3997'");
 				echo "Question information uploaded!";
 			}
 		}
