@@ -39,7 +39,7 @@ Nitin Jain
   http://youtu.be/F90m6C9DIAY
 #Video for Browser Tests
   http://youtu.be/eIktjPrMXjY
-  #
+#
   All scripts are located within the "Test Scripts Browser Automation - FakeApp" folder on our repository. Since the program used was a full paid version and exclusive to Mac OSx, we have created a video to show what our tests look like if they cannot be run on incompatible computers.
   
 #Release Notes 
