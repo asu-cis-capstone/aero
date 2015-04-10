@@ -10,7 +10,7 @@ session_name("logged");
 session_start("logged");
 
 // Check to see if user is NOT logged in to prevent unauthorized access
-if($_SESSION['type'] == 'admin' || $_SESSION['type'] == 'user')
+/*if($_SESSION['type'] == 'admin' || $_SESSION['type'] == 'user')
 {
 	echo '';
 }
@@ -18,7 +18,7 @@ else
 {
 	header("Location: http://google.com/");
 	die();
-}	
+}	*/
 ?>
 
 
