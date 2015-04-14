@@ -70,38 +70,6 @@ View Question Page for Aeroapps Technology
 		
 		<form id="questionform" action="#" method="POST" enctype="multipart/form-data">
 		
-		<input type="button" onclick="previous()" value="PREVIOUS"> 
-			<?php
-				$questionQuery 	= "SELECT * FROM test_questions WHERE qID = '$qID'";
-				$answerQuery 	= "SELECT * FROM test_answers WHERE qID = '$qID'";
-				$result = mysql_query($questionQuery,$answerQuery) or die('Query failed');
-				
-				//Find question and answer
-				$find = mysql_fetch_array($result, MYSQL_BOTH);
-				if (isset($GET['id']))
-				{
-					do
-					{
-					if ($find[0] == $_GET['id']) break; // we assume col [0] is id
-					} while ($find = mysql_fetch_array($result, MYSQL_BOTH));
-					}
-				}
-				
-				if ($find) { 
-				echo '<p>Question #'.$qID.'</p>';
-				echo '<p>Test: '.$questionRow['test'].'</p>';
-				echo '<p>Subject: '.$faaRow['subj'].'</p>';
-				echo '<p>Topic: '.$faaRow['topic'].'</p>';
-				echo '<p>'.$questionRow['qText'].'</p>';
-				echo '<div class="">';
-				echo 'A: '.$answerRow['aText'].'<br />';
-				echo 'B: '.$answerRow['bText'].'<br />';
-				echo 'C: '.$answerRow['cText'].'<br />';
-				echo '</div>';
-				}
-				else echo "Record not found.\n";
-			?>
-		<input type="button" onclick="" value="NEXT">
 			<?php
 		
 			// Set up db connection
@@ -189,6 +157,26 @@ View Question Page for Aeroapps Technology
 			$expImageResult5	= mysql_query($expImageQuery5) or die('Explanation Image 5 read error!');
 			$expImageRow5		= mysql_fetch_array($expImageResult5);
 			
+			$currentid = $qID;
+			$conn = mysqli_connect($questionQuery);
+			$result = mysqli_query($conn);
+			while ($row = mysqli_fetch_array($result))
+			{
+			$currentid=$row['qID']
+			}
+			$resultPrev = mysqli_query($conn, "select * from test_questions where qID<$currentid 
+			LIMIT 1");
+			while($prevRow = mysqli_fetch_array($resultPrev))
+			{
+			$previd = $prevRow['qID'];
+			}
+			$resultNext = mysqli_query($conn, "select * from test_questions where qID>$currentid 
+			LIMIT 1");
+			while($nextRow = mysqli_fetch_array($resultNext))
+			{
+			$nextid = $nextRow['qID'];
+			}
+
 			
 			echo '<p>Question #'.$qID.'</p>';
 			echo '<p>Test: '.$questionRow['test'].'</p>';
@@ -209,6 +197,9 @@ View Question Page for Aeroapps Technology
 				echo '';
 			}
 			?>
+			
+			<a href="#".php?qID=<?php echo $previd; ?>PREVIOUS</a>
+			<a href="#".php?qID=<?php echo $nextid; ?>NEXT</a>
 			
 			<script type="text/javascript"> 
 			function showHide(divId){
