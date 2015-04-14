@@ -157,26 +157,30 @@ View Question Page for Aeroapps Technology
 			$expImageResult5	= mysql_query($expImageQuery5) or die('Explanation Image 5 read error!');
 			$expImageRow5		= mysql_fetch_array($expImageResult5);
 			
+			
 			$currentid = $qID;
-			$conn = mysqli_connect($questionQuery);
-			$result = mysqli_query($conn);
-			while ($row = mysqli_fetch_array($result))
+			while ($questionRow)
 			{
-			$currentid=$row['qID']
+			$currentid=$row['qID'];
 			}
-			$resultPrev = mysqli_query($conn, "select * from test_questions where qID<$currentid 
+			
+			$resultPrev = mysql_query("select * from test_questions where qID < '$currentid'
 			LIMIT 1");
 			while($prevRow = mysqli_fetch_array($resultPrev))
 			{
 			$previd = $prevRow['qID'];
 			}
-			$resultNext = mysqli_query($conn, "select * from test_questions where qID>$currentid 
+			
+			$resultNext = mysql_query("select * from test_questions where qID > '$currentid'
 			LIMIT 1");
 			while($nextRow = mysqli_fetch_array($resultNext))
 			{
 			$nextid = $nextRow['qID'];
 			}
-
+			
+			echo '<p>Previous'.$previd.'</p>';
+			echo '<p>Next'.$nextid.'</p>';
+			
 			
 			echo '<p>Question #'.$qID.'</p>';
 			echo '<p>Test: '.$questionRow['test'].'</p>';
@@ -196,10 +200,10 @@ View Question Page for Aeroapps Technology
 			{
 				echo '';
 			}
+			
+
 			?>
 			
-			<a href="#".php?qID=<?php echo $previd; ?>PREVIOUS</a>
-			<a href="#".php?qID=<?php echo $nextid; ?>NEXT</a>
 			
 			<script type="text/javascript"> 
 			function showHide(divId){
