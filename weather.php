@@ -96,6 +96,10 @@ Weather Page
 			echo "</table>";*/
 			
 			$ch = curl_init();
+			curl_setopt($ch, CURLOPT_SSLCERT, 'file.crt.pem');
+			curl_setopt($ch, CURLOPT_SSLKEY, 'file.key.pem');
+			curl_setopt($ch, CURLOPT_SSLCERTPASSWD, 'naimes2015');
+			curl_setopt($ch, CURLOPT_SSLKEYPASSWD, 'naimes2015');
 			curl_setopt($ch, CURLOPT_URL, 'https://www.aidap.naimes.faa.gov/aidap/XmlNotamServlet?uid=aeroapps&password=Diode1234!&location_id=KCHD');
 			curl_setopt($ch, CURLOPT_POST, 1);
 			curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/x-www-form-urlencoded'));   
