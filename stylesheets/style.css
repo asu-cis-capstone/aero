@@ -231,6 +231,10 @@ ul#navbar{
 	font-size:			26px;
 }
 
+#options li{
+	width:				33.3%;
+}
+
 ul#options{
 	list-style:			none;
 	padding:			0;

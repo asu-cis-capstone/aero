@@ -67,6 +67,7 @@ Questions Page
     	<ul id="options">
     		<li><a href="uploadquestion.php">Add</a></li>
     		<li>Search</li>
+    		<li><a href="viewquestion.php">Start</a></li>
     	</ul>
     </div>
     <div id=list>
