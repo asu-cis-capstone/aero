@@ -67,15 +67,20 @@ Questions Page
     	<ul id="options">
     		<li><a href="uploadquestion.php">Add</a></li>
     		<li>Search</li>
-    		<li><a href="viewquestion.php">Start</a></li>
+    		<?php
+    		
+    		include('connect/local-connect.php');
+    		
+    		$minID = mysql_query("SELECT * FROM test_questions ORDER BY qID ASC LIMIT 1");
+    		$minIDrow = mysql_fetch_assoc($minID);
+    		
+    		echo "<li><form action='viewquestion.php' method='POST'><input type='hidden' name='tempViewID' value='".$minIDrow['qID']."'/><input type='submit' name='start-btn' value='Start' /></form><li>";
+    		
+    		?>
     	</ul>
     </div>
     <div id=list>
     	<?php
-
-			include('connect/local-connect.php');
-			
-
 			$query = mysql_query("SELECT * FROM test_questions ORDER BY qID asc") or die(mysql_error($dbc));
 			if(mysql_num_rows($query) > 0) {
 				if ($_SESSION['type'] == 'admin') 
