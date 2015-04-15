@@ -68,7 +68,7 @@ View Question Page for Aeroapps Technology
 		
 		<p id="title">View Question</p>
 		
-		<form id="questionform" action="#" method="POST" enctype="multipart/form-data">
+		
 		
 			<?php
 		
@@ -159,29 +159,37 @@ View Question Page for Aeroapps Technology
 			
 			
 			$currentid = $qID;
-			while ($questionRow)
-			{
-			$currentid=$row['qID'];
-			}
+			
+			
+			
 			
 			$resultPrev = mysql_query("select * from test_questions where qID < '$currentid'
 			LIMIT 1");
-			while($prevRow = mysqli_fetch_array($resultPrev))
+			while($prevRow = mysql_fetch_array($resultPrev))
 			{
-			$previd = $prevRow['qID'];
+				if ($prevRow['qText'] != '')
+				{
+					$previd = $prevRow['qID'];
+					echo $prevRow['qID'];
+				}
+				else
+				{
+					$previd = $currentid-1;
+					echo $prevRow['qID'];
+				}
 			}
 			
 			$resultNext = mysql_query("select * from test_questions where qID > '$currentid'
 			LIMIT 1");
-			while($nextRow = mysqli_fetch_array($resultNext))
+			while($nextRow = mysql_fetch_array($resultNext))
 			{
 			$nextid = $nextRow['qID'];
 			}
 			
-			echo '<p>Previous'.$previd.'</p>';
-			echo '<p>Next'.$nextid.'</p>';
+			echo "<form action='viewquestion.php' method='POST'><input type='hidden' name='tempViewID' value='".$previd."'/><input type='submit' name='next-btn' value='PREVIOUS' class='left' /></form>";
+			echo "<form action='viewquestion.php' method='POST'><input type='hidden' name='tempViewID' value='".$nextid."'/><input type='submit' name='next-btn' value='NEXT' class='right' /></form>";
 			
-			
+			echo '<form id="questionform" action="#" method="POST" enctype="multipart/form-data">';
 			echo '<p>Question #'.$qID.'</p>';
 			echo '<p>Test: '.$questionRow['test'].'</p>';
 			echo '<p>Subject: '.$faaRow['subj'].'</p>';
