@@ -163,19 +163,16 @@ View Question Page for Aeroapps Technology
 			
 			
 			
-			$resultPrev = mysql_query("select * from test_questions where qID < '$currentid'
-			LIMIT 1");
+			$resultPrev = mysql_query("select * from test_questions where qID = (select max(qID) from test_questions where qID < '$currentid')");
 			while($prevRow = mysql_fetch_array($resultPrev))
 			{
-				if ($prevRow['qText'] != '')
+				if ($currentid != mysql_query("select qID from test_questions where qID = min(qID)"))
 				{
 					$previd = $prevRow['qID'];
-					echo $prevRow['qID'];
 				}
 				else
 				{
-					$previd = $currentid-1;
-					echo $prevRow['qID'];
+					$currentid = mysql_query("select qID from test_questions where qID = max(qID)");
 				}
 			}
 			
