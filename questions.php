@@ -83,7 +83,7 @@ Questions Page
     	<?php
 			$query = mysql_query("SELECT * FROM test_questions ORDER BY qID asc") or die(mysql_error($dbc));
 			if(mysql_num_rows($query) > 0) {
-				if ($_SESSION['type'] != 'admin') 
+				if ($_SESSION['type'] == 'admin') 
 				{
 					echo "<table width='100%' cellspacing='6px' style='border: solid 1px black;'>";
 					echo "<tr><th width='10%'>ID</th><th>Question Text</th><th>View</th><th>Edit</th><th>Delete</th></tr>";
@@ -95,7 +95,7 @@ Questions Page
 						echo "<td style='outline: thin solid black'><form action='deletequestionprocess.php' method='POST' onSubmit=\"return confirm('Are you sure you want to delete?')\"><input type='hidden' name='tempDeleteID' value='".$row["qID"]."'/><input type='submit' name='delete-btn' value='Delete' /></form></td></tr>";
     				}
     			}
-    			if ($_SESSION['type'] != 'user')
+    			if ($_SESSION['type'] == 'user')
     			{
     				echo "<table width='100%' cellspacing='6px' style='border: solid 1px black;'>";
 					echo "<tr><th width='10%'>ID</th><th>Question Text</th><th>View</th></tr>";

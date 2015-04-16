@@ -188,7 +188,7 @@ View Question Page for Aeroapps Technology
 			
 			echo '<form id="questionform" action="#" method="POST" enctype="multipart/form-data">';
 			echo '<p>Question #'.$qID.'</p>';
-			
+			echo '<p>Test: '.$questionRow['test'].'</p>';
 			echo '<p>Subject: '.$faaRow['subj'].'</p>';
 			echo '<p>Topic: '.$faaRow['topic'].'</p>';
 			echo '<p>'.$questionRow['qText'].'</p>';
