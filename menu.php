@@ -43,7 +43,7 @@ else
 			<span class="left"><a href="menu.php"><img src="images/headerlogo.png" alt="Aeroapps Logo" /></a></span>
 			<?php
 			
-			if (isset($_SESSION["name"]))
+			if (!isset($_SESSION["admin"]))
 			{
 				echo '<span class="right">Welcome, ' . $_SESSION["name"] . '!</span><br />';
 			}
