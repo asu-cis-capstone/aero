@@ -183,12 +183,12 @@ View Question Page for Aeroapps Technology
 			$nextid = $nextRow['qID'];
 			}
 			
-			echo "<form action='viewquestion.php' method='POST'><input type='hidden' name='tempViewID' value='".$previd."'/><input type='submit' name='next-btn' value='PREVIOUS' class='left' /></form>";
+			echo "<form action='viewquestion.php' method='POST'><input type='hidden' name='tempViewID' value='".$previd."'/><input type='submit' name='next-btn' value='PREVIOUS' class='left'  /></form>";
 			echo "<form action='viewquestion.php' method='POST'><input type='hidden' name='tempViewID' value='".$nextid."'/><input type='submit' name='next-btn' value='NEXT' class='right' /></form>";
 			
 			echo '<form id="questionform" action="#" method="POST" enctype="multipart/form-data">';
 			echo '<p>Question #'.$qID.'</p>';
-			echo '<p>Test: '.$questionRow['test'].'</p>';
+			
 			echo '<p>Subject: '.$faaRow['subj'].'</p>';
 			echo '<p>Topic: '.$faaRow['topic'].'</p>';
 			echo '<p>'.$questionRow['qText'].'</p>';
