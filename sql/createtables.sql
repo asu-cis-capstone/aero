@@ -37,3 +37,22 @@ CREATE TABLE images
     PRIMARY KEY(img_id)
 );
 
+CREATE TABLE notam
+(
+	notam_id char(6) not null,
+	source_id char(1) not null,
+	account_id char(3) not null,
+	notam_part int(2) not null,
+	cns_location_id char(3) not null,
+	icao_id char(4) not null,
+	icao_name varchar(30) not null,
+	total_parts int(2) not null,
+	notam_effective_dtg int(12) not null,
+	notam_expire_dtg int(12) not null,
+	notam_delete_dtg int(12) not null,
+	notam_lastmod_dtg int(12) not null,
+	notam_text varchar(150) not null,
+	notam_report varchar(250) not null,
+	notam_qcode char(5) not null,
+	PRIMARY KEY(notam_id)
+);
