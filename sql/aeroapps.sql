@@ -1,4 +1,6 @@
--- MySQL dump 10.13  Distrib 5.6.19, for osx10.7 (i386)
+CREATE DATABASE  IF NOT EXISTS `aeroapps` /*!40100 DEFAULT CHARACTER SET latin1 */;
+USE `aeroapps`;
+-- MySQL dump 10.13  Distrib 5.6.17, for Win32 (x86)
 --
 -- Host: www.aeroappstechnology.com    Database: aeroapps
 -- ------------------------------------------------------
@@ -53,7 +55,7 @@ CREATE TABLE `images` (
   `name` varchar(50) DEFAULT NULL,
   `image` mediumblob,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -63,6 +65,42 @@ CREATE TABLE `images` (
 LOCK TABLES `images` WRITE;
 /*!40000 ALTER TABLE `images` DISABLE KEYS */;
 /*!40000 ALTER TABLE `images` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `notam`
+--
+
+DROP TABLE IF EXISTS `notam`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `notam` (
+  `notam_id` char(6) NOT NULL,
+  `source_id` char(1) NOT NULL,
+  `account_id` char(3) NOT NULL,
+  `notam_part` int(2) NOT NULL,
+  `cns_location_id` char(3) NOT NULL,
+  `icao_id` char(4) NOT NULL,
+  `icao_name` varchar(30) NOT NULL,
+  `total_parts` int(2) NOT NULL,
+  `notam_effective_dtg` int(12) NOT NULL,
+  `notam_expire_dtg` int(12) NOT NULL,
+  `notam_delete_dtg` int(12) NOT NULL,
+  `notam_lastmod_dtg` int(12) NOT NULL,
+  `notam_text` varchar(150) NOT NULL,
+  `notam_report` varchar(250) NOT NULL,
+  `notam_qcode` char(5) NOT NULL,
+  PRIMARY KEY (`notam_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `notam`
+--
+
+LOCK TABLES `notam` WRITE;
+/*!40000 ALTER TABLE `notam` DISABLE KEYS */;
+/*!40000 ALTER TABLE `notam` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -156,7 +194,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES ('admin','ethanselin','pass123');
+INSERT INTO `users` VALUES ('admin','ethanselin','pass123'),('admin','josearballo','pass123'),('user','usertest1','userpass'),('admin','athollin','pass123');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -169,4 +207,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-03-31 20:59:23
+-- Dump completed on 2015-04-16 11:05:03
