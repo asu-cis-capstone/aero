@@ -428,7 +428,7 @@ Edit Question Page for Aeroapps Technology
 		}
 		
 		$editor 	= $_SESSION['name'];
-		$now 		= time();
+		$now 		= time()
 		date_default_timezone_set('MST');
 		$timestamp 	= date('Y-m-d H:i:s', $now);
 			
