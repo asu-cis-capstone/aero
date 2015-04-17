@@ -209,7 +209,7 @@ Edit Question Page for Aeroapps Technology
 		
 		// Values from HTML
 		$test 			= $_POST['test'];
-		$newqID 		= $_POST['qID'];
+		$newqID 		= $_POST['newqID'];
 		$qText			= mysql_real_escape_string($_POST['qText']);
 		$aText			= mysql_real_escape_string($_POST['aText']);
 		$bText			= mysql_real_escape_string($_POST['bText']);
