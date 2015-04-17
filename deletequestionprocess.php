@@ -5,7 +5,7 @@
 	include('connect/local-connect.php');
 	
 	// PHP variables for the HTML elements
-	$qID = $_POST['tempDeleteID'];
+	$ID = $_POST['tempDeleteID'];
 	
 	// Build the delete question query
 	$query 		= "DELETE FROM test_questions WHERE qID = '$qID'";
