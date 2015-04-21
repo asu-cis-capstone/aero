@@ -99,8 +99,18 @@ Weather Page
 			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); 
 			$result = curl_exec($ch);
 		
-			echo $result;
-		}
+			
+			
+			$xml = simplexml_load_string($result);
+			if ($xml === false) {
+    			echo "Failed loading XML: ";
+    			foreach(libxml_get_errors() as $error) {
+        		echo "<br>", $error->message;
+    		}
+			} else {
+    			print_r($xml);
+			}
+			}
 		
 		
 		
