@@ -108,11 +108,11 @@ Weather Page
         		echo "<br>", $error->message;
     			}
 			} 
-				else 
-				{
-					echo $xml->usns-lastmod-dtg . "<br>";
+			else 
+			{
+				echo $xml->usns-lastmod-dtg . "<br>";
 					
-				}
+			}
 		}
 		
 		
