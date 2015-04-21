@@ -68,9 +68,8 @@ Edit Question Page for Aeroapps Technology
 		
 		<?php
 		$qID = $_POST['tempEditID'];
-		$oldqID = $qID;
 		
-		echo '<form id="questionform" action="editquestion.php" method="POST" enctype="multipart/form-data">
+		echo '<form id="questionform" action="#" method="POST" enctype="multipart/form-data">
 			<h2>Enter Question Information Below</h2>';
 			
 			
@@ -133,7 +132,8 @@ Edit Question Page for Aeroapps Technology
 			echo $questionRow["edit_time"];
 			echo '<br><br>';
 			
-			echo '<label for="test">Test</label> <input type="text" name="test" required title="Please enter a Test for the Question" autofocus value="'.$questionRow["test"].'" /><br />
+			echo '<label for="oldqID"></label><input type="hidden" name="oldqID" value="'.$questionRow["qID"].'"></input>
+			<label for="test">Test</label> <input type="text" name="test" required title="Please enter a Test for the Question" autofocus value="'.$questionRow["test"].'" /><br />
 			<label for="newqID">Question ID</label> <input type="text" name="newqID" required title="Please enter an ID for the Question" value="'.$questionRow["qID"].'" /><br /> 
  			<label for="qText">Question Text:</label>
 			<textarea name="qText" rows="5" cols="30" required />'.$questionRow["qText"].'</textarea><br />
@@ -208,6 +208,7 @@ Edit Question Page for Aeroapps Technology
 		</center>';
 		
 		// Values from HTML
+		$oldqID			= $_POST['oldqID'];
 		$test 			= $_POST['test'];
 		$newqID 		= $_POST['newqID'];
 		$qText			= mysql_real_escape_string($_POST['qText']);
@@ -233,13 +234,13 @@ Edit Question Page for Aeroapps Technology
 		}
 		else
 		{
-			if (!$query = mysql_query("UPDATE test_questions SET qID = '$newqID', qText = '$qText', editor = '$editor', edit_time = '$timestamp' WHERE qID = '3997'")) 
+			if (!$query = mysql_query("UPDATE test_questions SET qID = '$newqID', qText = '$qText', editor = '$editor', edit_time = '$timestamp' WHERE qID = '$oldqID'")) 
 			{
 				echo "There was a problem uploading question information.";
 			}
 			else {
-				mysql_query("UPDATE test_answers SET answer = '$answer', aText = '$aText', bText = '$bText', cText = '$cText', qID = '$newqID', exp = '$exp', expImgID1 = '$expImgID1', expImgID2 = '$expImgID2', expImgID3 = '$expImgID3', expImgID4 = '$expImgID4', expImgID5 = '$expImgID5', editor = '$editor', edit_time = '$timestamp' WHERE qID = '3997'");
-				echo "Question information uploaded!";
+				mysql_query("UPDATE test_answers SET answer = '$answer', aText = '$aText', bText = '$bText', cText = '$cText', qID = '$newqID', exp = '$exp', expImgID1 = '$expImgID1', expImgID2 = '$expImgID2', expImgID3 = '$expImgID3', expImgID4 = '$expImgID4', expImgID5 = '$expImgID5', editor = '$editor', edit_time = '$timestamp' WHERE qID = '$oldqID'");
+				echo 'Edit Success!';
 			}
 		}
 	
