@@ -106,11 +106,14 @@ Weather Page
     			echo "Failed loading XML: ";
     			foreach(libxml_get_errors() as $error) {
         		echo "<br>", $error->message;
-    		}
-			} else {
-    			print_r($xml);
-			}
-			}
+    			}
+			} 
+				else 
+				{
+					echo $xml->usns-lastmod-dtg . "<br>";
+					
+				}
+		}
 		
 		
 		
