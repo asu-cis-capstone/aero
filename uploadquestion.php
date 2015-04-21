@@ -143,6 +143,7 @@ Edit Question Page for Aeroapps Technology
 		$refName		= mysql_real_escape_string($_POST['refName']);
 		$refPincite 	= mysql_real_escape_string($_POST['refPincite']);
 	
+	
 		// Initialize reference variables for questions tied to images. This is done to prevent multiple image uploads to db
 		$qImgID1 = null;
 		$qImgID2 = null;
