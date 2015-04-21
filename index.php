@@ -10,12 +10,16 @@ Aeroapps Admin Portal Login Page
 	session_start("logged");
 	
 	// Check to see if user is logged in
-	/*if (isset($_SESSION["name"]))
+	if($_SESSION['type'] == 'admin' || $_SESSION['type'] == 'user')
 	{
-		header('Location: menu.php');
-		exit;
+		header("Location: menu.php");
+		die();
 	}
-	*/
+	else
+	{
+		echo '';
+	}	
+	
 ?>
 
 <html lang ="en">
