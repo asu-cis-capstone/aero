@@ -95,7 +95,7 @@ Top Comment
 				else
 				{
 					$lastid = mysql_insert_id();
-					echo "Image uploaded.<p />Your image:<p /><img src=get.php?id=$id>";
+					echo "Image uploaded.<p />Your image:<p /><img src=get.php?id=$lastid>";
 				}
 			}
 		}

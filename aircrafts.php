@@ -64,7 +64,7 @@ Aircrafts Page
     </div>
 	<div id="title">Aircrafts</div>
 	<div id="selection">
-    	<ul id="options">
+    	<ul id="options2">
     		<li><a href="upload.html">Add</a></li>
     		<li>Search</li>
     	</ul>
