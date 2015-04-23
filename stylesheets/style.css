@@ -126,9 +126,22 @@ label {
 	padding-left:		8%;
 }
 
+#s {
+    display: none;
+}
+
+#options li label{
+	font-size:			18px;
+	float:				right;
+}
+
 #questionform textarea{
 	margin-right:		3%;
 	width:				81%;
+}
+
+#options{
+	display:			inline;
 }
 
 select {

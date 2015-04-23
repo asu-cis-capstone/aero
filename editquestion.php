@@ -31,8 +31,13 @@ Edit Question Page for Aeroapps Technology
     <!-- Link tag for CSS -->
 	<link type="text/css" rel="stylesheet" href="stylesheets/style.css" />
 	
+
 	<!-- JavaScript Tags -->
 	<script type="text/javascript" src="javascript/loadNavbar.js"></script>
+
+	<!-- Script tag-->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js" type="text/javascript"></script>
+
 
     <!-- Web Page Title -->
     <title>Edit Question</title>
@@ -139,7 +144,40 @@ Edit Question Page for Aeroapps Technology
 			<label for="newqID">Question ID</label> <input type="text" name="newqID" required title="Please enter an ID for the Question" value="'.$questionRow["qID"].'" /><br /> 
  			<label for="qText">Question Text:</label>
 			<textarea name="qText" rows="5" cols="30" required />'.$questionRow["qText"].'</textarea><br />
-  			<label for="qImg1">Question Image 1:</label> <input type="file" name="qImg1">
+  			<label for="qImg1">Question Image 1:</label>'
+  			?>
+     		 
+     		<script>
+            $(document).ready(function() {
+            $("input:radio").click(function() {
+            $('.searchSelect').hide();
+            $('#' + $(this).attr("value")).show();
+            });
+            });
+        	</script>
+
+       		<ul id="options"> 
+            	<li> 
+                	<label for="upload"> 
+                    	<input name="store" id="upload" type="radio" value="u" checked="checked" /> 
+                	    Upload Images
+                	</label> 
+           		</li> 
+            	<li> 
+                	<label for="select"> 
+                    	<input name="store" id="select" type="radio" value="s"/> 
+                    	Select Existing Images
+                    </label> 
+            	</li> 
+        	</ul>  
+       		<input type="file" name="search-alias-us" id="u" class="searchSelect"> 
+        	<select name="options-select" id="s" class="searchSelect" title="Search"> 
+            	<option value="aps" selected="selected">Select Existing</option> 
+            	<option value="stripbooks">PHP</option> 
+            </select>
+            <br />
+  			<?php
+  			echo '
   			<label for="qImg2">Question Image 2:</label> <input type="file" name="qImg2">
   			<label for="qImg3">Question Image 3:</label> <input type="file" name="qImg3">
   			<label for="qImg4">Question Image 4:</label> <input type="file" name="qImg4">
