@@ -76,7 +76,7 @@ Explanations Page
 				if ($_SESSION['type'] == 'admin') 
 				{
 					echo "<table width='100%' cellspacing='6px' style='border: solid 1px black;'>";
-					echo "<tr><th width='10%'>Question ID</th><th>Explanation Text</th><th>View</th><th>Edit</th></tr>";
+					echo "<tr><th width='10%'>Q ID</th><th>Explanation Text</th><th>View</th><th>Edit</th></tr>";
     				while($row = mysql_fetch_array($query)) {
     					if ($row['exp'] != '') {
     						echo "<tr>";
@@ -91,11 +91,15 @@ Explanations Page
     			if ($_SESSION['type'] == 'user')
     			{
     				echo "<table width='100%' cellspacing='6px' style='border: solid 1px black;'>";
-					echo "<tr><th width='10%'>ID</th><th>Question Text</th><th>View</th></tr>";
+					echo "<tr><th width='10%'>Q ID</th><th>Explanation Text</th><th>View</th></tr>";
     				while($row = mysql_fetch_array($query)) {
-        				echo "<tr><td style='outline: thin solid black'>".$row['qID']."</td>";
-        				echo "<td style='outline: thin solid black'>".$row['qText']."</td>";
-        				echo "<td style='outline: thin solid black'><form action='viewquestion.php' method='POST'><input type='hidden' name='tempViewID' value='".$row["qID"]."'/><input type='submit' name='view-btn' value='View' /></form></td>";
+        				if ($row['exp'] != '') {
+    						echo "<tr>";
+        					echo "<td style='outline: thin solid black'>".$row['qID']."</td>";
+        					echo "<td style='outline: thin solid black'>".$row['exp']."</td>";
+        					echo "<td style='outline: thin solid black'><form action='viewquestion.php' method='POST'><input type='hidden' name='tempViewID' value='".$row["qID"]."'/><input type='submit' name='view-btn' value='View' /></form></td>";
+							echo "</tr>";
+    					}
     				}
     			}	
 			}

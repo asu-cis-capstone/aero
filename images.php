@@ -70,20 +70,34 @@ Images Page
     </div>
     <div id=list>
     	<?php
-			echo "<table width='100%' cellspacing='6px' style='border: solid 1px black;'>";
-			echo "<tr><th width='10%'>ID</th><th>Image Name</th><th width='40%'>Image</th><th>Edit</th><th>Delete</th></tr>";
-
 			include('connect/local-connect.php');
 
 			$query = mysql_query("SELECT id, name, image FROM images") or die(mysql_error($dbc));
 			if(mysql_num_rows($query) > 0) {
-    			while($row = mysql_fetch_array($query)) {
-        			echo "<tr><td style='outline: thin solid black'>".$row['id']."</td>";
-        			echo "<td style='outline: thin solid black'>".$row['name']."</td>";
-        			echo "<td style='outline: thin solid black'><img src=get.php?id=".$row['id']." width='400px'></td>";
-					echo "<td style='outline: thin solid black'><form action='editimage.php' method='POST'><input type='hidden' name='tempEditID' value='".$row["qID"]."'/><input type='submit' name='edit-btn' value='Edit' /></form></td>";
-					echo "<td style='outline: thin solid black'><form action='deleteimageprocess.php' method='POST' onSubmit=\"return confirm('Are you sure you want to delete?')\"><input type='hidden' name='tempDeleteID' value='".$row["id"]."'/><input type='submit' name='delete-btn' value='Delete' /></form></td></tr>";
-    			}
+				if ($_SESSION['type'] == 'admin') {
+					echo "<table width='100%' cellspacing='6px' style='border: solid 1px black;'>";
+					echo "<tr><th width='10%'>ID</th><th>Image Name</th><th width='40%'>Image</th><th>Delete</th></tr>";
+					while($row = mysql_fetch_array($query)) {
+        				echo "<tr>";
+        				echo "<td style='outline: thin solid black'>".$row['id']."</td>";
+        				echo "<td style='outline: thin solid black'>".$row['name']."</td>";
+        				echo "<td style='outline: thin solid black'><img src=get.php?id=".$row['id']." width='400px'></td>";
+						echo "<td style='outline: thin solid black'><form action='deleteimageprocess.php' method='POST' onSubmit=\"return confirm('Are you sure you want to delete?')\"><input type='hidden' name='tempDeleteID' value='".$row["id"]."'/><input type='submit' name='delete-btn' value='Delete' /></form></td>";  
+						echo "</tr>";
+    				}
+				}
+				if ($_SESSION['type'] == 'user') {
+					echo "<table width='100%' cellspacing='6px' style='border: solid 1px black;'>";
+					echo "<tr><th width='10%'>ID</th><th>Image Name</th><th width='40%'>Image</th></tr>";
+					while($row = mysql_fetch_array($query)) {
+        				echo "<tr>";
+        				echo "<td style='outline: thin solid black'>".$row['id']."</td>";
+        				echo "<td style='outline: thin solid black'>".$row['name']."</td>";
+        				echo "<td style='outline: thin solid black'><img src=get.php?id=".$row['id']." width='400px'></td>";
+						echo "</tr>";
+					}
+				}
+    			
 			}
 			
 			echo "</table>";

@@ -10,12 +10,15 @@ Edit Question Page for Aeroapps Technology
 	session_start("logged");
 	
 	// Check to see if user is NOT logged in to prevent unauthorized access
-	/*if (!isset($_SESSION["admin"]))
+	if($_SESSION['type'] == 'admin')
 	{
-		header('Location: index.php');
-		exit;
+		echo '';
 	}
-	*/
+	else
+	{
+		header("Location: index.php");
+		die();
+	}
 ?>
 
 <html lang ="en">
