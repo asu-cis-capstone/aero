@@ -81,6 +81,9 @@ Questions Page
     </div>
     <div id=list>
     	<?php
+    		// This helps display special characters displayed on the web page
+    		mysql_set_charset('utf8');
+    		
 			$query = mysql_query("SELECT * FROM test_questions ORDER BY qID asc") or die(mysql_error($dbc));
 			if(mysql_num_rows($query) > 0) {
 				if ($_SESSION['type'] == 'admin') 

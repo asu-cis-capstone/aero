@@ -78,7 +78,8 @@ Edit Question Page for Aeroapps Technology
 			// Set up db connection
 			include('connect/local-connect.php');
 	
-			// PHP variables for the HTML elements
+			// This helps display special characters displayed on the web page
+			mysql_set_charset('utf8');
 			
 	
 			// Build the edit question query

@@ -74,6 +74,9 @@ View Question Page for Aeroapps Technology
 		
 			// Set up db connection
 			include('connect/local-connect.php');
+			
+			// This helps display special characters displayed on the web page
+			mysql_set_charset('utf8');
 	
 			// PHP variables for the HTML elements
 			$qID = $_POST['tempViewID'];
