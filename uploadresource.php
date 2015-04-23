@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <!--
-Top Comment
+Upload Resource Page for Aeroapps Technology
 -->
 
 <?php
@@ -9,6 +9,7 @@ Top Comment
 	session_name("logged");
 	session_start("logged");
 	
+	// Check to see if user is NOT logged in to prevent unauthorized access
 	if($_SESSION['type'] == 'admin')
 	{
 		echo '';

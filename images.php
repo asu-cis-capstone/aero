@@ -11,12 +11,15 @@ Images Page
 	
 	
 	// Check to see if user is NOT logged in
-	/*if (!isset($_SESSION["name"]))
+	if($_SESSION['type'] == 'admin' || $_SESSION['type'] == 'user')
 	{
-		header('Location: questions.php');
-		exit;
+		echo '';
 	}
-	*/
+	else
+	{
+		header("Location: index.php");
+		die();
+	}
 ?>
 
 <html lang ="en">

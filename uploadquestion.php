@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <!--
-Edit Question Page for Aeroapps Technology
+Upload Question Page for Aeroapps Technology
 -->
 
 <?php
@@ -35,7 +35,7 @@ Edit Question Page for Aeroapps Technology
 	<script type="text/javascript" src="javascript/loadNavbar.js"></script>
 
     <!-- Web Page Title -->
-    <title></title>
+    <title>Upload Question</title>
 
   </head>
 
