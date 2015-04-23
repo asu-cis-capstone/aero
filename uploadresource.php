@@ -82,7 +82,7 @@ Upload Resource Page for Aeroapps Technology
 		$file = $_FILES['image']['tmp_name'];
 		
 		if (!isset($file)) 
-			echo "Please select an image.";
+			echo "Please select an resource document.";
 		else {
 			$image = addslashes(file_get_contents($_FILES['image']['tmp_name']));
 			$image_name = addslashes($_FILES['image']['name']);
