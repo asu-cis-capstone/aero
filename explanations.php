@@ -27,6 +27,9 @@ Explanations Page
 
     <!-- Link tag for CSS -->
 	<link type="text/css" rel="stylesheet" href="stylesheets/style.css" />
+	
+	<!-- JavaScript Tags -->
+	<script type="text/javascript" src="javascript/loadNavbar.js"></script>
 
     <!-- Web Page Title -->
     <title>Explanations</title>
@@ -53,24 +56,52 @@ Explanations Page
 		</p>
 	</div>
 	<div id="navselection">
-    	<ul id="navbar">
-    		<li><a href="questions.php">Questions</a></li>
-    		<li><a href="images.php">Images</a></li>
-    		<li><a href="resources.php">Resources</a></li>
-      		<li><a href="explanations.php">Explanations</a></li>
-			<li><a href="aircrafts.php">Aircrafts</a></li>
-			<li><a href="aidap.php">AIDAP</a></li>
-    	</ul>
+    	<script>
+    		loadNavbar();
+    	</script>	
     </div>
 	<div id="title">Explanations</div>
 	<div id="selection">
     	<ul id="options2">
-    		<li><a href="editquestion.php">Add</a></li>
+    		<li><a href="uploadquestion.php">Add</a></li>
     		<li>Search</li>
     	</ul>
     </div>
     <div id=list>
-    	Under Construction
+    	<?php
+    		include ('connect/local-connect.php');	
+    			
+			$query = mysql_query("SELECT * FROM test_answers ORDER BY qID asc") or die(mysql_error($dbc));
+			if(mysql_num_rows($query) > 0) {
+				if ($_SESSION['type'] == 'admin') 
+				{
+					echo "<table width='100%' cellspacing='6px' style='border: solid 1px black;'>";
+					echo "<tr><th width='10%'>Question ID</th><th>Explanation Text</th><th>View</th><th>Edit</th></tr>";
+    				while($row = mysql_fetch_array($query)) {
+    					if ($row['exp'] != '') {
+    						echo "<tr>";
+        					echo "<td style='outline: thin solid black'>".$row['qID']."</td>";
+        					echo "<td style='outline: thin solid black'>".$row['exp']."</td>";
+        					echo "<td style='outline: thin solid black'><form action='viewquestion.php' method='POST'><input type='hidden' name='tempViewID' value='".$row["qID"]."'/><input type='submit' name='view-btn' value='View' /></form></td>";
+							echo "<td style='outline: thin solid black'><form action='editquestion.php' method='POST'><input type='hidden' name='tempEditID' value='".$row["qID"]."'/><input type='submit' name='edit-btn' value='Edit' /></form></td>";
+							echo "</tr>";
+    					}
+    				}
+    			}
+    			if ($_SESSION['type'] == 'user')
+    			{
+    				echo "<table width='100%' cellspacing='6px' style='border: solid 1px black;'>";
+					echo "<tr><th width='10%'>ID</th><th>Question Text</th><th>View</th></tr>";
+    				while($row = mysql_fetch_array($query)) {
+        				echo "<tr><td style='outline: thin solid black'>".$row['qID']."</td>";
+        				echo "<td style='outline: thin solid black'>".$row['qText']."</td>";
+        				echo "<td style='outline: thin solid black'><form action='viewquestion.php' method='POST'><input type='hidden' name='tempViewID' value='".$row["qID"]."'/><input type='submit' name='view-btn' value='View' /></form></td>";
+    				}
+    			}	
+			}
+			
+			echo "</table>";
+		?>
     </div>
     
     <div id ="footer">

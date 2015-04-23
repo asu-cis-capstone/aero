@@ -10,12 +10,16 @@ Questions Page
 	session_start("logged");
 	
 	// Check to see if user is NOT logged in to prevent unauthorized access
-	/*if (!isset($_SESSION["admin"]))
+	// Check to see if user is NOT logged in to prevent unauthorized access
+	if($_SESSION['type'] == 'admin' || $_SESSION['type'] == 'user')
 	{
-		header('Location: index.php');
-		exit;
+		echo '';
 	}
-	*/
+	else
+	{
+		header("Location: index.php");
+		die();
+	}	
 ?>
 
 <html lang ="en">
@@ -27,6 +31,9 @@ Questions Page
 
     <!-- Link tag for CSS -->
 	<link type="text/css" rel="stylesheet" href="stylesheets/style.css" />
+	
+	<!-- JavaScript Tags -->
+	<script type="text/javascript" src="javascript/loadNavbar.js"></script>
 
     <!-- Web Page Title -->
     <title>Questions</title>
@@ -53,20 +60,14 @@ Questions Page
 		</p>
 	</div>
 	<div id="navselection">
-    	<ul id="navbar">
-    		<li><a href="questions.php">Questions</a></li>
-    		<li><a href="images.php">Images</a></li>
-    		<li><a href="resources.php">Resources</a></li>
-      		<li><a href="explanations.php">Explanations</a></li>
-   			<li><a href="aircrafts.php">Aircrafts</a></li>
-   			<li><a href="aidap.php">AIDAP</a></li>
-    	</ul>
+    	<script>
+    		loadNavbar();
+    	</script>
     </div>
 	<div id="title">Questions</div>
 	<div id="selection">
-    	<ul id="options">
+    	<ul id="options2">
     		<li><a href="uploadquestion.php">Add</a></li>
-    		<li>Search</li>
     		<?php
     		
     		include('connect/local-connect.php');

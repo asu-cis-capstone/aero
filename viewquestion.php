@@ -27,6 +27,9 @@ View Question Page for Aeroapps Technology
 
     <!-- Link tag for CSS -->
 	<link type="text/css" rel="stylesheet" href="stylesheets/style.css" />
+	
+	<!-- JavaScript Tags -->
+	<script type="text/javascript" src="javascript/loadNavbar.js"></script>
 
     <!-- Web Page Title -->
     <title>View Question</title>
@@ -54,16 +57,11 @@ View Question Page for Aeroapps Technology
 		</p>
 	</div>
 	<div id="navselection">
-    	<ul id="navbar">
-    		<li><a href="questions.php">Questions</a></li>
-    		<li><a href="images.php">Images</a></li>
-    		<li><a href="resources.php">Resources</a></li>
-      		<li><a href="explanations.php">Explanations</a></li>
-			<li><a href="aircrafts.php">Aircrafts</a></li>
-			<li><a href="aidap.php">AIDAP</a></li>
-    	</ul>
+    	<script>
+    		loadNavbar();
+    	</script>
     </div>
-	<div id="main">
+	<div id="list">
 		<center>
 		
 		<p id="title">View Question</p>

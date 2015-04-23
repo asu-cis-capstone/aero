@@ -9,13 +9,15 @@ Top Comment
 	session_name("logged");
 	session_start("logged");
 	
-	// Check to see if user is NOT logged in to prevent unauthorized access
-	/*if (!isset($_SESSION["admin"]))
+	if($_SESSION['type'] == 'admin')
 	{
-		header('Location: index.php');
-		exit;
+		echo '';
 	}
-	*/
+	else
+	{
+		header("Location: index.php");
+		die();
+	}
 ?>
 
 <html lang ="en">
@@ -27,6 +29,9 @@ Top Comment
 
     <!-- Link tag for CSS -->
 	<link type="text/css" rel="stylesheet" href="stylesheets/style.css" />
+	
+	<!-- JavaScript Tags -->
+	<script type="text/javascript" src="javascript/loadNavbar.js"></script>
 
     <!-- Web Page Title -->
     <title>Upload Resource</title>
@@ -53,17 +58,12 @@ Top Comment
 		</p>
 	</div>
 	<div id="navselection">
-    	<ul id="navbar">
-    		<li><a href="questions.php">Questions</a></li>
-    		<li><a href="images.php">Images</a></li>
-    		<li><a href="resources.php">Resources</a></li>
-      		<li><a href="explanations.php">Explanations</a></li>	
-      		<li><a href="aircrafts.php">Aircrafts</a></li>
-      		<li><a href="aidap.php">AIDAP</a></li>
-    	</ul>
+    	<script>
+    		loadNavbar();
+    	</script>	
     </div>
-	<div id="main">
-		<p id="title">Upload Image</p>
+	<div id="list">
+		<p id="title">Upload Resource</p>
 		
 		<form id="uploadform" action="uploadimage.php" method="POST" enctype="multipart/form-data">
 			File:

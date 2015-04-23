@@ -17,10 +17,10 @@ body {
 }
 
 #main {
-	border-radius: 15px;
+	display:inline-block;
 	height: auto;
 	margin: auto;
-	margin-top: 75px;
+	margin-top: 50px;
 	font-size: 125%;
 	text-align: center;
 	
@@ -35,7 +35,7 @@ body {
 	list-style: none;
 	padding: 0;
 	border: 2px solid #d3d3d3;
-        border-radius: 100px;
+        border-radius: 14px;
 }
 
 #header {
