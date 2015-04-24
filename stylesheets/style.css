@@ -130,7 +130,7 @@ label {
     display: none;
 }
 
-#options li label{
+.radiobtn li label{
 	font-size:			18px;
 	float:				right;
 }
@@ -140,7 +140,7 @@ label {
 	width:				81%;
 }
 
-#options{
+.radiobtn{
 	display:			inline;
 }
 
