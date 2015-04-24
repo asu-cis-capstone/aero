@@ -130,7 +130,10 @@ Edit Question Page for Aeroapps Technology
 			$imageResult5	= mysql_query($imageQuery5) or die('Image 5 read error!');
 			$imageRow5		= mysql_fetch_array($imageResult5);
 			
-			
+			// Query all images without an ID constraint. 
+			// This will be used to generate the drop down list for all images in the database when selecting which image to be paired with a question. 
+			$allImageQuery 	= "SELECT * FROM images";
+			$allImageResult = mysql_query($allImageQuery) or die ('Image table read error!');
 			
 			echo '<label for="editor">Last Edited By:</label>';
 			echo $questionRow['editor'];
@@ -143,10 +146,10 @@ Edit Question Page for Aeroapps Technology
 			<label for="test">Test</label> <input type="text" name="test" formvalidate title="Please enter a Test for the Question" autofocus value="'.$questionRow["test"].'" /><br />
 			<label for="newqID">Question ID</label> <input type="text" name="newqID" required title="Please enter an ID for the Question" value="'.$questionRow["qID"].'" /><br /> 
  			<label for="qText">Question Text:</label>
-			<textarea name="qText" rows="5" cols="30" required />'.$questionRow["qText"].'</textarea><br />
-  			<label for="qImg1">Question Image 1:</label>'
-  			?>
-     		 
+			<textarea name="qText" rows="5" cols="30" required />'.$questionRow["qText"].'</textarea><br />';
+			?>
+			
+  			<label for="qImg1">Question Image 1:</label> 
      		<script>
             $(document).ready(function() {
             $("input:radio").click(function() {
@@ -170,19 +173,72 @@ Edit Question Page for Aeroapps Technology
                     </label> 
             	</li> 
         	</ul>  
-       		<input type="file" name="search-alias-us" id="u" class="searchSelect"> 
-        	<select name="options-select" id="s" class="searchSelect" title="Search"> 
-            	<option value="aps" selected="selected">Select Existing</option> 
-            	<option value="stripbooks">PHP</option> 
-            </select>
+       		<input type="file" name="search-alias-us" id="u" class="searchSelect">
+       		<?php 
+				echo '<SELECT name="qImg1" class="searchSelect" id="s">';
+				if ($questionRow["qImgID1"] != '' && $questionRow["qImgID1"] != '0')
+				{
+					echo '<OPTION selected value="'.$questionRow["qImgID1"].'">'.$questionRow["qImgID1"].' - '.$imageRow1["name"].'</OPTION>';
+					while($allImageRow = mysql_fetch_array($allImageResult))
+					{
+						echo '<OPTION value="'.$allImageRow['id'].'">'.$allImageRow['id'].' - '.$allImageRow['name'].'</OPTION>';
+					}
+				}
+				else
+				{
+					echo '<option selected value="0">Please Select an Image</option>';
+					while($allImageRow = mysql_fetch_array($allImageResult))
+					{
+						echo '<OPTION value="'.$allImageRow['id'].'">'.$allImageRow['id'].'</OPTION>';
+					}
+				}
+				echo '</SELECT><br />';
+            ?>
             <br />
-  			<?php
-  			echo '
   			<label for="qImg2">Question Image 2:</label> <input type="file" name="qImg2">
+  			<ul id="options"> 
+            	<li> 
+                	<label for="upload2"> 
+                    	<input name="store2" id="upload2" type="radio" value="u2" checked="checked" /> 
+                	    Upload Images
+                	</label> 
+           		</li> 
+            	<li> 
+                	<label for="select2"> 
+                    	<input name="store2" id="select2" type="radio" value="s2"/> 
+                    	Select Existing Images
+                    </label> 
+            	</li> 
+        	</ul>  
+       		<input type="file" name="search-alias-us2" id="u2" class="searchSelect">
+       		<?php 
+				echo '<SELECT name="qImg2" class="searchSelect" id="s2">';
+				if ($questionRow["qImgID2"] != '' && $questionRow["qImgID2"] != '0')
+				{
+					echo '<OPTION selected value="'.$questionRow["qImgID2"].'">'.$questionRow["qImgID2"].' - '.$imageRow2["name"].'</OPTION>';
+					while($allImageRow = mysql_fetch_array($allImageResult))
+					{
+						echo '<OPTION value="'.$allImageRow['id'].'">'.$allImageRow['id'].' - '.$allImageRow['name'].'</OPTION>';
+					}
+				}
+				else
+				{
+					echo '<option selected value="0">Please Select an Image</option>';
+					while($allImageRow = mysql_fetch_array($allImageResult))
+					{
+						echo '<OPTION value="'.$allImageRow['id'].'">'.$allImageRow['id'].'</OPTION>';
+					}
+				}
+				echo '</SELECT><br />';
+            ?>
   			<label for="qImg3">Question Image 3:</label> <input type="file" name="qImg3">
+  			
   			<label for="qImg4">Question Image 4:</label> <input type="file" name="qImg4">
-  			<label for="qImg5">Question Image 5:</label> <input type="file" name="qImg5"><br />
-  			<label for="aText">Answer Choice A</label> <input type="text" name="aText" required value="'.$answerRow["aText"].'" /><br />
+  			<label for="qImg5">Question Image 5:</label> <input type="file" name="qImg5"><br />'
+  			
+  			
+  			<?php
+  			echo '<label for="aText">Answer Choice A</label> <input type="text" name="aText" required value="'.$answerRow["aText"].'" /><br />
   			<label for="bText">Answer Choice B</label> <input type="text" name="bText" required value="'.$answerRow["bText"].'" /><br />
   			<label for="cText">Answer Choice C</label> <input type="text" name="cText" required value="'.$answerRow["cText"].'" /><br />
   			<label for="answer">Correct Answer:</label>
