@@ -99,9 +99,27 @@ Weather Page
 			curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/x-www-form-urlencoded'));   
 			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); 
 			$result = curl_exec($ch);
+			
+			echo "<table width='100%' cellspacing='6px' style='border: solid 1px black;'>";
+			echo "<tr>";
+			echo "<th>source_id</th>";
+			echo "<th>notam_id</th>";
+			echo "<th>xovernotamid</th>";
+			echo "<th>notam_part</th>";
+			echo "<th>icao_name</th>";
+			echo "<th>total_parts</th>";
+			echo "<th>notam_effective_dtg</th>";
+			echo "<th>notam_expire_dtg</th>";
+			echo "<th>notam_lastmod_dtg</th>";
+			echo "<th>notam_text</th>";
+			echo "<th>notam_report</th>";
+			echo "<th>notam_qcode</th>";
+			echo "</tr>";
+			
+			//echo $result;
 		
 			
-			
+			/*
 			$xml = simplexml_load_string($result);
 			if ($xml === false) {
     			echo "Failed loading XML: ";
@@ -114,6 +132,38 @@ Weather Page
 				
     			print_r($xml);
 			}
+			*/
+			
+			
+			$doc = new SimpleXMLElement($result);
+			$valueList = $doc->xpath('/notam-query-result-set/notam-rec');
+			while(list(, $node) = each($valueList)) {
+    		$source_id = $node->xpath('source_id');
+    		echo $source_id[0] . PHP_EOL . "<br/>";
+    		$notam_id = $node->xpath('notam_id');
+    		echo $notam_id[0] . PHP_EOL . "<br/>";
+			$xovernotamid = $node->xpath('xovernotamid');
+    		echo $xovernotamid[0] . PHP_EOL . "<br/>";
+    		$notam_part = $node->xpath('notam_part');
+    		echo $notam_part[0] . PHP_EOL . "<br/>";
+    		$icao_name = $node->xpath('icao_name');
+    		echo $icao_name[0] . PHP_EOL . "<br/>";
+    		$total_parts = $node->xpath('total_parts');
+    		echo $total_parts[0] . PHP_EOL . "<br/>";
+    		$notam_effective_dtg = $node->xpath('notam_effective_dtg');
+    		echo $notam_effective_dtg[0] . PHP_EOL . "<br/>";
+    		$notam_expire_dtg = $node->xpath('notam_expire_dtg');
+    		echo $notam_expire_dtg[0] . PHP_EOL . "<br/>";
+    		$notam_lastmod_dtg = $node->xpath('notam_lastmod_dtg');
+    		echo $notam_lastmod_dtg[0] . PHP_EOL . "<br/>";
+    		$notam_text = $node->xpath('notam_text');
+    		echo $notam_text[0] . PHP_EOL . "<br/>";
+    		$notam_report = $node->xpath('notam_report');
+    		echo $notam_report[0] . PHP_EOL . "<br/>";
+    		$notam_qcode = $node->xpath('notam_qcode');
+    		echo $notam_qcode[0] . PHP_EOL . "<br/>";
+			}
+
 		}
 		
 		
