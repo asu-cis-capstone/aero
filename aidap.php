@@ -100,6 +100,7 @@ Weather Page
 			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); 
 			$result = curl_exec($ch);
 			
+			// Table headers to organize the AIDAP infromation.
 			echo "<table width='100%' cellspacing='6px' style='border: solid 1px black;'>";
 			echo "<tr>";
 			echo "<th>source_id</th>";
@@ -116,25 +117,30 @@ Weather Page
 			echo "<th>notam_qcode</th>";
 			echo "</tr>";
 			
-			//echo $result;
-		
-			
+			// This is the beginning of the table data that loops to organize AIDAP info
+			// It is currently commented out because it causes a blank page if ran in its current state
+			// Perhaps this looping table method does not need to be used since the xml parsing already loops
 			/*
-			$xml = simplexml_load_string($result);
-			if ($xml === false) {
-    			echo "Failed loading XML: ";
-    			foreach(libxml_get_errors() as $error) {
-        		echo "<br>", $error->message;
-    			}
-			} 
-			else 
+			while ()
 			{
-				
-    			print_r($xml);
+				echo '<tr>';
+				echo '<td>COLUMN ONE</td>';
+				echo '<td>COLUMN TWO</td>';
+				echo '</tr>';
 			}
 			*/
 			
+			//This ends the table. No need to modify this. Please do not remove.
+			echo '</table>';
+		
 			
+			
+			
+			// This creates a SimpleXML Element Object
+			// The "xpath" goes down one level on the tree
+			// Then echoes every element of <notam-rec> (A single NOTAM)
+			// NOTAM elements are stored into an array
+			// This code already loops if there are multiple NOTAMS for one airport location
 			$doc = new SimpleXMLElement($result);
 			$valueList = $doc->xpath('/notam-query-result-set/notam-rec');
 			while(list(, $node) = each($valueList)) {
