@@ -240,29 +240,29 @@ ul#navbar{
 	padding:			0;
 }
 
-#options{
+#option{
+	width:				100%;
+	font-size:			26px;
+}
+
+#option li{
+	width:				100%;
+}
+
+ul#option{
+	list-style:			none;
+	padding:			0;
+	
+}#options{
 	width:				100%;
 	font-size:			26px;
 }
 
 #options li{
-	width:				33.3%;
-}
-
-ul#options{
-	list-style:			none;
-	padding:			0;
-	
-}#options2{
-	width:				100%;
-	font-size:			26px;
-}
-
-#options2 li{
 	width:				50%;
 }
 
-ul#options2{
+ul#options{
 	list-style:			none;
 	padding:			0;
 }

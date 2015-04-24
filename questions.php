@@ -65,7 +65,7 @@ Questions Page
     </div>
 	<div id="title">Questions</div>
 	<div id="selection">
-    	<ul id="options2">
+    	<ul id="options">
     		<li><a href="uploadquestion.php">Add</a></li>
     		<?php
     		

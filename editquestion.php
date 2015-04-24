@@ -133,7 +133,15 @@ Edit Question Page for Aeroapps Technology
 			// Query all images without an ID constraint. 
 			// This will be used to generate the drop down list for all images in the database when selecting which image to be paired with a question. 
 			$allImageQuery 	= "SELECT * FROM images";
-			$allImageResult = mysql_query($allImageQuery) or die ('Image table read error!');
+			$allImageResult1	= mysql_query($allImageQuery) or die ('Image table read error!');
+			
+			$allImageResult2 	= mysql_query($allImageQuery) or die ('Image table read error!');
+
+			$allImageResult3 	= mysql_query($allImageQuery) or die ('Image table read error!');
+			
+			$allImageResult4 	= mysql_query($allImageQuery) or die ('Image table read error!');
+			
+			$allImageResult5	= mysql_query($allImageQuery) or die ('Image table read error!');
 			
 			echo '<label for="editor">Last Edited By:</label>';
 			echo $questionRow['editor'];
@@ -149,48 +157,170 @@ Edit Question Page for Aeroapps Technology
 			<textarea name="qText" rows="5" cols="30" required />'.$questionRow["qText"].'</textarea><br />';
 			?>
 			<script>
-			$("[name=select]").change(function(){
-  $("#list").toggle($("[name=select]").index(this)===2);
-});
-$("[name=select2]").change(function(){
-  $("#list2").toggle($("[name=select2]").index(this)===2);
-});
+			$(function() {
+    		$("[name=toggler]").click(function(){
+            $('.toHide').hide();
+            $("#1-"+$(this).val()).show();
+   	 		});
+ 			});
 			</script>
 			
-  			<label for="qImg1">Question Image 1:</label> 
-     		<div id='buttons'>
-  <label><input type="radio" name="select" /> Option 1 </label>
-  <label><input type="radio" name="select" /> Option 2</label>
-  <label><input type="radio" name="select" /> Option 3</label>
-</div>
-<div id="list" style="display: none;">
-  <label>Please Select From the List: 
-    <select>
-      <option>True</option>
-      <option>False</option>
-    </select>
-  </label>
-</div>
-<div id='buttons'>
-  <label><input type="radio" name="select2" /> Option 1 </label>
-  <label><input type="radio" name="select2" /> Option 2</label>
-  <label><input type="radio" name="select2" /> Option 3</label>
-</div>
-<div id="list2" style="display: none;">
-  <label>Please Select From the List: 
-    <select>
-      <option>True</option>
-      <option>False</option>
-    </select>
-  </label>
-</div>
+  			<label for="qImg1">Question Image 1:</label> <br />
+     		
+
+			<div id="1-1" class="toHide" style="display:none; float:right">
+    			<input type="file" name="qImg1">
+			</div>
+			<div id="1-2" class="toHide" style="display:none; float:right">
+    			<?php
+    				echo '<SELECT name="qImgID1">';
+					if ($questionRow["qImgID1"] != '' && $questionRow["qImgID1"] != '0')
+						{
+							echo '<OPTION selected value="'.$questionRow["qImgID1"].'">'.$questionRow["qImgID1"].' - '.$imageRow1["name"].'</OPTION>';
+							while($allImageRow = mysql_fetch_array($allImageResult1))
+							{
+								echo '<OPTION value="'.$allImageRow['id'].'">'.$allImageRow['id'].' - '.$allImageRow['name'].'</OPTION>';
+							}
+						}
+					else
+					{
+						echo '<option selected value="0">Please Select an Image</option>';
+						while($allImageRow = mysql_fetch_array($allImageResult1))
+						{
+							echo '<OPTION value="'.$allImageRow['id'].'">'.$allImageRow['id'].'</OPTION>';
+						}
+					}
+					echo '</SELECT><br />';
+    			?>
+			</div>
+			
+			<label><input id="rdb1" type="radio" name="toggler" value="1"  />Upload</input></label><br />
+			<label><input id="rdb2" type="radio" name="toggler" value="2" />Select</input></label><br />
+		
+			<label for="qImg1">Question Image 2:</label> <br />
+			
+			<script>
+			$(function() {
+    		$("[name=toggler2]").click(function(){
+            $('.toHide2').hide();
+            $("#2-"+$(this).val()).show();
+   	 		});
+ 			});
+			</script>
+			
+			<div id="2-1" class="toHide2" style="display:none; float:right">
+    			<input type="file" name="qImg2">
+			</div>
+			<div id="2-2" class="toHide2" style="display:none; float:right">
+    			<?php
+    				echo '<SELECT name="qImgID2">';
+					if ($questionRow["qImgID2"] != '' && $questionRow["qImgID2"] != '0')
+						{
+							echo '<OPTION selected value="'.$questionRow["qImgID2"].'">'.$questionRow["qImgID2"].' - '.$imageRow2["name"].'</OPTION>';
+							while($allImageRow = mysql_fetch_array($allImageResult2))
+							{
+								echo '<OPTION value="'.$allImageRow['id'].'">'.$allImageRow['id'].' - '.$allImageRow['name'].'</OPTION>';
+							}
+						}
+					else
+					{
+						echo '<option selected value="0">Please Select an Image</option>';
+						while($allImageRow = mysql_fetch_array($allImageResult2))
+						{
+							echo '<OPTION value="'.$allImageRow['id'].'">'.$allImageRow['id'].'</OPTION>';
+						}
+					}
+					echo '</SELECT><br />';
+    			?>
+			</div>
+			
+			<label><input id="rdb1" type="radio" name="toggler2" value="1"  />Upload</input></label><br />
+			<label><input id="rdb2" type="radio" name="toggler2" value="2" />Select</input></label><br />
+
 
 
             
-  			<label for="qImg3">Question Image 3:</label> <input type="file" name="qImg3">
+  			<label for="qImg3">Question Image 3:</label> <br / >
   			
-  			<label for="qImg4">Question Image 4:</label> <input type="file" name="qImg4">
-  			<label for="qImg5">Question Image 5:</label> <input type="file" name="qImg5"><br />'
+  			<script>
+			$(function() {
+    		$("[name=toggler3]").click(function(){
+            $('.toHide3').hide();
+            $("#3-"+$(this).val()).show();
+   	 		});
+ 			});
+			</script>
+			
+			<div id="3-1" class="toHide3" style="display:none; float:right">
+    			<input type="file" name="qImg3">
+			</div>
+			<div id="3-2" class="toHide3" style="display:none; float:right">
+    			<?php
+    				echo '<SELECT name="qImgID3">';
+					if ($questionRow["qImgID3"] != '' && $questionRow["qImgID3"] != '0')
+						{
+							echo '<OPTION selected value="'.$questionRow["qImgID3"].'">'.$questionRow["qImgID3"].' - '.$imageRow3["name"].'</OPTION>';
+							while($allImageRow = mysql_fetch_array($allImageResult3))
+							{
+								echo '<OPTION value="'.$allImageRow['id'].'">'.$allImageRow['id'].' - '.$allImageRow['name'].'</OPTION>';
+							}
+						}
+					else
+					{
+						echo '<option selected value="0">Please Select an Image</option>';
+						while($allImageRow = mysql_fetch_array($allImageResult3))
+						{
+							echo '<OPTION value="'.$allImageRow['id'].'">'.$allImageRow['id'].'</OPTION>';
+						}
+					}
+					echo '</SELECT><br />';
+    			?>
+			</div>
+			
+			<label><input id="rdb1" type="radio" name="toggler3" value="1"  />Upload</input></label><br />
+			<label><input id="rdb2" type="radio" name="toggler3" value="2" />Select</input></label><br />
+  			
+  			<label for="qImg4">Question Image 4:</label> <br />
+  			
+  			<script>
+			$(function() {
+    		$("[name=toggler4]").click(function(){
+            $('.toHide4').hide();
+            $("#4-"+$(this).val()).show();
+   	 		});
+ 			});
+			</script>
+			
+			<div id="4-1" class="toHide4" style="display:none; float:right">
+    			<input type="file" name="qImg4">
+			</div>
+			<div id="4-2" class="toHide4" style="display:none; float:right">
+    			<?php
+    				echo '<SELECT name="qImgID4">';
+					if ($questionRow["qImgID4"] != '' && $questionRow["qImgID4"] != '0')
+						{
+							echo '<OPTION selected value="'.$questionRow["qImgID4"].'">'.$questionRow["qImgID4"].' - '.$imageRow4["name"].'</OPTION>';
+							while($allImageRow = mysql_fetch_array($allImageResult4))
+							{
+								echo '<OPTION value="'.$allImageRow['id'].'">'.$allImageRow['id'].' - '.$allImageRow['name'].'</OPTION>';
+							}
+						}
+					else
+					{
+						echo '<option selected value="0">Please Select an Image</option>';
+						while($allImageRow = mysql_fetch_array($allImageResult4))
+						{
+							echo '<OPTION value="'.$allImageRow['id'].'">'.$allImageRow['id'].'</OPTION>';
+						}
+					}
+					echo '</SELECT><br />';
+    			?>
+			</div>
+			
+			<label><input id="rdb1" type="radio" name="toggler3" value="1"  />Upload</input></label><br />
+			<label><input id="rdb2" type="radio" name="toggler3" value="2" />Select</input></label><br />
+			
+  			<label for="qImg5">Question Image 5:</label> <input type="file" name="qImg5"><br />
   			
   			
   			<?php
@@ -263,6 +393,11 @@ $("[name=select2]").change(function(){
 		$oldqID			= $_POST['oldqID'];
 		$test 			= $_POST['test'];
 		$newqID 		= $_POST['newqID'];
+		$qImgID1		= $_POST['qImgID1'];
+		$qImgID2		= $_POST['qImgID2'];
+		$qImgID3		= $_POST['qImgID2'];
+		$qImgID4		= $_POST['qImgID2'];
+		$qImgID5		= $_POST['qImgID2'];
 		$qText			= mysql_real_escape_string($_POST['qText']);
 		$aText			= mysql_real_escape_string($_POST['aText']);
 		$bText			= mysql_real_escape_string($_POST['bText']);
@@ -286,7 +421,7 @@ $("[name=select2]").change(function(){
 		}
 		else
 		{
-			if (!$query = mysql_query("UPDATE test_questions SET qID = '$newqID', qText = '$qText', editor = '$editor', edit_time = '$timestamp' WHERE qID = '$oldqID'")) 
+			if (!$query = mysql_query("UPDATE test_questions SET test = '$test', qID = '$newqID', qText = '$qText', ls_code = '$ls_code', qImgID1 = '$qImgID1', qImgID2 = '$qImgID2', editor = '$editor', edit_time = '$timestamp' WHERE qID = '$oldqID'")) 
 			{
 				echo "There was a problem uploading question information.";
 			}

@@ -65,9 +65,8 @@ Resources Page
     </div>
 	<div id="title">Resources</div>
 	<div id="selection">
-    	<ul id="options2">
+    	<ul id="option">
     		<li><a href="uploadresource.php">Add</a></li>
-    		<li>Search</li>
     	</ul>
     </div>
     <div id=list>
