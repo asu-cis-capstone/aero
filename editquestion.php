@@ -317,10 +317,48 @@ Edit Question Page for Aeroapps Technology
     			?>
 			</div>
 			
-			<label><input id="rdb1" type="radio" name="toggler3" value="1"  />Upload</input></label><br />
-			<label><input id="rdb2" type="radio" name="toggler3" value="2" />Select</input></label><br />
+			<label><input id="rdb1" type="radio" name="toggler4" value="1"  />Upload</input></label><br />
+			<label><input id="rdb2" type="radio" name="toggler4" value="2" />Select</input></label><br />
 			
-  			<label for="qImg5">Question Image 5:</label> <input type="file" name="qImg5"><br />
+  			<label for="qImg5">Question Image 5:</label> <br />
+  			
+  			<script>
+			$(function() {
+    		$("[name=toggler5]").click(function(){
+            $('.toHide5').hide();
+            $("#5-"+$(this).val()).show();
+   	 		});
+ 			});
+			</script>
+			
+			<div id="5-1" class="toHide5" style="display:none; float:right">
+    			<input type="file" name="qImg5">
+			</div>
+			<div id="5-2" class="toHide5" style="display:none; float:right">
+    			<?php
+    				echo '<SELECT name="qImgID5">';
+					if ($questionRow["qImgID5"] != '' && $questionRow["qImgID5"] != '0')
+						{
+							echo '<OPTION selected value="'.$questionRow["qImgID5"].'">'.$questionRow["qImgID5"].' - '.$imageRow5["name"].'</OPTION>';
+							while($allImageRow = mysql_fetch_array($allImageResult5))
+							{
+								echo '<OPTION value="'.$allImageRow['id'].'">'.$allImageRow['id'].' - '.$allImageRow['name'].'</OPTION>';
+							}
+						}
+					else
+					{
+						echo '<option selected value="0">Please Select an Image</option>';
+						while($allImageRow = mysql_fetch_array($allImageResult5))
+						{
+							echo '<OPTION value="'.$allImageRow['id'].'">'.$allImageRow['id'].'</OPTION>';
+						}
+					}
+					echo '</SELECT><br />';
+    			?>
+			</div>
+			
+			<label><input id="rdb1" type="radio" name="toggler5" value="1"  />Upload</input></label><br />
+			<label><input id="rdb2" type="radio" name="toggler5" value="2" />Select</input></label><br />
   			
   			
   			<?php
