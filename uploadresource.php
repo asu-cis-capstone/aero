@@ -66,42 +66,53 @@ Upload Resource Page for Aeroapps Technology
 	<div id="list">
 		<p id="title">Upload Resource</p>
 		
-		<form id="uploadform" action="uploadimage.php" method="POST" enctype="multipart/form-data">
-			File:
-			<input type="file" name="image"> <input type="submit" value="Upload">
+		
+		
+		<form id="uploadform" method="post" enctype="multipart/form-data">
+			<table width="350" border="0" cellpadding="1" cellspacing="1" class="box">
+				<tr> 
+				<td width="246">
+				<input type="hidden" name="MAX_FILE_SIZE" value="2000000">
+				<input name="userfile" type="file" id="userfile"> 
+				</td>
+				<td width="80"><input name="upload" type="submit" class="box" id="upload" value=" Upload "></td>
+				</tr>
+			</table>
 		</form>
-		<br /><br /><br />
 		
 		<?php
-		
-		
-		// connect to database
-		include('connect/local-connect.php');
-		
-		// file properties
-		$file = $_FILES['image']['tmp_name'];
-		
-		if (!isset($file)) 
-			echo "Please select an resource document.";
-		else {
-			$image = addslashes(file_get_contents($_FILES['image']['tmp_name']));
-			$image_name = addslashes($_FILES['image']['name']);
-			$image_size = getimagesize($_FILES['image']['tmp_name']);
+			include ('connect/local-connect.php');
 			
-			if ($image_size==FALSE)
-				echo "That's not an image.";
-			else {
-				if (!$insert = mysql_query("INSERT INTO images VALUES ('','$image_name','$image')"))
-					echo "Problem uploading image.";
-				else
-				{
-					$lastid = mysql_insert_id();
-					echo "Image uploaded.<p />Your image:<p /><img src=get.php?id=$lastid>";
-				}
+			if(isset($_POST['upload']) && $_FILES['userfile']['size'] > 0)
+			{
+				$fileName = $_FILES['userfile']['name'];
+				$tmpName  = $_FILES['userfile']['tmp_name'];
+				$fileSize = $_FILES['userfile']['size'];
+				$fileType = $_FILES['userfile']['type'];
+
+				$fp      = fopen($tmpName, 'r');
+				$content = fread($fp, filesize($tmpName));
+				$content = addslashes($content);
+				fclose($fp);
+
+			if(!get_magic_quotes_gpc())
+			{
+    			$fileName = addslashes($fileName);
 			}
-		}
-		
-		
+			
+			$editor 	= $_SESSION['name'];
+			$now 		= time();
+			date_default_timezone_set('MST');
+			$timestamp 	= date('Y-m-d H:i:s', $now);
+
+			$query = "INSERT INTO resource (name, size, type, content, editor, edit_time ) ".
+			"VALUES ('$fileName', '$fileSize', '$fileType', '$content', '$editor', '$timestamp')";
+
+			mysql_query($query) or die('Error, query failed'); 
+			mysql_close($dbc)
+
+			echo "<br>File $fileName uploaded<br>";
+			} 
 		?>
 		
 	</div>
