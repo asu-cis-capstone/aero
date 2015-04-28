@@ -34,6 +34,7 @@ Edit Question Page for Aeroapps Technology
 
 	<!-- JavaScript Tags -->
 	<script type="text/javascript" src="javascript/loadNavbar.js"></script>
+	<script type="text/javascript" src="javascript/msg.js"></script>
 
 	<!-- Script tag-->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js" type="text/javascript"></script>
