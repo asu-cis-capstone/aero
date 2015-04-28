@@ -95,7 +95,7 @@ Resources Page
     				while($row = mysql_fetch_array($query)) {
         				echo "<tr><td style='outline: thin solid black'>".$row['id']."</td>";
         				echo "<td style='outline: thin solid black'>".$row['name']."</td>";
-        				echo "<td style='outline: thin solid black'><form action='viewresources.php' method='POST'><input type='hidden' name='tempViewID' value='".$row["qID"]."'/><input type='submit' name='view-btn' value='View' /></form></td>";
+        				echo "<td style='outline: thin solid black'><form action='viewresource.php' method='POST'><input type='hidden' name='tempViewID' value='".$row["id"]."'/><input type='submit' name='view-btn' value='View' /></form></td>";
 						echo "<td style='outline: thin solid black'><form action='deleteresourcesprocess.php' method='POST' onSubmit=\"return confirm('Are you sure you want to delete?')\"><input type='hidden' name='tempDeleteID' value='".$row["id"]."'/><input type='submit' name='delete-btn' value='Delete' /></form></td></tr>";
     				}
     			}
@@ -106,7 +106,7 @@ Resources Page
     				while($row = mysql_fetch_array($query)) {
         				echo "<tr><td style='outline: thin solid black'>".$row['id']."</td>";
         				echo "<td style='outline: thin solid black'>".$row['name']."</td>";
-        				echo "<td style='outline: thin solid black'><form action='viewresources.php' method='POST'><input type='hidden' name='tempViewID' value='".$row["qID"]."'/><input type='submit' name='view-btn' value='View' /></form></td>";
+        				echo "<td style='outline: thin solid black'><form action='viewresource.php' method='POST'><input type='hidden' name='tempViewID' value='".$row["id"]."'/><input type='submit' name='view-btn' value='View' /></form></td>";
     				}
     			}	
 			}
