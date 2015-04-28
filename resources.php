@@ -89,7 +89,7 @@ Resources Page
 				if ($_SESSION['type'] == 'admin') 
 				{
 					echo "<table width='100%' cellspacing='6px' style='border: solid 1px black;'>";
-					echo "<tr><th width='10%'>ID</th><th>Question Text</th><th>View</th<th>Delete</th></tr>";
+					echo "<tr><th width='10%'>ID</th><th>Question Text</th><th>View</th><th>Delete</th></tr>";
     				while($row = mysql_fetch_array($query)) {
         				echo "<tr><td style='outline: thin solid black'>".$row['id']."</td>";
         				echo "<td style='outline: thin solid black'>".$row['name']."</td>";
