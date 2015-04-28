@@ -200,9 +200,51 @@ View Question Page for Aeroapps Technology
 			echo 'B: '.$answerRow['bText'].'<br />';
 			echo 'C: '.$answerRow['cText'].'<br />';
 			echo '</div>';
+			
+			//Display Image Question 1
 			if ($imageRow1['id'] != 0)
 			{
 				echo "<p><img src=get.php?id=".$imageRow1['id']." width='400px'>";
+			}
+			else
+			{
+				echo '';
+			}
+			
+			//Display Image Question 2
+			if ($imageRow2['id'] != 0)
+			{
+				echo "<p><img src=get.php?id=".$imageRow2['id']." width='400px'>";
+			}
+			else
+			{
+				echo '';
+			}
+			
+			//Display Image Question 3
+			if ($imageRow3['id'] != 0)
+			{
+				echo "<p><img src=get.php?id=".$imageRow3['id']." width='400px'>";
+			}
+			else
+			{
+				echo '';
+			}
+			
+			//Display Image Question 4
+			if ($imageRow4['id'] != 0)
+			{
+				echo "<p><img src=get.php?id=".$imageRow4['id']." width='400px'>";
+			}
+			else
+			{
+				echo '';
+			}
+			
+			//Display Image Question 5
+			if ($imageRow5['id'] != 0)
+			{
+				echo "<p><img src=get.php?id=".$imageRow5['id']." width='400px'>";
 			}
 			else
 			{
@@ -237,9 +279,51 @@ View Question Page for Aeroapps Technology
 				{
 					echo '<p>Explanaion: No Explanation provided.</p>';
 				}
+				
+				// Display Explanation Image 1
 				if ($expImageRow1['id'] != 0)
 				{
 					echo "<p><img src=get.php?id=".$expImageRow1['id']." width='400px'>";
+				}
+				else
+				{
+					echo '';
+				}
+				
+				// Display Explanation Image 2
+				if ($expImageRow2['id'] != 0)
+				{
+					echo "<p><img src=get.php?id=".$expImageRow2['id']." width='400px'>";
+				}
+				else
+				{
+					echo '';
+				}
+				
+				// Display Explanation Image 3
+				if ($expImageRow3['id'] != 0)
+				{
+					echo "<p><img src=get.php?id=".$expImageRow3['id']." width='400px'>";
+				}
+				else
+				{
+					echo '';
+				}
+				
+				// Display Explanation Image 4
+				if ($expImageRow4['id'] != 0)
+				{
+					echo "<p><img src=get.php?id=".$expImageRow4['id']." width='400px'>";
+				}
+				else
+				{
+					echo '';
+				}
+				
+				// Display Explanation Image 5
+				if ($expImageRow5['id'] != 0)
+				{
+					echo "<p><img src=get.php?id=".$expImageRow5['id']." width='400px'>";
 				}
 				else
 				{

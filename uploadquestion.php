@@ -33,6 +33,7 @@ Upload Question Page for Aeroapps Technology
 	
 	<!-- JavaScript Tags -->
 	<script type="text/javascript" src="javascript/loadNavbar.js"></script>
+	<script type="text/javascript" src="javascript/msg.js"></script>
 
     <!-- Web Page Title -->
     <title>Upload Question</title>
@@ -68,6 +69,8 @@ Upload Question Page for Aeroapps Technology
 		<p id="title">Add a Question</p>
 		
 		<form id="questionform" action="uploadquestion.php" method="POST" enctype="multipart/form-data">
+			<br />
+			<div id="messages"><p></p></div>
 			<h2>Enter Question Information Below</h2>
 			<label for="test">Test</label> <input type="text" name="test" required title="Please enter a Test for the Question" autofocus placeholder="Test..." /><br />
 			<label for="qID">Question ID</label> <input type="text" name="qID" required title="Please enter an ID for the Question" placeholder="Question ID..." /><br /> 
@@ -437,17 +440,17 @@ Upload Question Page for Aeroapps Technology
 		// Build our SQL statement and Insert Values
 		if (empty($_POST['test'])) 
 		{
-			echo "Please enter the question information.";
+			echo '<script>msg("Please enter question information.");</script>';
 		}
 		else
 		{
 			if (!$query = mysql_query("INSERT INTO test_questions VALUES('$test','$qID','$qText','$ls_code','$qImgID1','$qImgID2','$qImgID3','$qImgID4','$qImgID5','$refName','$refPincite','$editor','$timestamp')")) 
 			{
-				echo "There was a problem uploading question information.";
+				echo '<script>msg("There was a problem uploading question information.");</script>';
 			}
 			else {
 				mysql_query("INSERT INTO test_answers VALUES('$answer','$aText','$bText','$cText','$qID','$exp','$expImgID1','$expImgID2','$expImgID3','$expImgID4','$expImgID5','$editor','$timestamp')");
-				echo "Question information uploaded!";
+				echo '<script>msg("Question information uploaded!");</script>';
 			}
 		}
 	

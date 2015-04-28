@@ -278,6 +278,17 @@ ul#options{
 	list-style:			none;
 }
 
+#resourcelist{
+	margin-top:			50px;
+	text-align:			center;
+	font-size:			23px;
+	margin-bottom:		50px;
+}
+
+#resourcelist li{
+	list-style:			none;
+}
+
 a:link { color: #FFFFFF; }
 a:hover { color: #4169E1!important; }
 a:visited { color: rgba(255,255,255,0.8); }

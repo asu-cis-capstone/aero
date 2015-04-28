@@ -63,12 +63,12 @@ Upload Resource Page for Aeroapps Technology
     		loadNavbar();
     	</script>	
     </div>
-	<div id="list">
+    
+	<div id="resourcelist">
 		<p id="title">Upload Resource</p>
 		
-		
-		
 		<form id="uploadform" method="post" enctype="multipart/form-data">
+			Please select .pdf and .txt files only
 			<table width="350" border="0" cellpadding="1" cellspacing="1" class="box">
 				<tr> 
 				<td width="246">
@@ -79,6 +79,7 @@ Upload Resource Page for Aeroapps Technology
 				</tr>
 			</table>
 		</form>
+		<br/>
 		
 		<?php
 			include ('connect/local-connect.php');
@@ -105,11 +106,14 @@ Upload Resource Page for Aeroapps Technology
 			date_default_timezone_set('MST');
 			$timestamp 	= date('Y-m-d H:i:s', $now);
 
-			$query = "INSERT INTO resource (name, size, type, content, editor, edit_time ) ".
+			$query = "INSERT INTO resources (name, size, type, content, editor, edit_time ) ".
 			"VALUES ('$fileName', '$fileSize', '$fileType', '$content', '$editor', '$timestamp')";
+			
+			// Add spacing so text reports appear under the form
+			echo '<br /><br />';
 
-			mysql_query($query) or die('Error, query failed'); 
-			mysql_close($dbc)
+			mysql_query($query) or die('Error, upload failed'); 
+			mysql_close($dbc);
 
 			echo "<br>File $fileName uploaded<br>";
 			} 

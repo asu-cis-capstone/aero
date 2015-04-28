@@ -74,6 +74,7 @@ Upload Image Page for Aeroapps Technology
 		
 		<?php
 		
+		echo '<center>';
 		
 		// connect to database
 		include('connect/local-connect.php');
@@ -101,6 +102,7 @@ Upload Image Page for Aeroapps Technology
 			}
 		}
 		
+		echo '</center>';
 		
 		?>
 		
