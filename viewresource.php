@@ -71,25 +71,28 @@ View Resources Page
 		<p id="title">View Resource</p>
 		
 		<?php
+			if(isset($_POST['tempViewID'])) 
+			{
+			// if id is set then get the file with the id from database
+
 			include ('connect/local-connect.php');
+			$id    = $_POST['tempViewID'];
+			$query = "SELECT name, type, size, content " .
+	         "FROM resources WHERE id = '$id'";
 
-			$query = "SELECT id, name FROM upload";
 			$result = mysql_query($query) or die('Error, query failed');
-			if(mysql_num_rows($result) == 0)
-			{
-				echo "Database is empty <br>";
-			} 
-			else
-			{
-				while(list($id, $name) = mysql_fetch_array($result))
-			}
-		?>
-		
-		<a href="download.php?id=<?php=$id;?>"><?php=$name;?></a> <br>
+			list($name, $type, $size, $content) = mysql_fetch_array($result);
 
-		<?php 
+			header("Content-length: $size");
+			header("Content-type: $type");
+			header("Content-Disposition: attachment; filename=$name");
+			echo $content;
+
 			mysql_close($dbc);
-		?>
+			exit;
+			}
+
+?>
 		
 		</center>
 	</div>
