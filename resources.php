@@ -76,10 +76,8 @@ Resources Page
     		$minID = mysql_query("SELECT * FROM resources ORDER BY id");
     		$minIDrow = mysql_fetch_assoc($minID);
     		
-    		echo "<li><form action='viewquestion.php' method='POST'><input type='hidden' name='tempViewID' value='".$minIDrow['qID']."'/><input type='submit' name='start-btn' value='Start' /></form><li>";
-    		
+
     		?>
-    	</ul>
     </div>
     <div id=list>
     	<?php
@@ -102,7 +100,7 @@ Resources Page
     			if ($_SESSION['type'] == 'user')
     			{
     				echo "<table width='100%' cellspacing='6px' style='border: solid 1px black;'>";
-					echo "<tr><th width='10%'>ID</th><th>Question Text</th><th>View</th></tr>";
+					echo "<tr><th width='10%'>ID</th><th>Resource Name</th><th>View</th></tr>";
     				while($row = mysql_fetch_array($query)) {
         				echo "<tr><td style='outline: thin solid black'>".$row['id']."</td>";
         				echo "<td style='outline: thin solid black'>".$row['name']."</td>";

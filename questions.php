@@ -74,7 +74,7 @@ Questions Page
     		$minID = mysql_query("SELECT * FROM test_questions ORDER BY qID ASC LIMIT 1");
     		$minIDrow = mysql_fetch_assoc($minID);
     		
-    		echo "<li><form action='viewquestion.php' method='POST'><input type='hidden' name='tempViewID' value='".$minIDrow['qID']."'/><input type='submit' name='start-btn' value='Start' /></form><li>";
+    		echo "<li><form action='viewquestion.php' method='POST'><input type='hidden' name='tempViewID' value='".$minIDrow['qID']."'/><input type='submit' name='start-btn' value='Start' /></form></li>";
     		
     		?>
     	</ul>
